@@ -40,9 +40,9 @@ isDyckPath path
 	|T.last $ T.pack path != "d" = False
 	|‬(length path % 2) && (u_cnt == d_cnt) = False
 	|otherwise = True
-
-u_cnt = count "u" path
-d_cnt = count "d" path
+	where
+		u_cnt = count "u" path
+		d_cnt = count "d" path
 
 {-----------------------------------------------------------------------------------
 	Helper functions.
