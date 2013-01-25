@@ -10,12 +10,25 @@ import qualified Math.Sym as S
 import qualified Data.Text as T
 
 -- A Dyck path is an encoding where u is an up-step and d is a down-step
-type DyckPath = [Char]
 type Permutation = String
 
-class Catalan where
+type DyckPath = [Char]
+type StackSortablePermutation = Permutation
+
+class Catalan a where
 	cons :: a -> a -> a
 	decons :: a -> (a, a)
+
+{-----------------------------------------------------------------------------------
+	Create instances of each Catalan structure.
+------------------------------------------------------------------------------------}
+instance Catalan DyckPath where
+	cons = undefined
+	decons = undefined
+	
+instance Catalan StackSortablePermutation where
+	cons = undefined
+	decons = undefined
 
 {-----------------------------------------------------------------------------------
 	Tests that structures are structures.
