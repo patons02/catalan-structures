@@ -62,4 +62,5 @@ isDyckPath path
 ------------------------------------------------------------------------------------}
 
 --Counts the amount of given elements in a list
+count :: Eq a => a -> [a] -> Int
 count x ys = length (filter (== x) ys) 
