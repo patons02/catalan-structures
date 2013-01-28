@@ -73,15 +73,12 @@ isDyckPath' path
 count :: Eq a => a -> [a] -> Int
 count x ys = length (filter (== x) ys) 
 
---takes u count
 u_cnt :: [Char] -> Int
 u_cnt xs = count 'u' xs
 
---takes d count
 d_cnt :: [Char] -> Int
 d_cnt xs = count 'd' xs
 
---checks that the counts are equal
 countsEqual :: Eq a => (t -> a) -> (t -> a) -> t -> Bool
 countsEqual f f' xs = f xs == f' xs
 
