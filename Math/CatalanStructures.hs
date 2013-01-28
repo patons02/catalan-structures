@@ -1,10 +1,13 @@
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE TypeSynonymInstances #-}
+
 -- Module      : Math.CatalanStructures
 -- Copyright   : (c) Stuart Paton 2013
 -- License     : undecided
 -- Maintainer  : Stuart Paton <stuart.john.paton@gmail.com>
 -- 
 
-module CatalanStructures (isStackSortPerm, isDyckPath) where
+module CatalanStructures (isDyckPath, isStackSortPerm) where
 
 import qualified Math.Sym as S 
 import qualified Data.Text as T
@@ -22,10 +25,13 @@ class Catalan a where
 {-----------------------------------------------------------------------------------
 	Create instances of each Catalan structure.
 ------------------------------------------------------------------------------------}
+
+{-
 instance Catalan DyckPath where
-	cons = undefined
-	decons = undefined
-	
+	cons alpha beta = ['a'] ++ alpha ++ ['d'] ++ beta
+	decons gamma    = undefined
+-}
+
 instance Catalan StackSortablePermutation where
 	cons = undefined
 	decons = undefined
@@ -47,15 +53,17 @@ Has to satisfy the conditions:
 Start with an up-step, never go below the x-axis, and must end on the x-axis.
 That is, must start with a "u", number of "u"'s must equal number of "d"'s and must end with a "d"
 -----------------------}
+
+--Todo: tidy this into appropriate function!
 isDyckPath :: DyckPath -> Bool
-isDyckPath path
-	|head path != "u" = False
-	|T.last $ T.pack path != "d" = False
-	|‬(length path % 2) && (u_cnt == d_cnt) = False
-	|otherwise = True
-	where
-		u_cnt = count "u" path
-		d_cnt = count "d" path
+isDyckPath path = not (isDyckPath' path)
+
+isDyckPath' :: DyckPath -> Bool
+isDyckPath' path
+	| head path /= 'u' = False
+	| (T.last $ T.pack path) /= 'd' = False
+	| (length path `mod` 2 == 0) && (countsEqual u_cnt d_cnt path) = False
+	| otherwise = True
 
 {-----------------------------------------------------------------------------------
 	Helper functions.
@@ -64,3 +72,13 @@ isDyckPath path
 --Counts the amount of given elements in a list
 count :: Eq a => a -> [a] -> Int
 count x ys = length (filter (== x) ys) 
+
+u_cnt :: [Char] -> Int
+u_cnt xs = count 'u' xs
+
+d_cnt :: [Char] -> Int
+d_cnt xs = count 'd' xs
+
+countsEqual :: Eq a => (t -> a) -> (t -> a) -> t -> Bool
+countsEqual f f' xs = f xs == f' xs
+
