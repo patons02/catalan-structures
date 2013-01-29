@@ -16,8 +16,12 @@ instance Catalan StackSortablePermutation where
 	cons = undefined
 	decons = undefined
 
-mkStackSortPerm :: Int -> [a]
-mkStackSortPerm n = (S.perms n)
+{-----------------------------------------------------------
+	Utility functions
+------------------------------------------------------------}
+
+listStackSortPerms :: Int -> [String]
+listStackSortPerms n = filter (isStackSortPerm) (S.perms n :: [String])
 
 
 
