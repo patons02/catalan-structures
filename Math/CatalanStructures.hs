@@ -54,21 +54,16 @@ isStackSortPerm sigma = sigma `S.avoids` ["132", "231"]
 
 {----------------------
 Tests if the given DyckPath is actually a DyckPath and not just a [Char].
+Returns True if we satisfy these conditions, and false otherwise
 Has to satisfy the conditions:
 Start with an up-step, never go below the x-axis, and must end on the x-axis.
 That is, must start with a "u", number of "u"'s must equal number of "d"'s and must end with a "d"
 -----------------------}
 
---Todo: tidy this into appropriate function!
 isDyckPath :: DyckPath -> Bool
-isDyckPath path = not (isDyckPath' path)
-
-isDyckPath' :: DyckPath -> Bool
 isDyckPath' path
-	| head path /= 'u' = False
-	| (T.last $ T.pack path) /= 'd' = False
-	| (length path `mod` 2 == 0) && (countsEqual u_cnt d_cnt path) = False
-	| otherwise = True
+	| head path == 'u' && (T.last $ T.pack path) == 'd' && (length path `mod` 2 == 0) && (countsEqual u_cnt d_cnt path) = True
+	| otherwise = False
 
 {-----------------------------------------------------------------------------------
 	Helper functions.

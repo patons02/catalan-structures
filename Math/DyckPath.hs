@@ -18,14 +18,13 @@ instance Catalan DyckPath where
 mkIndec :: DyckPath -> DyckPath
 mkIndec alpha = ['u'] ++ alpha ++ ['d']
 
-
-decompose :: DyckPath -> (DyckPath, DyckPath)
+decompose :: DyckPath -> (DyckPath, [DyckPath])
 decompose xs = (extractFirstandLast xs, rest xs)
 
 extractFirstandLast :: [a] -> [a]
 extractFirstandLast xs = [head xs, last xs]
 
-some :: [a] -> [a]
+some :: DyckPath -> DyckPath
 some (x:xs) = xs
 
 rest xs = do
