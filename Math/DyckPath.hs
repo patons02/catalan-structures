@@ -13,7 +13,7 @@ import CatalanStructures
 
 instance Catalan DyckPath where
 	cons alpha beta = mkIndec alpha ++ beta 
-	decons = undefined
+	decons = undefined --help?
 
 {------------------------------------------------------------------
 	Make indecomposable and decomposable Dyck Paths

@@ -9,10 +9,15 @@
 
 module CatalanStructures.StackSortPerm where
 
-import CatalanStructures 
+import CatalanStructures
+import qualified Math.Sym as S
 
 instance Catalan StackSortablePermutation where
 	cons = undefined
 	decons = undefined
+
+mkStackSortPerm :: Int -> [a]
+mkStackSortPerm n = (S.perms n)
+
 
 
