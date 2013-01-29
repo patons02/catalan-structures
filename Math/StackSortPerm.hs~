@@ -21,7 +21,7 @@ instance Catalan StackSortablePermutation where
 ------------------------------------------------------------}
 
 listStackSortPerms :: Int -> [Permutation]
-listStackSortPerms n = filter (isStackSortPerm) (S.perms n :: [Permutation])
+listStackSortPerms n = filter (isStackSortPerm) (S.perms n :: [String])
 
 
 
