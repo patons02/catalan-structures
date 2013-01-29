@@ -53,12 +53,13 @@ That is, must start with a "u", number of "u"'s must equal number of "d"'s and m
 -----------------------}
 
 isDyckPath :: DyckPath -> Bool
-isDyckPath path = isDyckPath' path 0
+isDyckPath path = isDyckPath' path 0  
 	where
-	isDyckPath' (dp:cps) n
+	isDyckPath' (dp:dps) n
 		| n < 0 = False
 		| dp == 'u' = isDyckPath' dps (n+1)
 		| dp == 'd' = isDyckPath' dps (n-1)
+		| otherwise = False
 	isDyckPath' [] n = n==0
 	
 {-----------------------------------------------------------------------------------

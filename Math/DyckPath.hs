@@ -21,25 +21,44 @@ mkIndec :: DyckPath -> DyckPath
 mkIndec alpha = ['u'] ++ alpha ++ ['d']
 
 mkDecom :: DyckPath -> [DyckPath]
-mkDecom xs = concat [[fst (decompose xs)], snd (decompose xs)]
+mkDecom xs = concat [[fst (decomp xs)], snd (decomp xs)]
 
-decompose :: DyckPath -> (DyckPath, [DyckPath])
-decompose xs = (extractFirstandLast xs, rest xs)
+decomp :: DyckPath -> (DyckPath, [DyckPath])
+decomp xs = (extractFirstandLast xs, rest xs)
 
---check if dyckpath
--- count ups, count downs and once we get to 0 output to list
-deconsUtil :: DyckPath -> [DyckPath]
-deconsUtil gamma
-	| isDyckPath gamma == True = [""]
-	| isDyckPath gamma == False = [""]
-	| otherwise = [""]
+decompose :: DyckPath -> [DyckPath]
+decompose gamma = stripMaybe $ deconsUtil gamma
 
+deconsUtil :: DyckPath -> Maybe [DyckPath]
+deconsUtil gamma = if isDyckPath gamma then Just (gammaList gamma) else Nothing
+
+{-
+gammaList decomposes the dyck path into a list of smaller dyck paths!
+It takes a chunk of gamma off at a time then append it to a list
+-}
+gammaList :: DyckPath -> [DyckPath]
+gammaList gamma = ["ud", "ud"] --todo REPLACE WITH ACTUAL FUNCTION!
+
+
+--testy gamma = mkIndec . decompose . (perms gamma)
 {------------------------------------------------------
 	Helper functions
 -------------------------------------------------------}
 
+stripMaybe :: Maybe [a] -> [a]
+stripMaybe (Just xs) = xs
+stripMaybe Nothing = []
+
 extractFirstandLast :: [a] -> [a]
 extractFirstandLast xs = [head xs, last xs]
+
+stripFirstandLast = stripLast . stripFirst
+
+stripFirst :: [a] -> [a]
+stripFirst (p:ps) = ps
+
+stripLast :: [a] -> [a]
+stripLast xs = take (length xs -1) xs 
 
 some :: DyckPath -> DyckPath
 some (x:xs) = xs
