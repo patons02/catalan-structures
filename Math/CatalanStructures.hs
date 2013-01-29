@@ -28,20 +28,10 @@ class Catalan a where
 	decons :: a -> (a, a)
 
 {-----------------------------------------------------------------------------------
-	Create instances of each Catalan structure.
+	Bijections between structures.
 ------------------------------------------------------------------------------------}
-
-{-
-instance Catalan DyckPath where
-	cons alpha beta = ['a'] ++ alpha ++ ['d'] ++ beta
-	decons gamma    = undefined
--}
-
-{-
-instance Catalan StackSortablePermutation where
-	cons = undefined
-	decons = undefined
--}
+stackSortPerm2DyckPath :: StackSortablePermutation -> DyckPath
+stackSortPerm2DyckPath ssp = undefined
 
 {-----------------------------------------------------------------------------------
 	Tests that structures are structures.
