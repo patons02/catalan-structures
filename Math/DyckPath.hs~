@@ -18,6 +18,8 @@ instance Catalan DyckPath where
 mkIndec :: DyckPath -> DyckPath
 mkIndec alpha = ['u'] ++ alpha ++ ['d']
 
+mkDecom :: DyckPath -> [DyckPath]
+mkDecom xs = concat [[fst (decompose xs)], snd (decompose xs)]
 
 decompose :: DyckPath -> (DyckPath, [DyckPath])
 decompose xs = (extractFirstandLast xs, rest xs)

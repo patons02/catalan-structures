@@ -15,10 +15,12 @@ import qualified Data.Text as T
 --import CatalanStructures.DyckPath
 --import CatalanStructures.StackSortPerm
 
--- A Dyck path is an encoding where u is an up-step and d is a down-step
+
 type Permutation = String
 
+-- A Dyck path is an encoding where u is an up-step and d is a down-step
 type DyckPath = [Char]
+
 type StackSortablePermutation = Permutation
 
 class Catalan a where
