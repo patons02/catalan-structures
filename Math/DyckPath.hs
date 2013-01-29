@@ -15,9 +15,9 @@ instance Catalan DyckPath where
 	cons alpha beta = mkIndec alpha ++ beta 
 	decons = undefined
 
-{------------------------------------------------------
-	
--------------------------------------------------------}
+{------------------------------------------------------------------
+	Make indecomposable and decomposable Dyck Paths
+-------------------------------------------------------------------}
 mkIndec :: DyckPath -> DyckPath
 mkIndec alpha = ['u'] ++ alpha ++ ['d']
 
