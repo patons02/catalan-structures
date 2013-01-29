@@ -61,7 +61,7 @@ That is, must start with a "u", number of "u"'s must equal number of "d"'s and m
 -----------------------}
 
 isDyckPath :: DyckPath -> Bool
-isDyckPath path
+isDyckPath' path
 	| head path == 'u' && (T.last $ T.pack path) == 'd' && (length path `mod` 2 == 0) && (countsEqual u_cnt d_cnt path) = True
 	| otherwise = False
 
