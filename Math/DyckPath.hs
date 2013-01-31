@@ -13,7 +13,7 @@ import CatalanStructures
 
 instance Catalan DyckPath where
 	cons alpha beta = mkIndec alpha ++ beta :: DyckPath 
-	decons = undefined --help?
+	decons = deconstruct
 {------------------------------------------------------------------
 	Make indecomposable and decomposable Dyck Paths
 -------------------------------------------------------------------}
@@ -22,6 +22,9 @@ mkIndec alpha = ['u'] ++ alpha ++ ['d']
 
 mkDecom :: DyckPath -> [DyckPath]
 mkDecom xs = concat [[fst (decomp xs)], snd (decomp xs)]
+
+deconstruct :: DyckPath -> (DyckPath, DyckPath)
+deconstruct path = undefined
 
 decomp :: DyckPath -> (DyckPath, [DyckPath])
 decomp xs = (extractFirstandLast xs, rest xs)
@@ -40,7 +43,7 @@ gammaList :: DyckPath -> [DyckPath]
 gammaList gamma = do --todo REPLACE WITH ACTUAL FUNCTION!
 	g <- gamma
 	
-	return gamma'	
+	return g	
 
 		
 
