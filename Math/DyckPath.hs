@@ -37,7 +37,20 @@ gammaList decomposes the dyck path into a list of smaller dyck paths!
 It takes a chunk of gamma off at a time then append it to a list
 -}
 gammaList :: DyckPath -> [DyckPath]
-gammaList gamma = ["ud", "ud"] --todo REPLACE WITH ACTUAL FUNCTION!
+gammaList gamma = do --todo REPLACE WITH ACTUAL FUNCTION!
+	g <- gamma
+	
+	return gamma'	
+
+		
+
+
+
+
+gammaList' (g:gs) n m
+	| n < 0 = undefined
+	| gammaList' gs (n+1) (m+1) = undefined
+	| gammaList' gs (n-1) (m+1) = undefined
 
 
 --testy gamma = mkIndec . decompose . (perms gamma)
