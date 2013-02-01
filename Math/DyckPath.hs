@@ -9,80 +9,47 @@
 
 module CatalanStructures.DyckPath where
 
-import CatalanStructures 
+import Internal
+import Data.List
+
+data Step = U | D | Undefined deriving (Eq, Show)
+
+type DyckPath = [Step]
 
 instance Catalan DyckPath where
-	cons alpha beta = mkIndec alpha ++ beta :: DyckPath 
-	decons = deconstruct
+	cons alpha beta = mkIndec alpha ++ beta 
+	decons gamma = stripMaybe $ decompose gamma
+
 {------------------------------------------------------------------
 	Make indecomposable and decomposable Dyck Paths
 -------------------------------------------------------------------}
+
 mkIndec :: DyckPath -> DyckPath
-mkIndec alpha = ['u'] ++ alpha ++ ['d']
+mkIndec alpha = [U] ++ alpha ++ [D]
 
-mkDecom :: DyckPath -> [DyckPath]
-mkDecom xs = concat [[fst (decomp xs)], snd (decomp xs)]
+height :: DyckPath -> [Int]
+height = scanl (+) 0 . map dy
+	where 
+	dy U = 1
+	dy D = -1
 
-deconstruct :: DyckPath -> (DyckPath, DyckPath)
-deconstruct path = undefined
+-- O(n^2) version!
+--height :: DyckPath -> [Int]
+--height = map sum . inits .map dy
+--         where
+--           dy U = 1
+--           dy D = -1
 
-decomp :: DyckPath -> (DyckPath, [DyckPath])
-decomp xs = (extractFirstandLast xs, rest xs)
+decompose :: DyckPath -> Maybe (DyckPath, DyckPath)
+decompose [] = Nothing
+decompose xs@(U:xt) = Just (map fst (init ys), map fst zs) 
+               where
+                 0:ht = height xs 
+                 (ys, zs) = span(\(_, h) -> h > 0) $ zip xt ht
 
-decompose :: DyckPath -> [DyckPath]
-decompose gamma = stripMaybe $ deconsUtil gamma
-
-deconsUtil :: DyckPath -> Maybe [DyckPath]
-deconsUtil gamma = if isDyckPath gamma then Just (gammaList gamma) else Nothing
-
-{-
-gammaList decomposes the dyck path into a list of smaller dyck paths!
-It takes a chunk of gamma off at a time then append it to a list
--}
-gammaList :: DyckPath -> [DyckPath]
-gammaList gamma = do --todo REPLACE WITH ACTUAL FUNCTION!
-	g <- gamma
-	
-	return g	
-
-		
-
-
-
-
-gammaList' (g:gs) n m
-	| n < 0 = undefined
-	| gammaList' gs (n+1) (m+1) = undefined
-	| gammaList' gs (n-1) (m+1) = undefined
-
-
---testy gamma = mkIndec . decompose . (perms gamma)
-{------------------------------------------------------
+{-----------------------------------------------------------------
 	Helper functions
--------------------------------------------------------}
-
-stripMaybe :: Maybe [a] -> [a]
-stripMaybe (Just xs) = xs
-stripMaybe Nothing = []
-
-extractFirstandLast :: [a] -> [a]
-extractFirstandLast xs = [head xs, last xs]
-
-stripFirstandLast = stripLast . stripFirst
-
-stripFirst :: [a] -> [a]
-stripFirst (p:ps) = ps
-
-stripLast :: [a] -> [a]
-stripLast xs = take (length xs -1) xs 
-
-some :: DyckPath -> DyckPath
-some (x:xs) = xs
-
-rest :: Monad m => DyckPath -> m DyckPath
-rest xs = do
-	let t = some xs
-	let u = init t
-	return u
-
-
+------------------------------------------------------------------}
+stripMaybe :: Maybe (a, a) -> (a, a)
+stripMaybe Nothing = error "error: Incomplete Dyck Path"
+stripMaybe (Just (x, y)) = (x, y)

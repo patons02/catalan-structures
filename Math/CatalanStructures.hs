@@ -16,10 +16,7 @@ import qualified Data.Text as T
 --import CatalanStructures.StackSortPerm
 
 
-type Permutation = String
-
--- A Dyck path is an encoding where u is an up-step and d is a down-step
-type DyckPath = [Char]
+type Permutation = [Integer]
 
 type StackSortablePermutation = Permutation
 
@@ -57,8 +54,8 @@ isDyckPath path = isDyckPath' path 0
 	where
 	isDyckPath' (dp:dps) n
 		| n < 0 = False
-		| dp == 'u' = isDyckPath' dps (n+1)
-		| dp == 'd' = isDyckPath' dps (n-1)
+		| dp == U = isDyckPath' dps (n+1)
+		| dp == D = isDyckPath' dps (n-1)
 		| otherwise = False
 	isDyckPath' [] n = n==0
 	

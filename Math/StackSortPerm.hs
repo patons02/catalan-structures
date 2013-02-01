@@ -9,8 +9,11 @@
 
 module CatalanStructures.StackSortPerm where
 
-import CatalanStructures
+import Internal
 import qualified Math.Sym as S
+
+type StackSortablePermutation = Permutation
+type Permutation = [Integer]
 
 instance Catalan StackSortablePermutation where
 	cons = undefined
@@ -20,8 +23,16 @@ instance Catalan StackSortablePermutation where
 	Utility functions
 ------------------------------------------------------------}
 
-listStackSortPerms :: Int -> [Permutation]
-listStackSortPerms n = filter (isStackSortPerm) (S.perms n :: [Permutation])
+
+highestElemPosition :: Permutation -> Maybe (Permutation, Permutation)
+highestElemPostion [] = Nothing
+highestElemPosition xs = Just $ 
+
+--listStackSortPerms :: Int -> Permutation
+--listStackSortPerms n = filter (isStackSortPerm) (S.perms n :: [Permutation])
+
+displayPerm :: Permutation -> IO()
+displayPerm ssp = undefined
 
 
 
