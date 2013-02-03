@@ -1,5 +1,6 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TypeSynonymInstances #-}
+{-# LANGUAGE FlexibleContexts #-}
 
 -- Module      : Math.CatalanStructures.DyckPath
 -- Copyright   : (c) Stuart Paton 2013
@@ -13,20 +14,22 @@ import Internal
 import qualified Math.Sym as S
 
 type StackSortablePermutation = Permutation
-type Permutation = [Integer]
 
 instance Catalan StackSortablePermutation where
 	cons = undefined
-	decons = undefined
+	decons gamma = decompose gamma
 
 {-----------------------------------------------------------
 	Utility functions
 ------------------------------------------------------------}
 
+decompose :: StackSortablePermutation -> (StackSortablePermutation, StackSortablePermutation)
+decompose gamma = removeHeadSnd $ break (l ==) gamma
+	where
+	l = toInteger $ length gamma
 
-highestElemPosition :: Permutation -> Maybe (Permutation, Permutation)
-highestElemPostion [] = Nothing
-highestElemPosition xs = Just $ 
+removeHeadSnd :: (t, [a]) -> (t, [a])
+removeHeadSnd (alpha, beta) = (alpha, tail beta)
 
 --listStackSortPerms :: Int -> Permutation
 --listStackSortPerms n = filter (isStackSortPerm) (S.perms n :: [Permutation])
