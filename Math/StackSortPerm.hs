@@ -42,7 +42,7 @@ removeHeadSnd (alpha, beta) = (alpha, tail beta)
 permToString :: Permutation -> String
 permToString xs = foldr ((++) . show) "" xs
 
---below is the inefficient version O(n^2)!
+--below is the inefficient version of permToString in O(n^2) time complexity!
 --permToString [] = ""
 --permToString (x:xs) = show x ++ permToString xs
 
