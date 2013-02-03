@@ -16,12 +16,17 @@ import qualified Math.Sym as S
 type StackSortablePermutation = Permutation
 
 instance Catalan StackSortablePermutation where
-	cons = undefined
+	cons alpha beta = mkIndec alpha beta
 	decons gamma = decompose gamma
 
 {-----------------------------------------------------------
 	Utility functions
 ------------------------------------------------------------}
+
+mkIndec :: StackSortablePermutation -> StackSortablePermutation -> StackSortablePermutation
+mkIndec alpha beta = alpha ++ [n] ++ beta
+	where
+	n = toInteger $ length (alpha ++ beta) + 1
 
 decompose :: StackSortablePermutation -> (StackSortablePermutation, StackSortablePermutation)
 decompose gamma = removeHeadSnd $ break (l ==) gamma
