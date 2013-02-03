@@ -10,6 +10,8 @@
 
 module CatalanStructures.StackSortPerm where
 
+import Data.Char 
+
 import Internal
 import qualified Math.Sym as S
 
@@ -36,8 +38,18 @@ decompose gamma = removeHeadSnd $ break (l ==) gamma
 removeHeadSnd :: (t, [a]) -> (t, [a])
 removeHeadSnd (alpha, beta) = (alpha, tail beta)
 
---listStackSortPerms :: Int -> Permutation
---listStackSortPerms n = filter (isStackSortPerm) (S.perms n :: [Permutation])
+--In O(n) time complexity!
+permToString :: Permutation -> String
+permToString xs = foldr ((++) . show) "" xs
+
+--below is the inefficient version O(n^2)!
+--permToString [] = ""
+--permToString (x:xs) = show x ++ permToString xs
+
+stringToPerm :: String -> Permutation
+stringToPerm s = map toInteger xs
+	where
+	xs = map digitToInt s
 
 displayPerm :: Permutation -> IO()
 displayPerm ssp = undefined
