@@ -32,8 +32,8 @@ mkIndec alpha beta = alpha ++ [n] ++ beta
 	n = toInteger $ length (alpha ++ beta) + 1
 
 decompose :: StackSortablePermutation -> Maybe (StackSortablePermutation, StackSortablePermutation)
-decompose sigma = if avoids (permToString sigma) "132"
-		  then Just removeHeadSnd $ break (l ==) sigma
+decompose sigma = if S.avoids (permToString sigma) ["132"]
+		  then Just (removeHeadSnd $ break (l ==) sigma)
 		  else Nothing
 	where
 	l = toInteger $ length sigma
