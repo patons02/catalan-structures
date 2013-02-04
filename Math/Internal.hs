@@ -7,8 +7,8 @@ class Catalan a where
 	cons :: a -> a -> a
 	decons :: a -> Maybe (a, a)
 
---bijection :: (Catalan a, Catalan b) => a -> b
---bijection w = case decons w of
---		Nothing -> empty
---		Just (u,v) -> cons (bijection u, bijection v)
+bijection :: (Catalan a, Catalan b) => a -> b
+bijection w = case decons w of
+		Nothing -> empty
+		Just (u,v) -> cons (bijection u) (bijection v)
 
