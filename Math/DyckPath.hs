@@ -12,13 +12,16 @@ module CatalanStructures.DyckPath where
 import Internal
 import Data.List
 
-data Step = U | D | Undefined deriving (Eq, Show)
+data Step = U | D deriving (Eq, Show)
 
 type DyckPath = [Step]
 
+type Point = (Integer, Integer)
+
 instance Catalan DyckPath where
+	empty = []
 	cons alpha beta = mkIndec alpha ++ beta 
-	decons gamma = stripMaybe $ decompose gamma
+	decons = decompose
 
 {------------------------------------------------------------------
 	Make indecomposable and decomposable Dyck Paths
@@ -47,9 +50,5 @@ decompose xs@(U:xt) = Just (map fst (init ys), map fst zs)
                  0:ht = height xs 
                  (ys, zs) = span(\(_, h) -> h > 0) $ zip xt ht
 
-{-----------------------------------------------------------------
-	Helper functions
-------------------------------------------------------------------}
-stripMaybe :: Maybe (a, a) -> (a, a)
-stripMaybe Nothing = error "error: Incomplete Dyck Path"
-stripMaybe (Just (x, y)) = (x, y)
+dyckPath2Points :: DyckPath -> [Point]
+dyckPath2Points (x:xs) = undefined
