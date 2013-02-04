@@ -30,10 +30,12 @@ mkIndec alpha beta = alpha ++ [n] ++ beta
 	where
 	n = toInteger $ length (alpha ++ beta) + 1
 
-decompose :: StackSortablePermutation -> (StackSortablePermutation, StackSortablePermutation)
-decompose gamma = removeHeadSnd $ break (l ==) gamma
+decompose :: StackSortablePermutation -> Maybe (StackSortablePermutation, StackSortablePermutation)
+decompose sigma = if avoids (permToString sigma) "132"
+		  then Just removeHeadSnd $ break (l ==) sigma
+		  else Nothing
 	where
-	l = toInteger $ length gamma
+	l = toInteger $ length sigma
 
 removeHeadSnd :: (t, [a]) -> (t, [a])
 removeHeadSnd (alpha, beta) = (alpha, tail beta)
@@ -45,6 +47,9 @@ permToString xs = foldr ((++) . show) "" xs
 --below is the inefficient version of permToString in O(n^2) time complexity!
 --permToString [] = ""
 --permToString (x:xs) = show x ++ permToString xs
+
+avoids :: String -> String -> Bool
+avoids p q = undefined
 
 stringToPerm :: String -> Permutation
 stringToPerm s = map toInteger xs
