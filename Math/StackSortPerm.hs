@@ -49,9 +49,6 @@ permToString xs = foldr ((++) . show) "" xs
 --permToString [] = ""
 --permToString (x:xs) = show x ++ permToString xs
 
-avoids :: String -> String -> Bool
-avoids p q = undefined
-
 stringToPerm :: String -> Permutation
 stringToPerm s = map toInteger xs
 	where
