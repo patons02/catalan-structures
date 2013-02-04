@@ -18,6 +18,7 @@ import qualified Math.Sym as S
 type StackSortablePermutation = Permutation
 
 instance Catalan StackSortablePermutation where
+	empty = []
 	cons = mkIndec
 	decons = decompose
 
