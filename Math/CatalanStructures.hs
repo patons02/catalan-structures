@@ -12,70 +12,37 @@ module CatalanStructures where
 import qualified Math.Sym as S 
 import qualified Data.Text as T
 
---import CatalanStructures.DyckPath
---import CatalanStructures.StackSortPerm
-
-
-type Permutation = [Integer]
-
-type StackSortablePermutation = Permutation
-
-class Catalan a where
-	cons :: a -> a -> a
-	decons :: a -> (a, a)
+import Internal
+import DyckPath
+import StackSortPerm
 
 {-----------------------------------------------------------------------------------
 	Bijections between structures.
 ------------------------------------------------------------------------------------}
-stackSortPerm2DyckPath :: StackSortablePermutation -> DyckPath
-stackSortPerm2DyckPath ssp = undefined
-
-{-----------------------------------------------------------------------------------
-	Tests that structures are structures.
-------------------------------------------------------------------------------------}
-
-{----------------------
-Tests if the given permutation is a 132- and 231-avoiding permutation.
-Known as a one-stack sortable permutation
------------------------}
-isStackSortPerm :: Permutation -> Bool
-isStackSortPerm sigma = sigma `S.avoids` ["132", "231"] 
-
-{----------------------
-Tests if the given DyckPath is actually a DyckPath and not just a [Char].
-Returns True if we satisfy these conditions, and false otherwise
-Has to satisfy the conditions:
-Start with an up-step, never go below the x-axis, and must end on the x-axis.
-That is, must start with a "u", number of "u"'s must equal number of "d"'s and must end with a "d"
------------------------}
-
-isDyckPath :: DyckPath -> Bool
-isDyckPath path = isDyckPath' path 0  
+-- Using Knuth's bijection
+-- Reference: Classification of Bijections between 321- and 132- avoiding permutations,
+--	      Anders Claesson and Sergey Kitaev, 2008
+ssp2dp :: StackSortablePermutation -> DyckPath
+ssp2dp [] = []
+ssp2dp ssp = [U] ++ ssp2dp (red (alpha, beta)) ++ [D] ++ ssp2dp beta
 	where
-	isDyckPath' (dp:dps) n
-		| n < 0 = False
-		| dp == U = isDyckPath' dps (n+1)
-		| dp == D = isDyckPath' dps (n-1)
-		| otherwise = False
-	isDyckPath' [] n = n==0
-	
-{-----------------------------------------------------------------------------------
-	Helper functions.
-------------------------------------------------------------------------------------}
+	(alpha, beta) = stripMaybe $ decons ssp
 
---Counts the amount of given elements in a list
-count :: Eq a => a -> [a] -> Int
-count x ys = length (filter (== x) ys) 
+stripMaybe :: Maybe (a, a) -> (a, a)	
+stripMaybe (Just xs) = xs
 
---takes u count
-u_cnt :: [Char] -> Int
-u_cnt xs = count 'u' xs
+--reducation function
+red :: (StackSortablePermutation, StackSortablePermutation) -> StackSortablePermutation
+red ([], beta) = []
+red (x:xs, beta) = x - pi_r : red (xs, beta)
+	where
+	pi_r = toInteger $ length beta
 
---takes d count
-d_cnt :: [Char] -> Int
-d_cnt xs = count 'd' xs
 
---checks that the counts are equal
-countsEqual :: Eq a => (t -> a) -> (t -> a) -> t -> Bool
-countsEqual f f' xs = f xs == f' xs
-
+{-old version
+red :: (Permutation, Permutation) -> Permutation
+red ([], beta) = fst ([], beta)
+red ((x:xs), beta) = fst (x - pi_r : red (xs, beta), beta)
+	where
+	pi_r = toInteger $ length beta
+-}
