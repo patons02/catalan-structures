@@ -1,6 +1,5 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TypeSynonymInstances #-}
-{-# LANGUAGE FlexibleContexts #-}
 
 -- Module      : Math.CatalanStructures.DyckPath
 -- Copyright   : (c) Stuart Paton 2013
@@ -8,7 +7,7 @@
 -- Maintainer  : Stuart Paton <stuart.john.paton@gmail.com>
 -- 
 
-module CatalanStructures.StackSortPerm where
+module StackSortPerm where
 
 import Data.Char 
 

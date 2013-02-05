@@ -7,7 +7,7 @@
 -- Maintainer  : Stuart Paton <stuart.john.paton@gmail.com>
 -- 
 
-module CatalanStructures.DyckPath where
+module DyckPath where
 
 import Internal
 import Data.List
