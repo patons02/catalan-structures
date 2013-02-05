@@ -13,7 +13,7 @@ import StackSortPerm
 {-----------------------------------------------------------------------------------
 	Bijections between structures.
 ------------------------------------------------------------------------------------}
--- Using Knuth's bijection
+-- Standard bijection
 -- Reference: Classification of Bijections between 321- and 132- avoiding permutations,
 --	      Anders Claesson and Sergey Kitaev, 2008
 ssp2dp :: StackSortablePermutation -> DyckPath
