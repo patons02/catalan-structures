@@ -1,6 +1,3 @@
-{-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE TypeSynonymInstances #-}
-
 -- Module      : Math.CatalanStructures
 -- Copyright   : (c) Stuart Paton 2013
 -- License     : undecided
@@ -8,9 +5,6 @@
 -- 
 
 module CatalanStructures where
-
-import qualified Math.Sym as S 
-import qualified Data.Text as T
 
 import Internal
 import DyckPath
