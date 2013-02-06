@@ -52,3 +52,38 @@ decompose xs@(U:xt) = Just (map fst (init ys), map fst zs)
 
 dyckPath2Points :: DyckPath -> [Point]
 dyckPath2Points (x:xs) = undefined
+
+{------------------------------------------------------------------
+	Statistics
+-------------------------------------------------------------------}
+u_cnt :: DyckPath -> Int
+u_cnt = count U 
+
+d_cnt :: DyckPath -> Int
+d_cnt = count D 
+
+returnsXAxis :: DyckPath -> Int
+returnsXAxis dp = count 0 $ height dp
+
+peaks :: DyckPath -> Int
+peaks dp = count 2 $ height dp
+
+globalMax :: DyckPath -> Int
+globalMax = undefined
+
+globalMin :: DyckPath -> Int
+globalMin = undefined
+
+localMax :: DyckPath -> Int
+localMax = undefined
+
+localMin :: DyckPath -> Int
+localMin = undefined
+
+{------------------------------------------------------------------
+	Helper functions
+-------------------------------------------------------------------}
+count :: Eq a => a -> [a] -> Int
+count x ys = length (filter (== x) ys) 
+
+
