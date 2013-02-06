@@ -1,6 +1,6 @@
 module Internal where
 
-type Permutation = [Integer]
+type Permutation = [Int]
 
 class Catalan a where
 	empty :: a

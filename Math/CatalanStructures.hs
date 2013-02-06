@@ -22,6 +22,10 @@ ssp2dp ssp = [U] ++ ssp2dp (red (alpha, beta)) ++ [D] ++ ssp2dp beta
 	where
 	(alpha, beta) = stripMaybe $ decons ssp
 
+
+{-----------------------------------------------------------------------------------
+	Helper functions.
+------------------------------------------------------------------------------------}
 stripMaybe :: Maybe (a, a) -> (a, a)	
 stripMaybe (Just xs) = xs
 
@@ -30,7 +34,7 @@ red :: (StackSortablePermutation, StackSortablePermutation) -> StackSortablePerm
 red ([], beta) = []
 red (x:xs, beta) = x - pi_r : red (xs, beta)
 	where
-	pi_r = toInteger $ length beta
+	pi_r = length beta
 
 
 {-old version

@@ -74,7 +74,7 @@ returnsXAxis dp = count 0 $ height dp
 1) split into lists at each 0
 2) find number of highest element of each list
 3) sum of counts from step 2
--}
+-} 
 --peaks :: DyckPath -> Int
 peaks dp = sum $ largestElemCnt $ split
 	where

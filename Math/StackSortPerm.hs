@@ -28,14 +28,14 @@ instance Catalan StackSortablePermutation where
 mkIndec :: StackSortablePermutation -> StackSortablePermutation -> StackSortablePermutation
 mkIndec alpha beta = alpha ++ [n] ++ beta
 	where
-	n = toInteger $ length (alpha ++ beta) + 1
+	n = length (alpha ++ beta) + 1
 
 decompose :: StackSortablePermutation -> Maybe (StackSortablePermutation, StackSortablePermutation)
 decompose sigma = if S.avoids (permToString sigma) ["132"]
 		  then Just (removeHeadSnd $ break (l ==) sigma)
 		  else Nothing
 	where
-	l = toInteger $ length sigma
+	l = length sigma
 
 removeHeadSnd :: (t, [a]) -> (t, [a])
 removeHeadSnd (alpha, beta) = (alpha, tail beta)
