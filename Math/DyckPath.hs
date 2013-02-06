@@ -11,6 +11,7 @@ module DyckPath where
 
 import Internal
 import Data.List
+import Data.List.Split
 
 data Step = U | D deriving (Eq, Show)
 
@@ -56,17 +57,28 @@ dyckPath2Points (x:xs) = undefined
 {------------------------------------------------------------------
 	Statistics
 -------------------------------------------------------------------}
+--Number of up steps
 uCnt :: DyckPath -> Int
 uCnt = count U 
 
+--Number of down steps
 dCnt :: DyckPath -> Int
 dCnt = count D 
 
+--Number of returns to the x axis
 returnsXAxis :: DyckPath -> Int
 returnsXAxis dp = count 0 $ height dp
 
-peaks :: DyckPath -> Int
-peaks dp = count 2 $ height dp
+--Number of peaks
+{- algorithm:
+1) split into lists at each 0
+2) find number of highest element of each list
+3) sum of counts from step 2
+-}
+--peaks :: DyckPath -> Int
+peaks dp = sum $ largestElemCnt $ split
+	where
+	split = splitWhen (== 0) $ height dp
 
 globalMax :: DyckPath -> Int
 globalMax = undefined
@@ -84,6 +96,8 @@ localMin = undefined
 	Helper functions
 -------------------------------------------------------------------}
 count :: Eq a => a -> [a] -> Int
-count x ys = length (filter (== x) ys) 
+count x ys = length (filter (== x) ys)
 
-
+largestElemCnt :: Ord a => [[a]] -> [Int]
+largestElemCnt [[]] = [0]
+largestElemCnt (xs:xss) = count (maximum xs) xs : largestElemCnt xss 
