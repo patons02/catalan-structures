@@ -56,11 +56,11 @@ dyckPath2Points (x:xs) = undefined
 {------------------------------------------------------------------
 	Statistics
 -------------------------------------------------------------------}
-u_cnt :: DyckPath -> Int
-u_cnt = count U 
+uCnt :: DyckPath -> Int
+uCnt = count U 
 
-d_cnt :: DyckPath -> Int
-d_cnt = count D 
+dCnt :: DyckPath -> Int
+dCnt = count D 
 
 returnsXAxis :: DyckPath -> Int
 returnsXAxis dp = count 0 $ height dp
