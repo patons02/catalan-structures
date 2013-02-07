@@ -9,6 +9,7 @@ module CatalanStructures where
 import Internal
 import DyckPath
 import StackSortPerm
+import YoungTableaux
 
 {-----------------------------------------------------------------------------------
 	Bijections between structures.
