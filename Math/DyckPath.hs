@@ -58,16 +58,19 @@ dyckPath2Points (x:xs) = undefined
 	Statistics
 -------------------------------------------------------------------}
 --Number of up steps
+--added 06/02/2013
 uCnt :: DyckPath -> Int
 uCnt = count U 
 
 --Number of down steps
+--added 06/02/2013
 dCnt :: DyckPath -> Int
 dCnt = count D 
 
 --Number of returns to the x axis
+--added 06/02/2013
 returnsXAxis :: DyckPath -> Int
-returnsXAxis dp = count 0 $ height dp
+returnsXAxis dp = (count 0 $ height dp) - 1
 
 --Number of peaks
 {- algorithm:
@@ -75,23 +78,19 @@ returnsXAxis dp = count 0 $ height dp
 2) find number of highest element of each list
 3) sum of counts from step 2
 -} 
---peaks :: DyckPath -> Int
+--added 06/02/2013
+peaks :: DyckPath -> Int
 peaks dp = sum $ largestElemCnt $ split
 	where
 	split = splitWhen (== 0) $ height dp
 
-globalMax :: DyckPath -> Int
-globalMax = undefined
+--added 07/02/2013
+heightStat :: DyckPath -> Int 
+heightStat dp = maximum $ height dp
 
-globalMin :: DyckPath -> Int
-globalMin = undefined
-
-localMax :: DyckPath -> Int
-localMax = undefined
-
-localMin :: DyckPath -> Int
-localMin = undefined
-
+--added 07/02/2013
+noInitialRises :: DyckPath -> Int
+noInitialRises dp = undefined
 {------------------------------------------------------------------
 	Helper functions
 -------------------------------------------------------------------}
