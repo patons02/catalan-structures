@@ -13,15 +13,25 @@ import Data.List
 
 import Internal
 
-type Tableau = [[Int]]
+type Partition = [Row]
+type Row = [Int]
 
-instance Catalan Tableau where
-  empty = [[]]
+--data YT = Empty | Partition deriving (Eq, Ord, Show)
+
+type Tableau = [[Int]]
+data YT = Empty | Tableau deriving Show
+
+
+instance Catalan YT where
+  empty = Empty
   cons = undefined
   decons = undefined
 
 example :: Tableau
-example = [[1,3,4,6,7],[2,5,8,10],[9]]
+example = [[1,3,4,6,7], [2,5,8,10], [9]]
+
+emptyExample :: YT
+emptyExample = empty
 
 shape :: Tableau -> [Int]
 shape = map length

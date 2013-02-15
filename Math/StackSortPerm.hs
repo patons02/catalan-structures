@@ -31,7 +31,7 @@ mkIndec alpha beta = alpha ++ [n] ++ beta
 	n = length (alpha ++ beta) + 1
 
 decompose :: StackSortablePermutation -> Maybe (StackSortablePermutation, StackSortablePermutation)
-decompose sigma = if S.avoids (permToString sigma) ["132"]
+decompose sigma = if S.avoids (permToString sigma) ["231"]
 		  then Just (removeHeadSnd $ break (l ==) sigma)
 		  else Nothing
 	where
@@ -49,7 +49,7 @@ permToString xs = foldr ((++) . show) "" xs
 --permToString (x:xs) = show x ++ permToString xs
 
 stringToPerm :: String -> Permutation
-stringToPerm s = map toInteger xs
+stringToPerm s = xs --map toInteger xs
 	where
 	xs = map digitToInt s
 

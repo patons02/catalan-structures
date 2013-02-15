@@ -12,6 +12,9 @@ module DyckPath where
 import Internal
 import Data.List
 import Data.List.Split
+--import Foreign.C
+--import Foreign
+--import Foreign.C.Types
 
 data Step = U | D deriving (Eq, Show)
 
@@ -88,9 +91,18 @@ peaks dp = sum $ largestElemCnt $ split
 heightStat :: DyckPath -> Int 
 heightStat dp = maximum $ height dp
 
+--foreign import ccall unsafe "dyckPathStat.h init" c_init :: Ptr CLong -> CLong -> CLong
+
+
 --added 07/02/2013
-noInitialRises :: DyckPath -> Int
-noInitialRises dp = undefined
+{-
+The number of consecutive up steps
+uses FFI
+-}
+noInitialRises :: DyckPath -> Maybe Int
+noInitialRises = undefined
+--noInitialRises dp = c_init
+
 {------------------------------------------------------------------
 	Helper functions
 -------------------------------------------------------------------}
@@ -100,3 +112,15 @@ count x ys = length (filter (== x) ys)
 largestElemCnt :: Ord a => [[a]] -> [Int]
 largestElemCnt [[]] = [0]
 largestElemCnt (xs:xss) = count (maximum xs) xs : largestElemCnt xss 
+
+toString :: DyckPath -> String
+toString = map dy
+	where
+	dy U = 'u'
+	dy D = 'd'
+
+fromString :: String -> DyckPath
+fromString = map dy
+	where
+	dy 'u' = U
+	dy 'd' = D

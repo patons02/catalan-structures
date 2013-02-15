@@ -10,6 +10,7 @@ import Internal
 import DyckPath
 import StackSortPerm
 import YoungTableaux
+import Triangulations
 
 {-----------------------------------------------------------------------------------
 	Bijections between structures.
