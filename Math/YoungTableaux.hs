@@ -25,13 +25,16 @@ data YT = Empty | Tableau deriving Show
 instance Catalan YT where
   empty = Empty
   cons = undefined
-  decons = undefined
+  decons = undefined--decompose
 
 example :: Tableau
 example = [[1,3,4,6,7], [2,5,8,10], [9]]
 
 emptyExample :: YT
 emptyExample = empty
+
+--decompose :: Tableau -> a
+decompose = getColumns
 
 shape :: Tableau -> [Int]
 shape = map length

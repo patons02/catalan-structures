@@ -12,6 +12,8 @@ module DyckPath where
 import Internal
 import Data.List
 import Data.List.Split
+
+import Graphics.Gloss
 --import Foreign.C
 --import Foreign
 --import Foreign.C.Types
@@ -54,8 +56,8 @@ decompose xs@(U:xt) = Just (map fst (init ys), map fst zs)
                  0:ht = height xs 
                  (ys, zs) = span(\(_, h) -> h > 0) $ zip xt ht
 
-dyckPath2Points :: DyckPath -> [Point]
-dyckPath2Points (x:xs) = undefined
+--dyckPath2Points :: DyckPath -> [Point]
+--dyckPath2Points (x:xs) = undefined
 
 {------------------------------------------------------------------
 	Statistics
@@ -124,3 +126,28 @@ fromString = map dy
 	where
 	dy 'u' = U
 	dy 'd' = D
+
+{------------------------------------------------------------------
+	Graphics
+-------------------------------------------------------------------}
+example = [U,D,U,U,D,D,U,D,U,D]
+ex2 = [U,D,U,D]
+
+mappy' :: DyckPath -> Path
+mappy' xs = map (\(x,y) -> (x+1, y)) xs
+
+mappy :: DyckPath -> Path
+mappy = map dy
+	where
+	dy U = (1,1)
+	dy D = (1,-1)
+
+buildBaseCoords :: DyckPath -> Path
+buildBaseCoords = map dy
+	where
+	dy _ = (0,0)
+
+coords :: DyckPath -> Path
+coords dp = undefined  
+
+
