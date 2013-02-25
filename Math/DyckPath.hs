@@ -10,13 +10,18 @@
 module DyckPath where
 
 import Internal
+
+import Control.Monad.Trans(liftIO)
 import Data.List
 import Data.List.Split
 
-import Graphics.Gloss
---import Foreign.C
---import Foreign
---import Foreign.C.Types
+import Diagrams.Prelude
+import Diagrams.Backend.Cairo.Internal
+import Diagrams.Backend.Cairo.Gtk
+import Graphics.UI.Gtk
+import Graphics.Rendering.Diagrams.Core
+
+--import Graphics.Gloss
 
 data Step = U | D deriving (Eq, Show)
 
@@ -36,15 +41,16 @@ instance Catalan DyckPath where
 mkIndec :: DyckPath -> DyckPath
 mkIndec alpha = [U] ++ alpha ++ [D]
 
-height :: DyckPath -> [Int]
-height = scanl (+) 0 . map dy
+heights :: DyckPath -> [Int]
+heights = scanl (+) 0 . map dy
 	where 
 	dy U = 1
 	dy D = -1
 
+
 -- O(n^2) version!
---height :: DyckPath -> [Int]
---height = map sum . inits .map dy
+--heights :: DyckPath -> [Int]
+--heights = map sum . inits .map dy
 --         where
 --           dy U = 1
 --           dy D = -1
@@ -53,7 +59,7 @@ decompose :: DyckPath -> Maybe (DyckPath, DyckPath)
 decompose [] = Nothing
 decompose xs@(U:xt) = Just (map fst (init ys), map fst zs) 
                where
-                 0:ht = height xs 
+                 0:ht = heights xs 
                  (ys, zs) = span(\(_, h) -> h > 0) $ zip xt ht
 
 --dyckPath2Points :: DyckPath -> [Point]
@@ -75,7 +81,7 @@ dCnt = count D
 --Number of returns to the x axis
 --added 06/02/2013
 returnsXAxis :: DyckPath -> Int
-returnsXAxis dp = (count 0 $ height dp) - 1
+returnsXAxis dp = (count 0 $ heights dp) - 1
 
 --Number of peaks
 {- algorithm:
@@ -87,16 +93,16 @@ returnsXAxis dp = (count 0 $ height dp) - 1
 peaks :: DyckPath -> Int
 peaks dp = sum $ largestElemCnt $ split
 	where
-	split = splitWhen (== 0) $ height dp
+	split = splitWhen (== 0) $ heights dp
 
 --added 07/02/2013
 heightStat :: DyckPath -> Int 
-heightStat dp = maximum $ height dp
+heightStat dp = maximum $ heights dp
 
 --foreign import ccall unsafe "dyckPathStat.h init" c_init :: Ptr CLong -> CLong -> CLong
 
 
---added 07/02/2013
+--added 07/02/2013      background = square (fromIntegral n) # fc whitesmoke # lc white
 {-
 The number of consecutive up steps
 uses FFI
@@ -127,27 +133,62 @@ fromString = map dy
 	dy 'u' = U
 	dy 'd' = D
 
+int2floatlst :: [Int] -> [Float]
+int2floatlst = map (fromIntegral)
+
+int2float :: Int -> Float
+int2float = fromIntegral
 {------------------------------------------------------------------
 	Graphics
 -------------------------------------------------------------------}
 example = [U,D,U,U,D,D,U,D,U,D]
 ex2 = [U,D,U,D]
 
-mappy' :: DyckPath -> Path
-mappy' xs = map (\(x,y) -> (x+1, y)) xs
-
-mappy :: DyckPath -> Path
+mappy :: DyckPath -> [(Float, Float)]--Graphics.Gloss.Path --[(Float, Float)]--Path
 mappy = map dy
 	where
 	dy U = (1,1)
 	dy D = (1,-1)
 
-buildBaseCoords :: DyckPath -> Path
-buildBaseCoords = map dy
+extract2nd :: [(a,b)] -> [b]
+extract2nd  = map (\(x,y) -> y) 
+
+buildCoords :: DyckPath -> [(Float, Float)]--Graphics.Gloss.Path --[(Float, Float)]--Path
+buildCoords xs = [(0.0,0.0)] ++ zip (take len [1.0..]) (extract2nd $ mappy xs)
 	where
-	dy _ = (0,0)
+	len = length $ heights xs
 
-coords :: DyckPath -> Path
-coords dp = undefined  
+--using gloss
+--drawDyckPathG :: DyckPath -> IO ()
+--drawDyckPathG dp = display (InWindow "Dyck Path" (300,300) (300,300)) Graphics.Gloss.white (Graphics.Gloss.scale 40 20 $ Line $ buildCoords dp)
 
+{-
+--using diagrams
+drawDyckPathDia :: DyckPath -> IO ()
+drawDyckPathDia dp = do
+	initGUI
+	window <- windowNew
+	canvas <- drawingAreaNew
+	canvas `on` sizeRequest $ return (Requisition 256 256)
+	set window [windowTitle := "Dyck Path", containerBorderWidth := 10, containerChild := canvas ]
+	canvas `on` exposeEvent $ renderFigure canvas dp
+	onDestroy window mainQuit
+	widgetShowAll window
+	mainGUI
+	
+renderFigure :: DrawingArea -> DyckPath -> EventM EExpose Bool
+renderFigure canvas dp = do
+	liftIO $ defaultRender canvas $ figure2Render dp
+	return True
+
+figure2Render :: DyckPath -> DC 
+figure2Render dp = plotPath dp
+
+plotPath :: DyckPath -> DC
+plotPath dp = centerXY `atop` background --alignX (-1) `atop` background
+	where
+	n = length dp
+	line = repeat $ line # lc black
+	background = square (fromIntegral n) # lc black # fc white
+-}
 

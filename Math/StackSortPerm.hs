@@ -9,21 +9,10 @@
 
 module StackSortPerm where
 
-import Control.Monad.Trans(liftIO)
-import Data.Char 
-
-import Diagrams.Prelude
-import Diagrams.Backend.Cairo.Internal
-import Diagrams.Backend.Cairo.Gtk
-import Graphics.UI.Gtk
-import Graphics.Rendering.Diagrams.Core
-
 import qualified Math.Sym as S
 import qualified Math.Sym.Plot as P 
 
 import Internal
-
-type DC = Diagram Cairo R2
 
 type StackSortablePermutation = Permutation
 
@@ -62,40 +51,9 @@ alpha pi = n : pi
 	where
 	n = length pi + 1
 
---In O(n) time complexity!
-permToString :: Permutation -> String
-permToString xs = foldr ((++) . show) "" xs
-
---below is the inefficient version of permToString in O(n^2) time complexity!
---permToString [] = ""
---permToString (x:xs) = show x ++ permToString xs
-
-stringToPerm :: String -> Permutation
-stringToPerm s = xs --map toInteger xs
-	where
-	xs = map digitToInt s
-
 {-----------------------------------------------------------
 	Graphics functions
 ------------------------------------------------------------}
 
-drawPerm :: StackSortablePermutation -> IO ()
-drawPerm perm = do
-	initGUI
-	window <- windowNew
-	canvas <- drawingAreaNew
-	canvas `on` sizeRequest $ return (Requisition 256 256)
-	set window [windowTitle := "Permutation Matrix", containerBorderWidth := 10, containerChild := canvas ]
-	canvas `on` exposeEvent $ renderFigure canvas perm
-	onDestroy window mainQuit
-	widgetShowAll window
-	mainGUI
-
-renderFigure :: DrawingArea -> StackSortablePermutation -> EventM EExpose Bool
-renderFigure canvas perm = do
-	liftIO $ defaultRender canvas $ figure2Render perm
-	return True
-
-figure2Render :: StackSortablePermutation -> DC 
-figure2Render perm = P.plotPerm $ permToString perm
-
+draw :: StackSortablePermutation -> IO ()
+draw perm = drawPerm perm
