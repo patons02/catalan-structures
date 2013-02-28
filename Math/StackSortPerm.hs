@@ -48,8 +48,7 @@ removeHeadSnd (alpha, beta) = (alpha, tail beta)
 (<+>) :: Permutation -> Permutation -> Permutation
 pi <+> rho =  pi ++ rho' rho
 	where
-	rho' [] = []
-	rho' (x:xs) = length pi + x : rho' xs 
+	rho' = map (\x -> length pi + x) 
 
 alpha :: Permutation -> StackSortablePermutation
 alpha pi = Perm231 (n : pi)
