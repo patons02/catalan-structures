@@ -36,14 +36,15 @@ permtopermvec :: Permutation -> PermVec
 permtopermvec = SV.fromList
 
 isInc :: Permutation -> Bool
-isInc p =  False `notElem` (isInc' p)
+isInc p =  and (isInc' p)
 	where
 	isInc' [] = [True]
 	isInc' (x:[]) = [True]
 	isInc' (x:y:xs) = (y > x) : isInc' xs
 
+
 isDec :: Permutation -> Bool
-isDec p = False `notElem` (isDec' p)
+isDec p = and (isDec' p)
 	where
 	isDec' [] = [True]
 	isDec' (x:[]) = [True]
