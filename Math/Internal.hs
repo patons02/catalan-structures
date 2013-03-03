@@ -35,24 +35,19 @@ permvectoperm = SV.toList
 permtopermvec :: Permutation -> PermVec
 permtopermvec = SV.fromList
 
-{-
-isInc' :: Bool -> [Bool] -> Bool
-isInc' x xs = length (filter (== x) xs) == 0 
--}
-
 isInc :: Permutation -> Bool
-isInc p = length (filter (== False) (isInc' p)) == 0
+isInc p = null (filter (== False) (isInc' p))
 	where
 	isInc' [] = [True]
 	isInc' (x:[]) = [True]
-	isInc' (x:y:xs) = [y > x] ++ isInc' xs
+	isInc' (x:y:xs) = (y > x) : isInc' xs
 
 isDec :: Permutation -> Bool
-isDec p = length (filter (== False) (isDec' p)) == 0
+isDec p = null (filter (== False) (isDec' p))
 	where
 	isDec' [] = [True]
 	isDec' (x:[]) = [True]
-	isDec' (x:y:xs) = [x > y] ++ isDec' xs 
+	isDec' (x:y:xs) = (x > y) : isDec' xs 
 
 {-----------------------------------------------------------
 	Permutation Operations
