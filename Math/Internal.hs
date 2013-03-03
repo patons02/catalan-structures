@@ -131,14 +131,17 @@ lis p = maximum lenLst - 1
 	incLst = (filter (isInc) (subsequences p))
 
 rank :: Permutation -> Int
-rank =   I.ep . permtopermvec
+rank = I.ep . permtopermvec
 
 cyc :: Permutation -> Int
-cyc =   I.cyc . permtopermvec
+cyc = I.cyc . permtopermvec
 
---fix :: Permutation -> Int
---fix = permtopermvec I.fix
-
+fix :: Permutation -> Int
+fix p = length $ fixLst 
+	where
+	fixLst = filter (\(a,b) -> a == b) l1
+	l1 = zip [1..] p	
+	
 --slmax :: Permutation -> Int
 --slmax = permtopermvec I.slmax
 
