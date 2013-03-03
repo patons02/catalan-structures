@@ -2,6 +2,7 @@ module Internal where
 
 import Control.Monad.Trans(liftIO)
 import Data.Char 
+import Data.List
 import qualified Data.Vector.Storable as SV
 
 import Diagrams.Prelude
@@ -117,11 +118,17 @@ peak =   I.peak . permtopermvec
 valley :: Permutation -> Int
 valley =   I.vall . permtopermvec
 
---lds :: Permutation -> Int
---lds = permtopermvec I.lds
-
---lis :: Permutation -> Int
---lis = permtopermvec I.lis
+lds :: Permutation -> Int
+lds p = maximum lenLst - 1
+	where
+	lenLst = map length decLst 
+	decLst = (filter (isDec) (subsequences p))
+	
+lis :: Permutation -> Int
+lis p = maximum lenLst - 1
+	where
+	lenLst = map length incLst 
+	incLst = (filter (isInc) (subsequences p))
 
 rank :: Permutation -> Int
 rank =   I.ep . permtopermvec
