@@ -1,0 +1,44 @@
+Name: 		CatalanStructures
+Version:        1.0.0
+Synopsis:       A framework for modelling Catalan Structures
+
+Homepage:       http://github.com/patons02/catalan-structures
+
+License:        BSD3
+License-file:   LICENSE
+Author:         Stuart Paton
+Maintainer:	stuart.john.paton@gmail.com
+Stability:      experimental
+Category:       Math
+Build-type:     Simple
+
+Cabal-version:  >= 1.10
+
+source-repository head
+  type:                git
+  location:            git://github.com/patons02/catalan-structures.git
+
+
+Library
+  Exposed-modules:  GUI.GUI
+                    Math.DyckPath
+                    Math.Av123
+                    Math.Av321
+                    Math.CatalanStructures
+                    Math.StackSortPerm
+                    Math.Triangulations
+                    Math.YoungTableaux
+                    Math.Internal	
+  build-depends:	base >= 4 && < 5, gtk, diagrams-core >= 0.5.0.1 && < 0.5.0.2, diagrams-cairo, diagrams-lib, split, mtl, sym, containers, vector, sym-plot
+
+  ghc-prof-options:    -auto-all
+  ghc-options:         -Wall -O2
+  cc-options:          -std=c99 -Wall
+
+  c-sources:        cfiles/bijections.c
+                    cfiles/dyckPathStat.c
+
+  include-dirs:     includes
+  includes:         bijections.h, dyckPathStat.h
+  install-includes: bijections.h, dyckPathStat.h
+  extensions:       ForeignFunctionInterface

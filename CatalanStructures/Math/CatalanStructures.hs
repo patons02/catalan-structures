@@ -1,0 +1,220 @@
+{-# LANGUAGE ForeignFunctionInterface #-}
+{-# LANGUAGE NoMonomorphismRestriction #-}
+{-# CFILES cfiles/bijections.c #-}
+{-# LANGUAGE FlexibleContexts #-}
+
+-- Module      : Math.CatalanStructures
+-- Copyright   : (c) Stuart Paton 2013
+-- License     : undecided
+-- Maintainer  : Stuart Paton <stuart.john.paton@gmail.com>
+-- 
+
+module Math.CatalanStructures where
+
+import Math.Internal
+import Math.DyckPath
+import Math.Av123
+import Math.Av321
+import Math.StackSortPerm
+import Math.YoungTableaux
+import Math.Triangulations
+
+import Control.Monad
+import qualified Control.Monad.ST as ST
+
+import qualified Data.Vector.Storable.Mutable as MV
+import qualified Data.Vector.Storable as SV
+import qualified Data.IntSet as Set
+
+import Foreign (Ptr, castPtr)
+import System.IO.Unsafe (unsafePerformIO)
+import Foreign.C.Types (CLong(..), CInt(..), CUInt(..))
+import Foreign.Marshal.Utils (toBool)
+
+
+{-----------------------------------------------------------------------------------
+	Bijections between structures.
+------------------------------------------------------------------------------------}
+-- Standard bijection
+-- Reference: Classification of Bijections between 321- and 132- avoiding permutations,
+--	      Anders Claesson and Sergey Kitaev, 2008
+
+standard :: StackSortablePermutation -> DyckPath
+standard ssp = standard' $ ssptoperm ssp
+
+standard' :: Permutation -> DyckPath
+standard' [] = []
+standard' ssp = [U] ++ standard' (red (alpha, beta)) ++ [D] ++ standard' beta
+	where
+	ssp' = permTossp ssp
+	(alpha, beta) = remP $ stripMaybe $ decons ssp'
+	remP (Perm231 a, Perm231 b) = (a, b)
+
+-- Richards algorithm 
+-- Reference: Classification of Bijections between 321- and 132- avoiding permutations,
+--	      Anders Claesson and Sergey Kitaev, 2008
+
+richards :: DyckPath -> Perm123
+richards dp = permToperm123 $ permvectoperm $ richards'' $ dp2pv $ binMap dp
+	where
+	binMap = map dy	
+		where
+		dy D = 1
+		dy U = 2
+	dp2pv = SV.fromList
+
+foreign import ccall unsafe "bijections.h richards" 
+	c_rich :: Ptr CInt -> CInt -> CInt
+
+int2Lst :: [Int] -> [Int]
+int2Lst l = map (read) [[z] | z <- [x | k <- (map (show) l), x <- k]]   
+
+richards' :: PermVec -> Int
+richards' p = imp c_rich p 
+
+richards'' :: PermVec -> PermVec
+richards'' p = SV.fromList $ int2Lst [tmp]
+	where 
+	tmp = richards' p
+
+-- Simion Schmidt bijection
+-- Reference: Classification of Bijections between 321- and 132- avoiding permutations,
+--	      Anders Claesson and Sergey Kitaev, 2008
+
+simionSchmidt :: Perm123 -> StackSortablePermutation
+simionSchmidt p = permTossp $ permvectoperm $ simionSchmidt' $ permtopermvec $ perm123toperm p
+
+simionSchmidtP :: Permutation -> Permutation
+simionSchmidtP p = permvectoperm $ simionSchmidt' $ permtopermvec p
+
+simionSchmidt' :: PermVec -> PermVec
+simionSchmidt' p = ST.runST $ do
+	v <- MV.unsafeNew n
+	foldM_ it (v, n, Set.empty) [0..n-1]
+	SV.unsafeFreeze v
+	where
+	n = SV.length p
+	it (v, m, k) i = do
+		let c = p SV.! i
+		let y = Prelude.head [z | z <- [m+1 ..], z `Set.notMember` k]
+		let (d, b) = if c < m then (c,c) else (y, m)
+		MV.unsafeWrite v i d
+		return (v, b, Set.insert d k)
+
+simionSchmidtInv :: StackSortablePermutation -> Perm123
+simionSchmidtInv p = permToperm123 $ permvectoperm $ simionSchmidtInv' $ permtopermvec $ ssptoperm p
+
+simionSchmidtInv' :: PermVec -> PermVec
+simionSchmidtInv' p = ST.runST $ do
+	v <- MV.unsafeNew n
+	let iter = [0..n-1]
+	foldM_ it (v, n, Set.fromAscList iter) iter
+	SV.unsafeFreeze v
+	where
+	n = SV.length p
+	it (v, m, k) i = do
+		let c = p SV.! i
+		let (d, b) = if c < m then (c,c) else (Set.findMax k, m)
+		MV.unsafeWrite v i d
+		return (v, b, Set.delete d k)
+
+fulmek :: Perm123 -> StackSortablePermutation
+fulmek p = permTossp $ permvectoperm $ fulmek' $ permtopermvec $ perm123toperm p
+
+fulmekP :: Permutation -> Permutation
+fulmekP = permvectoperm . fulmek' . permtopermvec 
+
+fulmek' :: PermVec -> PermVec
+fulmek' = compVec . simionSchmidt' . compVec
+
+--Knuth-Richards bijection
+-- Reference: Classification of Bijections between 321- and 132- avoiding permutations,
+--	      Anders Claesson and Sergey Kitaev, 2008
+
+knuthRichards :: StackSortablePermutation -> Perm123
+knuthRichards = richards . standard
+
+{-----------------------------------------------------------------------------------
+	Statistic modelling.
+------------------------------------------------------------------------------------}
+--findEqdsBy :: ([Permutation], [Permutation -> Int], [String])
+--     -> ([Permutation -> Int], [String])
+--     -> (Permutation -> Permutation)
+--     -> ([[(Int, String)]], [[(Int, String)]])
+findEqdsBy (cs, stat_a, nmelstA) (stat_b, nmelstB) f =  (a, b)
+	where
+	(a,b) = (remEmpty $ zippyA, remEmpty $ zippyB)
+	zippyA = runzippy statA' nmelstA
+	zippyB = runzippy statB' nmelstB
+	statA' = findStatsMany cs stat_a
+	statB' = findStatsMany cs'' stat_b
+	cs'' = runFun f cs
+	remEmpty xss = init xss
+
+runzippy :: [[Int]] -> [String] -> [[(Int, String)]]
+runzippy _ [] = [[]]
+runzippy [] _ = [[]]
+runzippy (xs:xss) ss = (zip xs ss) : runzippy xss ss
+
+compLst :: Eq Int => [Int] -> [Int] -> [[Int]]
+compLst [] [] = []
+compLst (x:xs) (y:ys) = case compInt x y of
+							True -> ([x] : compLst xs ys)
+							False -> ([] : compLst xs ys)
+
+compInt :: Eq Int => Int -> Int -> Bool
+compInt x y = if x == y
+				then True
+				else False
+											
+runFun :: (a -> b) -> [a] -> [b]	
+runFun f [] = []
+runFun f (x:xs) = f x : runFun f xs
+	
+{-
+algorithm
+Generate stats for A
+run bijection
+Generate stats for B
+pair stats
+-}
+
+findStatsMany :: [t] -> [t -> a] -> [[a]]
+findStatsMany [] fs = []
+findStatsMany (c:cs) fs = findStats c fs : findStatsMany cs fs
+	where
+	findStats c [] = []
+	findStats c (f:fs) = f c : findStats c fs
+
+{-----------------------------------------------------------------------------------
+	Helper functions.
+------------------------------------------------------------------------------------}
+
+--marshalls a vector to an integer
+imp :: (Ptr CInt -> CInt -> CInt) -> PermVec -> Int
+imp f w = unsafePerformIO $
+	SV.unsafeWith w $ \ptr ->
+	return . fromIntegral $ f (castPtr ptr) (fromIntegral (length))
+	where
+	length = SV.length w
+
+stripMaybe :: Maybe (a, a) -> (a, a)	
+stripMaybe (Just xs) = xs
+
+--reducation function
+red :: (Permutation, Permutation) -> Permutation
+red ([], beta) = []
+red (x:xs, beta) = x - pi_r : red (xs, beta)
+	where
+	pi_r = length beta
+
+
+{-old version
+red :: (Permutation, Permutation) -> Permutation
+red ([], beta) = fst ([], beta)
+red ((x:xs), beta) = fst (x - pi_r : red (xs, beta), beta)
+	where
+	pi_r = toInteger $ length beta
+-}
+
+
