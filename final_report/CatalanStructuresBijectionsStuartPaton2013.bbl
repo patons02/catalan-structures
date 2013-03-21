@@ -1,0 +1,49 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{1}
+
+\bibitem{ClaessonSym}
+Anders Claesson, \emph{sym. last accessed 28 february 2013.},
+  \url{https://www.github.com/akc/sym}, 2013.
+
+\bibitem{ClaessonSymPlot}
+\bysame, \emph{sym-plot. last accessed 28 february 2013.},
+  \url{https://www.github.com/akc/sym-plot}, 2013.
+
+\bibitem{Clae01}
+Anders Claesson and Sergey Kitaev, \emph{Classification of bijections between
+  321- and 132-avoiding permutations}, 2008.
+
+\bibitem{kitaev1}
+Sergey Kitaev, \emph{Patterns in permutations and words}, Springer, 2011.
+
+\bibitem{KnuthVol1}
+Donald~E. Knuth, \emph{The art of computer programming}, vol.~1,
+  Addison-Wesley, Reading, Massachusetts, 1968.
+
+\bibitem{KnuthVol3}
+\bysame, \emph{The art of computer programming}, vol.~3, Addison-Wesley,
+  Reading, Massachusetts, 1973.
+
+\bibitem{McShine_onThe}
+Lisa McShine and Prasad Tetali, \emph{On the mixing time of the triangulation
+  walk and other catalan structures}, Randomization Methods in Algorithm Design
+  (Panos Pardalos and Sanguthevar Rajasekaran, eds.), DIMACS Series in Discrete
+  Mathematics and Theoretical Computer Science, vol.~43, American Mathematics
+  Society, 1999.
+
+\bibitem{Glade}
+The~Glade Project, \emph{Glade}, \url{http://glade.gnome.org/}.
+
+\bibitem{oeisA000085}
+N.~J.~A. Sloane and J.~H. Conway, \emph{The {O}n-{L}ine {E}ncyclopedia of
+  {I}nteger {S}equences}, \href{http://oeis.org/A000085}{A000085}, Number of
+  self-inverse permutations on n letters, also known as involutions; number of
+  Young tableaux with n cells.
+
+\end{thebibliography}

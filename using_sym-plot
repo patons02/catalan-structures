@@ -9,7 +9,7 @@ Math.Sym.Plot Math.Sym > perms 3 :: [String]
 
 for listing permutations top line of two line notation
 
-Math.Sym.Plot Math.Sym > perms 3 :: [StPerm}
+Math.Sym.Plot Math.Sym > perms 3 :: [StPerm]
 
 for plotting single permutation
 
