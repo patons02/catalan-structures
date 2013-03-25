@@ -23,6 +23,13 @@
 	year = "1973"
 }
 
+@Book {DiscMathsRosen,
+	title = "Discrete Mathematics and its Applicatons",
+	author = "Kenneth H. Rosen",
+	publisher = "McGraw-Hill College",
+	year = "2012"
+}
+
 @Article{ BonaStackSort,
 	title = "A survey of stack-sorting disciplines",
 	author = "Mikl{\'o}s B{\'o}na",
@@ -33,6 +40,34 @@
 	number = "2"
 }
 
+@Article{ YoungTableauxShirek,
+	title = "Standard Young Tableaux of Shape (n,n)",
+	author = "Jack Shirek",
+	journal = "Macalester Journal of Catalan Numbers",
+	year = "2009",
+	pages = "29--31",
+	volume = "1"
+}
+
+@article{Rotem1981185,
+	title = "Stack sortable permutations",
+	journal = "Discrete Mathematics",
+	volume = "33",
+	number = "2",
+	pages = "185 - 196",
+	year = "1981",
+	note = "",
+	issn = "0012-365X",
+	doi = "10.1016/0012-365X(81)90165-5",
+	url = "http://www.sciencedirect.com/science/article/pii/0012365X81901655",
+	author = "D. Rotem"
+}
+@MISC { CataNumDavies,
+	title = "Catalan Numbers",
+	author = "Tom Davies",
+	howpublished = {\url{http://www.geometer.org/mathcircles/catalan.pdf}},
+	year = "2006"
+}
 @InProceedings{ McShine_onThe,
 	author = "Lisa McShine and Prasad Tetali",
 	title = "On the Mixing Time of the Triangulation Walk and other Catalan Structures",
@@ -77,4 +112,25 @@
 	title = "sym-plot. Last accessed 28 February 2013.",
 	year = "2013",
 	howpublished={\url{https://www.github.com/akc/sym-plot}}
+}
+
+@MISC{ Glade,
+	author = "The Glade Project",
+	title = "Glade",
+	howpublished = {\url{http://glade.gnome.org/}}
+}
+
+@MISC{oeisA000085,
+	AUTHOR={N. J. A. Sloane and J. H. Conway},
+	TITLE={The {O}n-{L}ine {E}ncyclopedia of {I}nteger {S}equences},
+	HOWPUBLISHED={\href{http://oeis.org/A000085}{A000085}},
+	MONTH={},
+	YEAR={},
+	NOTE={Number of self-inverse permutations on n letters, also known as involutions; number of Young tableaux with n cells.}
+}
+
+@MISC{StackLim,
+	author = "Cong Han Lim",
+	title = "Brief Introduction on Stack Sorting",
+	year = "2007"
 }

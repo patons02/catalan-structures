@@ -5,7 +5,11 @@
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{BonaStackSort}
+Mikl{\'o}s B{\'o}na, \emph{A survey of stack-sorting disciplines}, The
+  Electronic Journal of Combinatorics \textbf{9} (2003), no.~2, 1--16.
 
 \bibitem{ClaessonSym}
 Anders Claesson, \emph{sym. last accessed 28 february 2013.},
@@ -19,6 +23,10 @@ Anders Claesson, \emph{sym. last accessed 28 february 2013.},
 Anders Claesson and Sergey Kitaev, \emph{Classification of bijections between
   321- and 132-avoiding permutations}, 2008.
 
+\bibitem{CataNumDavies}
+Tom Davies, \emph{Catalan numbers},
+  \url{http://www.geometer.org/mathcircles/catalan.pdf}, 2006.
+
 \bibitem{kitaev1}
 Sergey Kitaev, \emph{Patterns in permutations and words}, Springer, 2011.
 
@@ -30,6 +38,9 @@ Donald~E. Knuth, \emph{The art of computer programming}, vol.~1,
 \bysame, \emph{The art of computer programming}, vol.~3, Addison-Wesley,
   Reading, Massachusetts, 1973.
 
+\bibitem{StackLim}
+Cong~Han Lim, \emph{Brief introduction on stack sorting}, 2007.
+
 \bibitem{McShine_onThe}
 Lisa McShine and Prasad Tetali, \emph{On the mixing time of the triangulation
   walk and other catalan structures}, Randomization Methods in Algorithm Design
@@ -39,6 +50,18 @@ Lisa McShine and Prasad Tetali, \emph{On the mixing time of the triangulation
 
 \bibitem{Glade}
 The~Glade Project, \emph{Glade}, \url{http://glade.gnome.org/}.
+
+\bibitem{DiscMathsRosen}
+Kenneth~H. Rosen, \emph{Discrete mathematics and its applicatons}, McGraw-Hill
+  College, 2012.
+
+\bibitem{Rotem1981185}
+D.~Rotem, \emph{Stack sortable permutations}, Discrete Mathematics \textbf{33}
+  (1981), no.~2, 185 -- 196.
+
+\bibitem{YoungTableauxShirek}
+Jack Shirek, \emph{Standard young tableaux of shape (n,n)}, Macalester Journal
+  of Catalan Numbers \textbf{1} (2009), 29--31.
 
 \bibitem{oeisA000085}
 N.~J.~A. Sloane and J.~H. Conway, \emph{The {O}n-{L}ine {E}ncyclopedia of
