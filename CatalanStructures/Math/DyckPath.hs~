@@ -211,7 +211,6 @@ drawDyckPathG :: DyckPath -> IO ()
 drawDyckPathG dp = display (InWindow "Dyck Path" (300,300) (300,300)) Graphics.Gloss.white (Graphics.Gloss.scale 40 20 $ Line $ buildCoords dp)
 -}
 
-{-
 --using diagrams
 drawDyckPathDia :: DyckPath -> IO ()
 drawDyckPathDia dp = do
@@ -238,5 +237,5 @@ plotPath dp = centerXY `atop` background --centerXY `atop` background
 	where
 	n = length dp
 	background = square (fromIntegral n) # lc black # fc white
--}
+
 

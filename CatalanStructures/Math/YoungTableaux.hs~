@@ -118,7 +118,6 @@ desYT yt = addDes rs
 	where
 	rs = getRowsL yt
 
-addDes :: [Permutation] -> Int
 addDes [] = 0
 addDes (r:rs) = impLongYT c_desYT (permtopermvec r) + addDes rs
 

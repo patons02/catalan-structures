@@ -37,9 +37,9 @@ Library
 
   c-sources:        cfiles/bijections.c
                     cfiles/dyckPathStat.c
-
+                    cfiles/ytStat.c
 
   include-dirs:     includes
-  includes:         bijections.h, dyckPathStat.h
-  install-includes: bijections.h, dyckPathStat.h
+  includes:         bijections.h, dyckPathStat.h, ytStat.h
+  install-includes: bijections.h, dyckPathStat.h, ytStat.h
   extensions:       ForeignFunctionInterface

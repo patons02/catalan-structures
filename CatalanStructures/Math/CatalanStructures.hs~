@@ -138,9 +138,6 @@ fulmek' = compVec . simionSchmidt' . compVec
 knuthRichards :: StackSortablePermutation -> Perm123
 knuthRichards = richards . standard
 
-knuthRichardsP :: Permutation -> Permutation
-knuthRichardsP = richardsP . standard'
-
 {-----------------------------------------------------------------------------------
 	Statistic modelling.
 ------------------------------------------------------------------------------------}
