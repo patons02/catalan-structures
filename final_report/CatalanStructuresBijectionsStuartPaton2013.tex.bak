@@ -1,10 +1,23 @@
 \documentclass[12pt]{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{listings}             % Include the listings-package
 \usepackage{graphicx}
 \usepackage{setspace}
+\usepackage{float}
+\usepackage{program}
+\restylefloat{table}
 \onehalfspacing
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\sym}{\mathfrak{S}}
+\newcommand{\DyckP}{\mathfrak{D}}
+\newcommand{\BalParen}{\mathfrak{P}}
+\newcommand{\YoungTab}{\mathfrak{T}}
+\newcommand{\bigO}{\ensuremath{\mathcal{O}}}
 
 \begin{document}
 
@@ -17,7 +30,7 @@
 \pagenumbering{arabic}
 
 \begin{Abstract}
-There are more that 100 combinatorial structures whose cardinalities are given by the so called Catalan numbers. The examples used are permutations of $\mathfrak{S}_3$, Dyck Paths, Young Tableaux and triangulations of an $n+2$-gon.\\
+There are more that 100 combinatorial structures whose cardinalities are given by the so called Catalan numbers. The examples used are permutations of $\sym_3$, Dyck Paths, Young Tableaux and triangulations of an $n+2$-gon.\\
 On the surface, these structures are very different, but being equinumerous there must be one-to-one correspondences that allows us 
 to translate between them. In this project we study commonalities shared by Catalan structures by programming one-to-one 
 correspondences. We do this in a systematic way by recursively decomposing the structures. The actual one-to-one correspondences are 
@@ -33,7 +46,6 @@ From this point we then analyse the bijections from a base set of combinatorial 
 {\\ \centering{\bf{Acknowledgements} \\}}
 I would like to thank my project supervisor Dr Anders Claesson for all the help and support he gave me throughout this project. I would also like to thank Dr Sergey Kitaev for the constructive feedback given at the poster presentation.
 \clearpage
-
 \tableofcontents
 \newpage
 
@@ -63,16 +75,44 @@ In this chapter a survey of related work will be carried out in the field of enu
 The first paper that will be discussed is "On the Mixing Time of the Triangulation Walk and other Catalan Structures" by Lisa McShine and Prasad Tetali.\cite{McShine_onThe} This is the key paper that was used to develop an insight to what a Catalan structure is, and some structures which are used throughout this project. The paper describes the amount of steps necessary to generate a triangulation of a convex $n$-gon uniformly at random.\\
 In section 2 of this paper, Catalan structures were introduced to the reader as a recurrence relation which the $nth$ Catalan number, $c_n$ satisfies. The problems of triangulations of an $n+2$-gon, and Dyck paths are also introduced to the reader by simply stating the problem. A triangulation of an $n+2$-gon is a dissection of a convex polygon with $n+2$ diagonals using non-intersecting diagonals of the same polygon. In the paper a Dyck path is introduced as a lattice path with steps of $(1,1)$ and $(1,-1)$ which never fall below the $x-$axis. 
 
+\subsection{Summary of "Classification of bijections between 321- and 132- avoiding permutations"}
+The next paper being discussed is "Classification of bijections between 321- and 132- avoiding permutations" by Anders Claesson and Sergey Kitaev. \cite{Clae01} Claesson and Kitaev prove that the many permutations discussed in section 3 of the literature were related and hence equivalent through use of a "trivial" bijection known within the paper as the "standard bijection", or "Knuth's bijection". This bijection is the fundamental bijection which maps a Dyck path to a Stack Sortable Permutation, as discussed in section~\ref{sec:StandardBijection} of this report. All bijections are classified by a fixed large set of statistics which obtain substantial extensions of known results, and a survey and analysis of these bijections are given. Finally a recursive definition of the Knuth-Richards bijection is given before proofs of the two main theorems within the paper. The main question which this paper answers is "what does it mean to say that one bijection is better than the other?" Section 1 gives an in depth survey of the results within the paper along with giving the main definitions of a permutation, permutation pattern avoidance and each set of statistics.\\
+Theorem 1 from this paper states that the "results are maximal in the sense that adding one more pair of equidistributed statistics from [the main set of statistics] to any of the results would create a linear dependency among the statistics." Theorem 2 states that there are certain relations among bijections between 321- and 132-avoiding permutations which hold", and that there are "no other relations among the bijections and their inverses via the trivial bijections that do not follow from" the bijections discussed within this theorem. Section two discusses permutation statistics by giving a systematic introduction to what a permutation statistic is and introduces a number of statistics of interest. This is a fundamental piece of the paper as the statistics are paramount in giving a systematic analysis of each bijection.\\
+The bijections studied in section 3 are: Knuth's bijection which maps a Dyck Path to a Stack sortable permutation, and its inverse which uses the RSK-correspondence and Young Tableaux which is discussed in section~\ref{sec:backwardsStandard} of this report; Knuth-Rotem's bijections which maps 321-avoiding permutations to Dyck Paths by using the ballot number sequence problem and rotates the outputted lattice path to a Dyck path by rotating the lattice path $3\pi/4$ radians; Simion-Schmidt's bijection which is discussed in section 5.3 of this report; Knuth-Richard's bijection which is discussed in section 5.6 of this report; West's bijection which maps a 123-avoiding permutation to a 132-avoiding permutation by an isomorphism between generating trees; Krattenthaler's bijection which maps 123-avoiding permutations to 132-avoiding permutations by using Dyck paths as intermediate objects; Billey-Jockusch-Stanley-Reifegerste's bijection which maps 321-avoiding permutations to 132-avoiding permutations; Elizalde-Deutsch's bijection which maps 321- and 132-avoiding permutations to Dyck Paths; and finally Mansour-Deng-Du's bijection which maps 321-avoiding permutations to 231-avoiding permutations. These bijections are discussed exceptionally well as systematic descriptions of each bijection and how to compose and decompose each is given.\\
+The recursive description of Knuth-Richards bijection in section 4 is a very interesting section which is well discussed as it shows how to carry out the bijection using a recursive map.\\
+The proofs in sections 5 and 6 are fundamental to the paper as it discusses how each statistic is found for each bijection and hence shows that the statistics are equidistributed answering the main question asked in section 1 of this paper.
+
+\subsection{Summary of "Catalan Numbers"}
+The following paper discussed is "Catalan Numbers" by Tom Davies. \cite{CataNumDavies} Davies took a number of problems which are equinumerous in the sense that the formal power series of each problem is the Catalan numbers. Compared to the other papers discussed in this chapter it is significantly smaller in length at 12 pages. Section 1 describes the problems whilst section 2, 3 and 4 give a recursive solution to each problem and section 5 gives a generating function solution to show each problem is equinumerous.\\
+The problems discussed in section 1 are: Balanced Parentheses which is analogous to Dyck Paths in section~\ref{sec:DP} of this report, as there is a direct mapping of $u \rightarrow ($ and $d \rightarrow )$ where u is an up-step and d is a down-step of any Dyck path; the mountain range problem. This is analogous to the Dyck path problem in section~\ref{sec:DP} of this report; the diagonal-avoiding path problem. This is where "in a grid of $nxn$ squares, how many paths are there of length $2n$ that lead from the upper left corner to the lower right corner that do not touch the diagonal dotted line from upper left to lower right?"; The polygon triangulation problem which is discussed in section~\ref{sec:n+2gonTriangulation} of this report; The hands across a table problem which is the same problem as the polygon triangulation problem except it is not done within an explicitly defined polygon; The problem of binary trees, which is the problem where the author counts how many binary trees can be found with $n$ internal nodes (nodes which are not the root node); The plane rooted trees problem which is the same problem as the previous problem except a node can have any number of sub-nodes and not just two; The problem of skew polynomios which is a "set of squares connected by their edges, such that every vertical and horizontal line hits a connected set of squares and such that the successive columns of squares from left to right increase in height"; and finally the problem of multiplication orderings. This problem\newtheorem{mydef}{Definition} is based on the associative law of multiplication and it studied without changing the orders of the numbers being multiplied, how many times can you multiply the numbers together in many orders?\\
+Sections 2, 3 and 4 show that each problem has a recursive formulae which is incredibly useful in formulating the structures within this project. Finally section 5 shows the generating function solution where an explicit formula for the Catalan numbers is gained. Without this generating function solution we potentially would not have an explicit formula for Catalan numbers.
+
+\subsection{Summary of "Stack Sortable Permutations"}
+The final paper discussed is "Stack Sortable Permutations" by D. Rotem. \cite{Rotem1981185} Rotem took the fact that the class of stack sortable permutations, $SS_n$,  is in one to one correspondence with the set of n-noded binary trees, and then went on to show "that many properties of a binary tree are related to different types of monotonic subsequences in the corresponding permutation."\\
+In section 1 of this paper, Rotem described what a stack sortable permutation is and mapped it to a series of pushes and pops from the stack. In section 2, Rotem went on to describe monotonic subsequences in $SS_n$ and show their relation to binary trees. A fundamental relation was theorem 3 which states that "the length of a longest decreasing subsequence in $\pi \in SS_n$ is equal to the depth of stack which is needed to traverse $T_{\pi}$ in symmetric order. In this paper $T_{\pi}$ is defined as the tree from a permutation $\pi$.\\
+Section 4 of this paper discusses the average number of inversions in $SS_n$, by using various theorems introduced within this paper. The main result is that "on average a random permutation of $SS_n$ contains $\bigO(n^{1.5})$ inversions, whereas the corresponding value for a random permutation on $\{1,2,\dotsc, n\}$ is $\bigO(n^2)$."\\
+Finally section 5 discusses graphs associated with $SS_n$. In this section the standard definition of a graph in graph theory is given and then the section introduces the fact that a graph, $G(N)$ has a {\it defining permutation} "with respect to labelling if there is a permutation $\pi$ on $N$ such that vertices $i$ - $j$ if and only if $i$ and $j$ form an inversion in $\pi$." Before concluding, section 5 further discusses various theorems which relate graphs associated to $SS_n$. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	Combinatorial Structures
+%	Combinatorial Structures\newtheorem{mydef}{Definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Combinatorial Structures}
 In this chapter we will be analysing each structure which is being analysed and evaluated within this report.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Combinatorial Structures - Some Definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Definitions}
+In this section, some fundamental definitions will be introduced:
+\begin{definition}
+A permutation, $\pi = \pi_1\pi_2\pi_3\dotsc\pi_n$, avoids a pattern, $\sigma = 321$, if and only if there exists $i < j < k$ such that $\pi_k < \pi_j < \pi_i$. This is known as pattern avoidance and is denoted as $Av(321)$ or $Av(\sigma)$.
+\end{definition}
+Other patterns are defined similarly.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	Combinatorial Structures - Dyck Paths
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Dyck Paths}
+\label{sec:DP}
 A Dyck path of length $2n$ is a lattice path from $(0,0)$ to $(2n, 0)$ with steps:\\
 \begin{equation}
 \begin{split}
@@ -82,10 +122,10 @@ d = (1, -1)\\
 \end{equation}
 that never go below the $x$-axis.\\
 \\
-We can see that if $D$ denotes the set of all Dyck paths then one has the following relation for $D$:\\
+We can see that if $\DyckP$ denotes the set of all Dyck paths then one has the following relation for $\DyckP$:\\
 \begin{equation}
 \begin{split}
-$D = 1 + udD + uDdD$
+$\DyckP$ = 1 + ud$\DyckP$ + u$\DyckP$ d $\DyckP$
 \end{split}
 \end{equation}
 but since the first path does not have to have its first pattern as $ud$
@@ -97,7 +137,7 @@ but since the first path does not have to have its first pattern as $ud$
 then we can generalise to\\
 \begin{equation}
 \begin{split}
-D = $\epsilon$ + uDdD
+$\DyckP$ = $\epsilon$ + u$\DyckP$d$\DyckP$
 \end{split}
 \end{equation}
 by letting $1 = \epsilon$ (empty set).\cite{kitaev1}
@@ -107,9 +147,9 @@ Keep encodings as above with $\epsilon$ being the empty set.\\
 {\bf \underline{Pictorially:}}\\
 \begin{equation}
 \begin{split}
-& D = ...\\
+& $\DyckP$ = ...\\
 & = $ \epsilon$ + ud + udud + uudd + ududud + uduudd + ... \\
-& = $ \epsilon$ + uDdD\\
+& = $ \epsilon$ + u$\DyckP$d$\DyckP$\\
 \end{split}
 \end{equation}
 
@@ -120,21 +160,21 @@ $\psi: \mathbb{Q} <<u,d>> \rightarrow \mathbb{Q} [[x]]$\\
 \end{split}
 \end{equation}
 and by letting $u \rightarrow x$ and $d \rightarrow 1$ for $\psi$.\\
-To show the relation let's look at the Catalan numbers generation function, $c$:\\
+To show the relation let us look at the Catalan numbers generation function, $c$:\\
 \begin{equation}
 \begin{split}
-$c = \psi(D)$ and $c_{coeff} = \sum\limits_{n \geq 0} c_{n} x^{n}$\\
+$c = \psi(\DyckP)$ and $c_{coeff} = \sum\limits_{n \geq 0} c_{n} x^{n}$\\
 \end{split}
 \end{equation}
 so from our $u \rightarrow x$ and $d \rightarrow 1$ propositions we get:\\
 \begin{equation}
 \begin{split}
-& c = $ \psi(D)$\\
-& = $ \psi(\epsilon + uDdD)$\\
-& = $ \psi(\epsilon + xDD)$\\
+& c = $ \psi(\DyckP)$\\
+& = $ \psi(\epsilon + u\DyckP$d$\DyckP)$\\
+& = $ \psi(\epsilon + x\DyckP\DyckP)$\\
 & let $ \epsilon = 1$ also, so\\
-& $ \therefore c = \psi(1 + x D.D)$\\
-& = $ \psi(1 + xD^2)$\\
+& $ \therefore c = \psi(1 + x \DyckP.\DyckP)$\\
+& = $ \psi(1 + x\DyckP^2)$\\
 \end{equation}
 \end{split}
 so for Catalan numbers, the recurrence is\\
@@ -143,7 +183,7 @@ so for Catalan numbers, the recurrence is\\
 & c = 1 + $xc^{2}$\\
 \end{split}
 \end{equation}
-which is analogous to $1 + xD^{2}$, so the formal power series of $c = 1 + xc^{2}$ is the same as the formal power series of $D = 1+xD^{2}$ which is $1, 1, 2, 5, 14, 42, 132, ...$ and this is the Catalan numbers.\\
+which is analogous to $1 + x\DyckP^{2}$, so the formal power series of $c = 1 + xc^{2}$ is the same as the formal power series of $\DyckP$ = 1+$x\DyckP^{2}$ which is $1, 1, 2, 5, 14, 42, 132, ...$ and this is the Catalan numbers.\\
 This is given by:\\
 \begin{equation}
 \begin{split}
@@ -167,36 +207,41 @@ Consider an n-sized permutation $\sigma = \alpha_{1}\alpha_{2}...\alpha_{n-1}\al
 We continue this process of taking the leftmost element of our permutation and comparing it with the top element on the stack and repeating our comparison until the input is empty, the stack is empty and the output is full.
 
 \subsubsection{Stack Sortable Permutations - Definitions}
-{\bf Definition A:}\\
-The identity permutation a permutation $\sigma$ such that the image is in lexicographic ordering. This is $\sigma = \alpha_{1'}\alpha_{2'}...\alpha_{n-1'}\alpha_{n'}$ such that $\alpha_{1'} < \alpha_{2'} < ... < \alpha_{n-1'} < \alpha_{n'}$.\\
-{\bf Definition B:}\\
-We say that a permutation $\sigma$ is {\it single pass stack sortable} if the image $s(\sigma)$ is the identity permutation.\\
-{\bf Theorem A:}\\
+\begin{definition}
+The identity permutation a permutation $\sigma$ such that the image is in lexicographic ordering. This is $\sigma = \alpha_{1'}\alpha_{2'}...\alpha_{n-1'}\alpha_{n'}$ such that $\alpha_{1'} < \alpha_{2'} < ... < \alpha_{n-1'} < \alpha_{n'}$.
+\end{definition}
+\begin{definition}
+We say that a permutation $\sigma$ is {\it single pass stack sortable} if the image $s(\sigma)$ is the identity permutation.
+\end{defintion}
+
+\begin{theorem}
 Consider the permutation $\sigma = \rho_{1}\rho_{2}...\rho_{n-1}\rho_{n}$.\\
 Let $n = max(\rho_{1}, \rho_{2}, ..., \rho_{n-1}, \rho_{n})$ \\
 Let $\alpha$ and $\beta$ be the terms such that $\sigma = \alpha n \beta$. \\
 Then:\\
 			$s(\sigma) = s(\alpha)s(\beta)n$			
-\newline
+\end{theorem}
 {\bf Proof:}
 Every element before $n$ will enter and leave the stack, and hence $\alpha$ will be sorted before n enters as it is larger.
 In the same fashion, after $n$ enters the stack, every element will enter and leave the stack and hence $\beta$ will be sorted.
 Finally n will leave the stack. Hence our theorem is proven. \square
 
 \subsubsection{Single Pass Stack Sortable Permutations}
-Now let's look at where a given permutation is single pass stack sortable.//
-{\bf Theorem B:}\\
-A permutation is single pass stack sortable if and only if the permutation avoids a 231-pattern.\\
+Now let's look at where a given permutation is single pass stack sortable. \cite{BonaStackSort}
+\begin{theorem}
+A permutation is single pass stack sortable if and only if the permutation avoids 231.
+\end{theorem}
 {\bf Proof:}\\
 If a permutation $\sigma$ contains a 231-pattern then, by definition, $s(\alpha)$ will contain an element larger than an element in $s(\beta)$, hence the image is not an identity permutation.\\
 Conversely if the permutation $\sigma$ does not contain a 231-pattern then consider the following:\\
-For any two elements $a$ and $b$ such that $a$ precedes $b$, if $a > b$ then $\nexists c$ such that $c$ is between $a$ and $b$ and $c > a$ (avoiding 231). Thus, $a$ will enter the stack and not leave until $b$ has left the stack hence $b$ now precedes $a$ in $s(\sigma)$.\\
+For any two elements $a$ and $b$ such that $a$ precedes $b$, if $a > b$ then $\nexists c$ such that $c$ is between $a$ and $b$ and $c > a$. Thus, $a$ will enter the stack and not leave until $b$ has left the stack hence $b$ now precedes $a$ in $s(\sigma)$.\\
 If $a < b$ then $a$ will enter and leave the stack before $b$ hence $a$ will precede $b$ in $s(\sigma)$.\\
 Hence $s(\sigma)$ is the identity pattern so $\sigma$ is stack sortable. \square
 
-Knuth proved that the number of permutations which are single pass stack sortable is the Catalan number $C_{n}$. Here is my proof of this:\\
-{\bf Theorem C:}\\
-The number of single pass stack sortable permutations is the Catalan number $C_{n}$.\\
+Knuth proved that the number of permutations which are single pass stack sortable is the Catalan number $C_{n}$.\cite{StackLim}\\
+\begin{theorem}
+The number of single pass stack sortable permutations is the Catalan number $C_{n}$.
+\end{theorem}
 {\bf Proof:}\\
 We know from Theorem B that every permutation which avoids the pattern 231 is stack sortable.\\
 Let's define $f(n)$ to be the number of single pass stack sortable permutations and $f(0) = 1$. Consider the permutation $\sigma_{m} = \alpha_{1}\alpha_{2}...\alpha_{m-1}\alpha_{m}$ and let $n = max(\alpha_{1}, \alpha_{2}, ..., \alpha_{m-1}, \alpha_{m})$ such that $\sigma_{m} = \alpha n \beta$. Now from Theorem A we know that every element on the left of $n$ must be smaller than every element on the right of $n$. So, from Theorem A we also see that the number of sortable permutations must be the number of sortable sub-permutations on the left of $n$ multiplied by the number of sortable sub-permutations on the right of $n$. Formally this is: $|s(\sigma)| = |s(\alpha)| * |s(\beta)|$.\\
@@ -211,10 +256,14 @@ $C_{0} = 1$ and $C_{n} = \sum_{i=0}^{n}C_{i-1} C_{n-i}$\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Triangulations of an $n+2$-gon}
+\label{sec:n+2gonTriangulation}
 In a letter from Euler to Christian Goldbach in 1751 Euler described the following problem:\\
-How many ways may a convex polygon of $n + 2$ edges may be triangulated by $n - 1$ non-intersecting diagonals.\\
+\centerline{How many ways can a convex polygon of $n + 2$ edges}\\
+\centerline{be triangulated by $n - 1$ non-intersecting diagonals?}\\
 This can be defined in less formal terms as:\\
-Find the number of ways that the interior of a convex polygon can be divided into triangles by drawing non-intersecting diagonals where $n \geq 3$.\\
+\centerline{Find the number of ways that the interior of a convex polygon can}\\
+\centerline{be divided into triangles by drawing non-intersecting diagonals}\\
+\centerline{where the number of edges $\geq 3$.}\\
 This is the exact same problem as the well known puzzle of if there are $2n$ friends sitting at a round table, how many ways can they shake hands without crossing handshakes.
 
 \subsubsection{Convex Polygon}
@@ -226,7 +275,9 @@ A convex polygon also holds the following properties:
 \end{itemize}
 
 \subsubsection{Proof that the amount of triangulations is $C_n$}
-{\bf Theorem:} The number of triangulations of a convex polygon with $n+2$ vertices is the Catalan number, $C_n = \frac{1}{n+1} \binom{2n}{n}$.\\
+\begin{theorem}
+The number of triangulations of a convex polygon with $n+2$ vertices is the Catalan number, $C_n = \frac{1}{n+1} \binom{2n}{n}$. \cite{DiscMathsRosen}
+\end{theorem}
 {\bf Proof:} Let $P_{n+2}$ be a convex polygon with vertices labelled from 1 to n+2.\\
 Let $\tau$ be the set of triangulations of $P_{n+2}$ where $\tau$ has two elements.\\
 We will show that $t_{n+2}$ is the Catalan number, $C_n$.\\
@@ -269,13 +320,33 @@ A tableau is called {\bf semi-standard}, or {\it column-strict}, if the entries 
 
 The weight of a tableau is the sequence of the number of times each number appears in a tableau. For example, the standard Young tableau are the semi-standard tableaux of weight (1, 1, ..., 1) which requires every integer up to $n$ to occur exactly once.
 
+\subsubsection{Proof that Young Tableaux are Catalan Structures}
+To prove that Young Tableaux are Catalan structures, we must first look at the related problem of balanced parentheses. The problem of balanced parentheses is the exact same as the Dyck Path problem if we let $u \rightarrow ($ and $d \rightarrow )$. We will call the set of $2n$ balanced parentheses, $\BalParen_n$. To prove that Standard Young Tableaux of size $(n,n)$ are Catalan structures we will show a bijection between this problem and the balanced parentheses problem. \cite{YoungTableauxShirek}
+\paragraph{Proof}
+Let $\YoungTab_n$ be the set of Young Tableaux of size $(n,n)$ and let $t \in \YoungTab_n$.\\
+Define $f: \YoungTab_n \rightarrow \BalParen_n$ as $f(t) = p = p_{1}p_{2}p_{3}\dots p_{2n}$, where $p_i = ($ for all $i$ in the top row of the Young Tableaux and $p_i = )$ for all $i$ in the bottom row of the Young Tableaux.\\
+Let $t \in \YoungTab_n$ and $f(t)$ be the sequence of $n$ open and $n$ closed parentheses. Our claim is that $f(t) \in \BalParen_n$. As the rows of $t$ are increasing to the right and the columns are increasing downward, then $t$ must always begin its first row with $1$ and end its second row with $2n$. This ensures that the condition is met that the parentheses must start with a $($ and end with a $)$.\\
+Since the rows and the columns are always increasing we then see that the $i$th open parentheses must always come before the $i$th closed parentheses.\\
+Let $t$ = 
+\begin{matrix}
+$t_{11}$ & $\dots$ & $t_{1n}$\\
+$t_{21}$ & $\dots$ & $t_{2n}$
+\end{matrix}
+. We can see here that the $i$th open parentheses is at $t_{1i}$, the $i$th closed parentheses is at $t_{2i}$ and $t_{1i} < t_{2i}$ for $1 \leq i \leq n$.\\
+To prove that $f$ is a bijection we show the $f$ is invertible. Define $g:\BalParen_n \rightarrow \YoungTab_n$ and let $g(p) = t = $
+\begin{matrix}
+$t_{a1}$ & $\dots$ & $t_{an}$\\
+$t_{b1}$ & $\dots$ & $t_{bn}$
+\end{matrix}
+, where $t_{a1} = 1$ and $t_{bn} = 2$ and $a_1 \leq a_2 \leq \dotsb \leq a_n$ are the indices of open parentheses and $b_1 \leq b_2 \leq \dotsb \leq b_n$ are the indices of closed parentheses. The mapping $g$ is the inverse function for $f$ as it reverses the mapping of $f$.\\
+Since $f$ is a bijection, we have $\mid\YoungTab_n\mid = \mid\BalParen_n\mid$ for all $n$. \square
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	Program Design
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Program Design}
-In this chapter I will discuss my design and modelling considerations for my project's implementation by thorough discussion of each task chosen.
-
+In this chapter I will discuss my design and modelling considerations for my project's implementation by thorough discussion of each task chosen.\\
+To design the program I adopted a strategy of using a modular functional design where each Haskell file is a module and to mathematically model each Catalan structure I used a technique called functional decomposition. Functional decomposition is the process where we compose a functional relationship in such a way that the original structured can be reconstructed from those parts by function composition.
 \subsection{Internals}
 To construct accurate models of each Catalan structure I have, in the file "Internal.hs", created a type class called Catalan which is defined as follows:
 \begin{lstlisting}
@@ -299,26 +370,115 @@ bijection w = case decons w of
 \end{lstlisting}
 
 \subsection{Catalan Structures}
-The module {\bf Catalan Structures} is the module which contains all of the bijections I have implemented within the program. These bijections will be analysed by finding statistics for each structure and investigating which statistics are preserved for each bijection.\\
+The module {\bf Catalan Structures} is the module which contains all of the bijections I have implemented within the program. These bijections will be analysed by finding statistics for each structure and investigating which statistics are preserved for each bijection.
+\subsubsection{Standard bijection}
 Currently the standard bijection from \cite{Clae01} has been implemented and is as follows:
 \begin{lstlisting}
-ssp2dp :: StackSortablePermutation -> DyckPath
-ssp2dp [] = []
-ssp2dp ssp = [U] ++ ssp2dp (red (alpha, beta)) ++ [D] ++ ssp2dp beta
+standard :: StackSortablePermutation -> DyckPathClaessonSym
+standard ssp = standard' $ ssptoperm ssp
+
+standard' :: Permutation -> DyckPath
+standard' [] = []
+standard' ssp = [U] ++ 
+	standard' (red (alpha, beta)) 
+	++ [D] ++ standard' beta
 	where
-	(alpha, beta) = stripMaybe $ decons ssp
+	ssp' = permTossp ssp
+	(alpha, beta) = remP $ stripMaybe $ decons ssp'
+	remP (Perm231 a, Perm231 b) = (a, b)
 \end{lstlisting}
-This bijection converts a stack sortable permutation to a Dyck path. It does this by using the recursive formula: $f(\pi) = uf(\pi'_L)df(\pi_R)$ and $f(\epsilon) = \epsilon$. $\pi'_L$ is defined as "the permutation of $1, 2, ..., |\pi_L|$ obtained from $|\pi_L|$ by subtracting $|\pi_R|$ from each of its letters."\cite{Clae01}\\
+This bijection converts a stack sortable permutation to a Dyck path. It does this by converting an Stack sortable permutation into a value of type permutation then using the recursive formula: $f(\pi) = uf(\pi'_L)df(\pi_R)$ and $f(\epsilon) = \epsilon$. $\pi'_L$ is defined as "the permutation of $1, 2, ..., |\pi_L|$ obtained from $|\pi_L|$ by subtracting $|\pi_R|$ from each of its letters."\cite{Clae01}\\
 To perform the subtraction, I have used a function which I have named {\bf red} for reduction. It is as follows:
 \begin{lstlisting}
-red :: (StackSortablePermutation, StackSortablePermutation) 
-	-> StackSortablePermutation
+red :: (Permutation, Permutation) 
+	-> Permutation
 red ([], beta) = []
 red (x:xs, beta) = x - pi_r : red (xs, beta)
 	where
 	pi_r = length beta
 \end{lstlisting}
-It takes a pair of StackSortablePermutation's as input and returns a single StackSortablePermutation. It does this via the method for obtaining $|\pi_L|$ above.
+It takes a pair of StackSortablePermutation's as input and returns a single StackSortablePermutation. It does this via the method for obtaining $|\pi_L|$ above. Finally the function standard' will convert it into a Dyck Path by reducing the calculated pair, (alpha, beta), which deconstructures the stack sortable permutation, strips the Just value from it and then converts it to type Permutation.
+\subsubsection{Richards bijection}
+The implementation of Richards bijection is as follows:
+\begin{lstlisting}
+richards :: DyckPath -> Perm123
+richards = permToperm123 . richardsP
+
+richardsP :: DyckPath -> Permutation
+richardsP dp = permvectoperm $ richards'' $ dp2pv $ binMap dp
+	where
+	binMap = map dy	
+		where
+		dy D = 1
+		dy U = 2
+	dp2pv = SV.fromList
+\end{lstlisting}
+Here the function {\it richards}, takes a Dyck path as input and returns a 123-avoiding permutation. To do this it maps the values $d \rightarrow 1$ and $u \rightarrow 2$ to the Dyck path and then converts it to a vector and calls the richards algorithm which is a foreign C function. The C function looks as follows:
+\begin{lstlisting}
+long richards (const long *b, long len){
+	int r, s, i, j, k;
+	long n, p;
+	n = len / 2;
+	long pi[n];
+		
+	memset(pi, NULL, n);
+	r = n+1; s = n+1; j = 0;
+	for (i = 0; i < n; i++){
+		if(b[j] == 2){
+			do{
+				s = s-1; j = j+1;
+			} while(b[j] != 1);
+			
+			pi[s] = i;
+		}
+		else if(b[j] == 1){
+			do{		
+				r = r-1;
+			} while(pi[r] != NULL);
+			
+			pi[r] = i;
+		}
+		else {
+			continue;
+		}
+		
+		j = j+1;
+	}	
+	for(k = 0, p = 0; k < n; k++) 
+	{	
+		p=10*p+pi[k];
+	}		
+	return p;
+}
+
+\end{lstlisting}
+This is a straight port of the algorithm described in \cite{Clae01}. Finally the function converts the function to a Perm123 type.
+
+\subsection{Knuth-Richards bijection}
+This bijection was programmed using the method described in \cite{Clae01} for the Knuth-Richards bijection which is simply the composition of richards and standard.
+
+\subsection{Simion-Schmidt bijection}
+This bijection was programmed using the method described in \cite{Clae01}, but a functional approach was used:
+\begin{lstlisting}
+simionSchmidt' :: PermVec -> PermVec
+simionSchmidt' p = ST.runST $ do
+	v <- MV.unsafeNew n
+	foldM_ it (v, n, Set.empty) [0..n-1]
+	SV.unsafeFreeze v
+	where
+	n = SV.length p
+	it (v, m, k) i = do
+		let c = p SV.! i
+		let y = 
+	Prelude.head [z | z <- [m+1 ..], z `Set.notMember` k]
+		let (d, b) = if c < m then (c,c) else (y, m)
+		MV.unsafeWrite v i d
+		return (v, b, Set.insert d k)
+\end{lstlisting}
+Firstly a the given permutation gets converted to a vector and then using the state transitional moand, we use the foldM\_ and it functions to represent the for loop. The majority of this code was taken from \cite{ClaessonSym}.
+
+\subsection{Fulmek bijection}
+The Fulmek bijection was programmed using the method described in \cite{Clae01} which is the composition of complement of the permutation, simion-schmidt and the complement of the permutation again.
 
 \subsection{Dyck Paths}
 To model Dyck paths, I created a module which I named {\bf DyckPath}. To represent a Dyck Path I have a list of up-steps and down-steps. Each step is represented by the algebraic data type Step which uses the encoding U for an up-step and D for a down-step. A full Dyck path is represented as a list of steps shown below in the type synonym DyckPath.
@@ -333,7 +493,7 @@ instance Catalan DyckPath where
 	cons alpha beta = mkIndec alpha ++ beta 
 	decons gamma = stripMaybe $ decompose gamma
 \end{lstlisting}
-The function {\it mkIndec} takes a Dyck path, alpha, and makes an indecomposable DyckPath by prepending a U to the start of alpha then a D to the end of alpha. Then to fully compose our Dyck path with a given alpha and beta we just append beta to mkIndec alpha as is shown above.\\
+The function {\it mkIndec} takes a Dyck path, alpha, and makes an indecomposable Dyck Path by prepending a U to the start of alpha then a D to the end of alpha. Then to fully compose our Dyck path with a given alpha and beta we just append beta to mkIndec alpha as is shown above.\\
 Decomposing a Dyck path is the hardest task faced in the design and implementation of the model of a Dyck path. To do this we make a function called {\it decompose} with takes in a parameter gamma, where gamma is a full Dyck path. Our function decompose looks like the following:
 \begin{lstlisting}
 decompose :: DyckPath -> Maybe (DyckPath, DyckPath)
@@ -396,11 +556,13 @@ To generate $n$, we take the length of alpha and the length of beta and then add
 Finally to decompose our permutation $\sigma$ we use the following function:
 \begin{lstlisting}
 decompose :: StackSortablePermutation 
-	     -> Maybe (StackSortablePermutation, StackSortablePermutation)
-decompose sigma = if (S.avoids (sspToString sigma) ["231"]) 
-		  || (S.avoids (sspToString sigma) ["132"])
-		  then Just (pairTossp $ removeHeadSnd $ break (l ==) s)
-		  else Nothing
+	     -> Maybe (StackSortablePermutation,
+		 StackSortablePermutation)
+decompose sigma = 
+	if (S.avoids (sspToString sigma) ["231"]) 
+	|| (S.avoids (sspToString sigma) ["132"])
+	then Just (pairTossp $ removeHeadSnd $ break (l ==) s)
+	else Nothing
 	where
 	l = length s
 	s = ssptoperm sigma
@@ -432,20 +594,6 @@ and as defined in Internals:
 \begin{lstlisting}
 type Permutation = [Integer]
 \end{lstlisting}
-
-To create our cons operator we must ensure that we take as parameters our alpha and beta, generate $n$ then finally wrap it in our $Perm231$ type. This is created as follows:
-\begin{lstlisting}
-mkIndec :: Perm123 -> Perm123 -> Perm123
-mkIndec alpha beta = undefined
-\end{lstlisting}
-Finally to decompose our permutation $\sigma$ we use the following function:
-\begin{lstlisting}
-decompose :: Perm123 -> Maybe(Perm123, Perm123)
-decompose sigma = if S.avoids (perm123ToString sigma) ["123"]
-		then Just (permToperm123 [1,2], permToperm123 [3]) --currently to test
-		else Nothing
-\end{lstlisting}
-
 \subsection{Young Tableaux}
 To model Young Tableaux I have used the standard model for constructing them within my Haskell module named {\bf Young Tableaux}.\\
 A Young Tableaux is a table consisting of a finite collection of cells arranged in left justified rows with the row lengths weakly decreasing.\\
@@ -455,7 +603,8 @@ type Row = [Int]
 
 type Tableau = [Row]
 
-newtype Tableaux = Tableaux {tableaux :: Tableau} deriving (Eq, Ord, Show)
+newtype Tableaux = 
+	Tableaux {tableaux :: Tableau} deriving (Eq, Ord, Show)
 
 instance Catalan Tableaux where
   empty = Tableaux []
@@ -480,7 +629,6 @@ splitT yt = (Tableaux a, Tableaux b)
 	last' = Data.List.last
 \end{lstlisting}
 To split the tableaux, we take the pair $(a, b)$ and if the length of the last element in the list has the value $1$ then we take the list minus the last, and second last elements, and the list of the second last element and the last element of the tableaux. If the value is not $1$ ten we take the list minus the last elements, and the list of the last element of the tableaux.
-%speak about composition.
 
 \subsection{Triangulations of an $n+2$-gon}
 To model Triangulations of an $n+2$-gon I have used the standard model for constructing structures within my Haskell module named {\bf Triangulations}.\\
@@ -494,7 +642,8 @@ type Triangulations = [Triangle]
 
 instance Catalan Triangulations where
 	empty = []	
-	cons alpha beta = alpha ++ mkIndec (maximum' $ mapMax alpha) beta
+	cons alpha beta = 
+		alpha ++ mkIndec (maximum' $ mapMax alpha) beta
 	decons = decompose
 \end{lstlisting}
 To compose the triangulation from two other triangulations, we take the first set of triangles, and then calculate their indecomposeable form using the function {\it mkIndec} with the arugments {\it (maximum' \$ mapMax alpha)} and {\it beta}. These functions are as follows:
@@ -526,32 +675,35 @@ splitMappedList xs = break (True==) (mapList xs)
 The function {\it splitter} splits the list at the point of the length of the list minus the length of the second list in the pair outputted by {\it splitMappedList}. The function {\it splitMappedList} returns a list of {\it Bool} at the point where each point is either $1$ or the size of the triangle.
 
 \subsection{Graphics}
-To create permutation matrices on screen, the GTK bindings for Haskell were used in from the package "Graphics.UI.Gtk". To build the window, three functions were created: {\it drawPerm}; {\it renderFigure}; and {\it figure2render}. Starting off {\it figure2render} looks as follows:
+\subsubsection{Permutation Graphics}
+To create permutation matrices on screen, the GTK bindings for Haskell were used in from the package "Graphics.UI.Gtk". To build the window, three functions were created: {\it drawPerm}; {\it renderFigurePerm}; and {\it figure2render}. Starting off {\it figure2render} looks as follows:
 \begin{lstlisting}
-figure2Render :: StackSortablePermutation -> DC 
+figure2Render :: Permutation -> DC 
 figure2Render perm = P.plotPerm $ permToString perm
 \end{lstlisting}
 Here, in order to render the permutation matrix we use the function {\it plotPerm} from Anders Claesson's sym-plot package \cite{ClaessonSymPlot}. This creates a permutation of type DC when given a string as input.\\
-Next we have to render the permutation matrix in order to visualise it. This is acheived using the {\it renderFigure} function which is as follows:
+Next we have to render the permutation matrix in order to visualise it. This is acheived using the {\it renderFigurePerm} function which is as follows:
 \begin{lstlisting}
-renderFigure :: DrawingArea -> StackSortablePermutation 
+renderFigurePerm :: DrawingArea 
+		-> Permutation 
 		-> EventM EExpose Bool
-renderFigure canvas perm = do
-	liftIO $ defaultRender canvas $ figure2Render perm
+renderFigurePerm canvas perm = do
+	liftIO $ defaultRender canvas $ figure2RenderPerm perm
 	return True
 \end{lstlisting}
 This function starts off by taking in the drawing area and permutation and parameters then sequentially carries out the {\it liftIO} operation and then returns {\it true} as a {\it Bool} must be returned by the function. {\it liftIO} is a function which simply takes the regular function {\it defaultRender} and converts it to the type {\it m a}. To render the figure, the defaultRender function is used. It renders a diagram for the drawing area given and rescales it to use the full area available.\\
 Finally we define the {\it drawPerm} function which is as follows:
 \begin{lstlisting}
-drawPerm :: StackSortablePermutation -> IO ()
+drawPerm :: Permutation -> IO ()
 drawPerm perm = do
 	initGUI
 	window <- windowNew
 	canvas <- drawingAreaNew
 	canvas `on` sizeRequest $ return (Requisition 256 256)
-	set window [windowTitle := "Permutation Matrix",
-		containerBorderWidth := 10, containerChild := canvas ]
-	canvas `on` exposeEvent $ renderFigure canvas perm
+	set window [windowTitle := "Permutation Int Matrix",
+		 containerBorderWidth := 10,
+		 containerChild := canvas ]
+	canvas `on` exposeEvent $ renderFigurePerm canvas perm
 	onDestroy window mainQuit
 	widgetShowAll window
 	mainGUI
@@ -559,6 +711,45 @@ drawPerm perm = do
 This function draws a window for the permutation matrix and shows the rendered image of the permutation matrix within the window. Lines 3 to 7 and lines 9 to 11 are standard kit for building a window with GTK. In lines 3 to 7 we create a new window, and a new canvas, then set the size of the canvas and set the window properties. In lines 9 to 11 we state that the application will terminate when the window is terminated, then that the window will be displayed and the main loop for the graphical user interface will run.\\
 In line 8, which is the line we are most interested in, states that we will redraw the figure and place it on the canvas.
 
+\subsubsection{Dyck Path Graphics}
+To plot a Dyck path on screen the package Graphics.Gloss was used. \cite{Gloss} The code for plotting the Dyck path is the following:
+\begin{lstlisting}
+drawDyckPathG :: DyckPath -> IO ()
+drawDyckPathG dp = display (InWindow "Dyck Path" (300,300) (300,300)) 
+		Graphics.Gloss.white
+		(Graphics.Gloss.scale 40 20 $ Line $ buildCoords dp)
+\end{lstlisting}
+This function displays a window with the title "Dyck Path" with white blackground then draws a Dyck path onto the centre of the screen.
+
+\subsubsection{Young Tableaux Graphics}
+ To draw a Young Tableaux on screen the package Graphics.Gloss was used. \cite{Gloss} The code for drawing the Young Tableaux is the following:
+\begin{lstlisting}
+drawYTG :: YoungTableaux -> IO ()
+drawYTG yt = display (InWindow "Young Tableaux" (300,300) (300,300))
+	 Graphics.Gloss.White picture 
+	where
+	toText = toText $ t2tx yt
+	picture = Translate (-170) (-20) 
+		$ Scale 0.5 0.5 
+		$ Text toText	
+
+toText :: Tableau -> String
+toText [] = ""
+toText (y:ys) = show y ++ '\n' : toText ys 
+	where
+	rows = getRowsL
+\end{lstlisting}
+Here we use the function {\it drawYTG} to draw the Young Tableaux. It displays the tableaux along the same lines as the function to plot a Dyck path except that it plots the text received from the {\it toText} function. The function {\it toText} takes a Tableau and prints each row below each other in the shape of the Young Tableaux.
+
+\subsubsection{Triangulation of an n+2-gon Graphics}
+To draw a triangulated $n+2$-gon on screen the package Graphics.Gloss was used. \cite{Gloss} The code for drawing the triangulated $n+2$-gon is the following:
+\begin{lstlisting}
+drawTriPoly :: Triangulations -> IO ()
+drawTriPoly tri = display (InWindow "Dyck Path" (300,300) (300,300))
+		 Graphics.Gloss.white 
+		(Graphics.Gloss.scale 40 20 $ Line $ buildCoords tri)
+\end{lstlisting}
+Once again, this is along the same lines as the previous two structures except that it plots the coordinates generated for the polygon triangulation.
 
 \subsection{Statistics}
 In order to investigate the statistics related to each Catalan structure, I have a section of each module which defined the statistics which relate to individual structures.\\
@@ -592,64 +783,74 @@ peaks dp = sum $ largestElemCnt $ split
 --Height of the Dyck Path
 heightStat :: DyckPath -> Int 
 heightStat dp = maximum $ height dp
+
+--ommited code
+
+noInitialRises :: DyckPath -> Int
+noInitialRises dp = impD c_initR $ prep dp
+
+noDoubleRises :: DyckPath -> Int
+noDoubleRises dp = impD c_doubR $ prep dp
+
+majorIndex :: DyckPath -> Int
+majorIndex dp = impD c_maj $ prep dp
 \end{lstlisting}
 Although the comments describe what each statistic is for, I will systematically describe how each statistic is obtained and in relation to the base set of permutation statistics in \cite{Clae01} what each statistic will relate to.\\
 The statistics above count the number of up-steps, down-steps, peaks and returns to the x-axis. Respectively these will relate to the asc, dsc, peak and valley statistics for permutations.\\
-The statistic $uCnt$ is obtained by counting the number of up-steps in the path, $dCnt$ is defined similarly. The $returnsXAxis$ statistic counts the number of returns to the x-axis by calculating the height of each step in the list, then counting the number of heights that are 0 and subtracting 1 since we always start on the x-axis so the height of the first step is always 1. The $peaks$ statistic counts the number of peaks by calculating what the largest height of each section is and keeping a count. Finally, the $heightStat$ statistic finds the maximum peak of the path and returns it.
+The statistic $uCnt$ is obtained by counting the number of up-steps in the path, $dCnt$ is defined similarly. The $returnsXAxis$ statistic counts the number of returns to the x-axis by calculating the height of each step in the list, then counting the number of heights that are 0 and subtracting 1 since we always start on the x-axis so the height of the first step is always 1. The $peaks$ statistic counts the number of peaks by calculating what the largest height of each section is and keeping a count. The $heightStat$ statistic finds the maximum peak of the path and returns it. Finally, for the last three statistics they have been programmed in C and mashalled so that Haskell can use the results. The function $prep$, prepares a Dyck path to be ran through the C function to calculate the statistic. The $impD$ function takes a C foreign function and marshalls it so that it will return an $Int$ as its type. The three C functions corresponding to the statistics number of initial rises, number of double rises and major index are discussed below.\\
+\begin{lstlisting}
+/* Number of initial rises for a dyck path */
+
+long
+initR (const long *w, long len)
+{
+	long acc = 0;
+	bool flag = false;
+	int i;	
+	for(i = 0; len > 1, len--; w++, i++) {
+		if(w[0] == 1)
+			flag = true;		
+		if (flag == true && w[i] == 1)
+			acc++;
+	}
+	return acc;
+}
+
+/* Number of double rises for a dyck path */
+
+long
+doubR (const long *w, long len)
+{
+	long acc = 0;
+	for(; len > 1, len--; w++) {
+		if (*w == 1 && *(w-1) == 1)
+			acc++;
+	}
+	return acc;
+}
+
+/* Major index of dyck path */
+long
+majD (const long *w, long len)
+{
+	long i, acc = 0;
+	for(i = 1; i < len; i++, w++) {
+		if(*w > *(w+1))
+			acc += i;
+	}
+	return acc;
+}
+\end{lstlisting}
+The function $initR$ generates the statistic for the number of initial rises in a Dyck path by running a for loop which starts at $0$ and terminates when the value $len$ falls below 2. Inside the loop, the function checks that the first step in the Dyck path is an Up step, and if it is it will set the variable $flag$ to $true$. Next the function checks if flag is true and then for every up step it finds, it will add $1$ to the accumulator, $acc$. One the for loop terminates the function will return $acc$ hence generating the statistic for the number of initial rises in a Dyck path.\\
 
 \subsubsection{Permutation Statistics}
-To model permutation statistics we use the standard definitions of permutation statistics within this paper.
+To model permutation statistics we use the standard definitions of permutation statistics within this paper. The functions asc, des, exc, ldr, rdr, lir, rir, comp, lmax, lmin, rmax, rmin, head, last, peak, valley, rank and cyc are all of type {\it Permutation -> Int} and are all defined similarly to asc below:
 \begin{lstlisting}
 asc :: Permutation -> Int
 asc =  I.asc . permtopermvec
 
-des :: Permutation -> Int
-des =  I.des . permtopermvec
-
-exc :: Permutation -> Int
-exc = I.exc . permtopermvec
-
-ldr :: Permutation -> Int
-ldr = I.ldr . permtopermvec
-
-rdr :: Permutation -> Int
-rdr = I.rdr . permtopermvec
-
-lir :: Permutation -> Int
-lir =   I.lir . permtopermvec
-
-rir :: Permutation -> Int
-rir =   I.rir . permtopermvec
-
 zeil :: Permutation -> Int
 zeil =   I.rdr . I.inverse . permtopermvec --zeil = rdr . i 
-
-comp :: Permutation -> Int
-comp =   I.comp . permtopermvec
-
-lmax :: Permutation -> Int
-lmax =   I.lmax . permtopermvec
-
-lmin :: Permutation -> Int
-lmin =   I.lmin . permtopermvec
-
-rmax :: Permutation -> Int
-rmax =   I.rmax . permtopermvec
-
-rmin :: Permutation -> Int
-rmin =   I.rmin . permtopermvec
-
-head :: Permutation -> Int
-head =   I.head . permtopermvec
-
-last :: Permutation -> Int
-last =   I.last . permtopermvec
-
-peak :: Permutation -> Int
-peak =   I.peak . permtopermvec
-
-valley :: Permutation -> Int
-valley =   I.vall . permtopermvec
 
 lds :: Permutation -> Int
 lds p = maximum lenLst - 1
@@ -663,19 +864,13 @@ lis p = maximum lenLst - 1
 	lenLst = map length incLst 
 	incLst = (filter (isInc) (subsequences p))
 
-rank :: Permutation -> Int
-rank = I.ep . permtopermvec
-
-cyc :: Permutation -> Int
-cyc = I.cyc . permtopermvec
-
 fix :: Permutation -> Int
 fix p = length $ fixLst 
 	where
 	fixLst = filter (\(a,b) -> a == b) l1
 	l1 = zip [1..] p	
 \end{lstlisting}
-Here we see that all statistics with the exception of lds, lis and fix are taken from Anders Claesson's {\it sym} package.\cite{ClaessonSym}. To model {\it lds} we look the maximum value minus 1 of the list of decreasing subsequence. {\it lis} is defined similarily only using an increasing subsequence. To define {\it fix} we took the length of the list of the points where in a permutation $\pi = \alpha_1, \alpha_2, ..., \alpha_n$; $\alpha_i = i$.
+Here we see that all statistics with the exception of lds, lis and fix are taken from Anders Claesson's {\it sym} package.\cite{ClaessonSym}. To model {\it lds} we look the maximum value minus 1 of the list ofactivities decreasing subsequence. {\it lis} is defined similarily only using an increasing subsequence. To define {\it fix} we took the length of the list of the points where in a permutation $\pi = \alpha_1, \alpha_2, ..., \alpha_n$; $\alpha_i = i$.
 
 
 \subsection{Graphical User Interface}
@@ -691,7 +886,7 @@ main :: IO ()
 main = do
 	initGUI 
 	
-	builder <- initBuilder
+	builder <- initBuilderactivities
 
 	<Omitted content>
 
@@ -707,7 +902,7 @@ initBuilder = do
 	return builder
 \end{lstlisting}
 In the {\it initBuilder} function, we create a new builder using the function {\it builderNew} and then add the user interfaces {\it .glade} file to the builder and finally return the builder.\\
-Continuing with the function main, to end the function we explicitly tell the program to show the main window, denoted here as {\it main\_window} and then call mainGUI to run the main GUI loop and continue the program until it is terminated by the user. The omitted code will be discussed later in this section.
+Continuing with the function main, to end the function we explicitly tell the program to show the main window, denoted here as {\it main\_window} and then call mainGUI to run the main GUI loop and continue the programactivities until it is terminated by the user. The omitted code will be discussed later in this section.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -715,29 +910,30 @@ Continuing with the function main, to end the function we explicitly tell the pr
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bijections}
 In this chapter we will discuss each bijection: how they function and how they biject functions.\\
-\subsection{132-avoiding permutation to Dyck path}
+\subsection{Standard Bijection}
+\label{sec:StandardBijection}
 Knuth\cite{KnuthVol1} gives a bijection from 312-avoiding permutations. By taking the complement of 312, it is a bijection form 132-avoiding permutations to Dyck paths.\\
-We are by describing the bijection from 132-avoiding permutations to Dyck Paths. Henceforth this will be described as the bijection between Dyck paths and 132-avoiding permutations.\\ 
+We are by describing the bijection which maps permutations in $\sym(132)$ to Dyck Paths, $\DyckP$ . Henceforth this will be described as the bijection between Dyck paths and 132-avoiding permutations, or the standard bijection and will be denoted $\phi$.\cite{Clae01}\\ 
 Let $\sigma$ = $\alpha n\beta$ be a 132-avoiding permutation of length $n$. As we saw in the proof of One Stack Sortable Permutations, every element of $\alpha$ is larger than every element of $\beta$ or else a 132 pattern would be formed by the permutation.\\
 When converting between 132-avoiding permutations and Dyck paths we use the encodings that we formulated when defining Dyck paths. These are up $\rightarrow u$ and down $\rightarrow d$.
 We define the bijection between Dyck paths and 132-avoiding permutations recursively by:\\
 \begin{equation}
 \begin{split}
-& $f(\sigma) = u f(\alpha) d f(\beta)$ and $f(\epsilon) = \epsilon$\\
+& $\phi(\sigma) = u \phi(\alpha) d \phi(\beta)$ and $\phi(\epsilon) = \epsilon$\\
 \end{split}
 \end{equation}
 where $\epsilon$ is the empty word, or permutation. Therefore by the bijection between Dyck paths and 132-avoiding permutations, the position of the largest element in a 132-avoiding permutation determines the first to return to the $x$-axis and vice versa.\\
 
 
-\subsubsection{Examples of 132-avoiding permutation to Dyck path}
+\subsubsection{Examples of Standard Bijection}
 \subsubsubsection{Example 1}
 Let $\sigma = 2134$.\\
-Now we must calculate $f(\sigma)$.\\
+Now we must calculate $\phi(\sigma)$.\\
 \begin{equation}
 \begin{split}
-& $ f(\sigma) $ = $ f(2134) $\\
-& = $ u f(213) d $\\
-& = $ uu f(21) dd $\\
+& $ \phi(\sigma) $ = $ \phi(2134) $\\
+& = $ u \phi(213) d $\\
+& = $ uu \phi(21) dd $\\
 & = $ uuududdd $\\
 \end{split}
 \end{equation}
@@ -745,28 +941,72 @@ Hence the corresponding Dyck path for the permutation $2134$ has the encoding $u
 
 \subsubsubsection{Example 2}
 Let $\pi = 7564213$.\\
-Now we must calculate $f(\pi)$.\\
+Now we must calculate $\phi(\pi)$.\\
 \begin{equation}
 \begin{split}
-& $ f(\pi) $ = $ f(7654213) $\\
-& = $ ud f(564213) $\\
-& = $ udu f(5) d f(4213) $\\
-& = $ uduuddud f(213) $\\
-& = $ uduuddudu f(21) d $\\
+& $ \phi(\pi) $ = $ \phi(7654213) $\\
+& = $ ud \phi(564213) $\\
+& = $ udu \phi(5) d \phi(4213) $\\
+& = $ uduuddud \phi(213) $\\
+& = $ uduuddudu \phi(21) d $\\
 & = $ uduudduduududd $ \\
 \end{split}
 \end{equation}
 Hence the corresponding Dyck path for the permutation $7654213$ has the encoding $uduudduduududd$.
 
 \subsection{Dyck path to 132-avoiding permutation}
+\label{sec:backwardsStandard}
 To solve the problem of converting a Dyck Path to a 132-avoiding permutation we will use the Robinson-Schensted-Knuth correspondence.\\
 Given a 132-avoiding permutation we will start by applying the Robinson-Schensted-Knuth correspondence (RSK-correspondence) to the permutation. As is known the RSK-correspondence gives a bijection between a permutation $\sigma$ of length $n$ and pairs ($P$, $Q$) of {\it standard Young tableaux} of the same shape $\lambda$  $\vdash$ $n$, hence for 132-avoiding permutations Young tableau has at most two rows.\\
-The {\it insertion tableau}, $P$, is obtained by reading in the permutation $\sigma$ = $a_{1}a_{2}...a_{n}$ left to right and inserting the element of the permutation into the partial tableau that has already been obtained by using Schensted's insertion algorithm. Assume that $a_{1}a_{2}...a_{i-1}$ have already been inserted. If $a_{i}$ is larger than all the elements of the first row of the tableau, place $a_{i}$ at the end of the first row of the tableau. If it is not, then let $m$ be the leftmost element in the first row that is larger than $a_{i}$, then place $a_{i}$ in the cell that is currently occupied by $m$ and move $m$ to the end of the second row.\\
+The {\it insertion tableau}, $P$, is obtained by reading in the permutation $\sigma$ = $a_{1}a_{2}...a_{n}$ left to right and inserting the element of the permutation into the partial tableau that has already been obtained by using Schensted's insertion algorithm. Assume that $a_{1}a_{2}...a_{i-1}$ have already been inserted. If $a_{i}$ is larger than all the elements of the first row of the tableau, place $a_{i}$ at the end of the first row of the tableau. If it is not, then let $m$ be the leftmost element in the first row that is larger than $a_{i}$, then place $a_{i}$ in the cell that is currently occupied by $m$ and move $m$ to the end Rotem1981185of the second row.\\
 The {\it recording tableau}, $Q$, is obtained by placing $i$, where $i$ is from $1$ to $n$, in the position of the cell that in the construction of $P$ was inserted at step $i$ (that is, the stage where $a_{i}$ was inserted).\\
-$<$insert example$>$\\
-Finally, to turn the pair of tableaux, ($P$, $Q$), into a Dyck path, $D$, we do it in two stages. Firstly, the first half, $X$ we get by recording, for $i$ from $1$ to $n$. If $i$ is in the first row of $P$ we record an up-step, $u$, and a down-step, $d$, if $i$ is in the second row of $P$. Let $Y$ be the word obtained by replacing all the $u$'s in $A$ with a $d$, and all the $d$'s in $A$ with a $u$, then $D$ = $XY^r$ where $Y^r$ is the reverse of $Y$.\\
-$<$insert example$>$
+Finally, to turn the pair of tableaux, ($P$, $Q$), into a Dyck path, $\DyckP$, we do it in two stages. Firstly, the first half, $X$ we get by recording, for $i$ from $1$ to $n$. If $i$ is in the first row of $P$ we record an up-step, $u$, and a down-step, $d$, if $i$ is in the second row of $P$. Let $Y$ be the word obtained by replacing all the $u$'s in $A$ with a $d$, and all the $d$'s in $A$ with a $u$, then $\DyckP$ = $XY^r$ where $Y^r$ is the reverse of $Y$.
 
+\subsection{Simion-Schmidt Bijection}
+\label{sec:SSBijection}
+The Simion-Schmidt bijection is a bijection which maps a permutation $\sigma$ in $\sym_n(123)$ to a permutation $\tau$ in $\sym_n(132)$.\cite{Clae01}\\
+Consider the following algorithm: \\
+\begin{tabular}{ll}
+Input:  & A permutation $\sigma$: $a_1a_2\dots,a_n$ in $\sym_n(123)$.\\
+Output: & A permutation $\tau$: $b_1b_2\dots,b_n$ in $\sym_n(132)$. \\
+1 &\mbox{} $b_1:=a_1;$ $x:=a_1$\\
+2 &\mbox{} {\tt for} $i=2, \dots,  n$: \\
+3 &\mbox{} \quad\; {\tt if} $a_i < x$: \\
+4 &\mbox{} \quad\;\quad\; $b_i:=a_i$; $x:=a_i$\\
+5 &\mbox{} \quad\; {\tt else}:\\
+6 &\mbox{} \quad\;\quad\;
+$b_i:=\min\{k\mid x<k\leq n,k\neq b_j\textrm{ for all } j<i\}$\\
+\end{tabular}\\
+An example is the 123-avoiding permutation $875964321$ maps to the 132-avoiding permutation $875694321$.
+
+\subsection{Fulemk Bijection}
+The Fulmek bijection is a bijection from a permutation $\sym_n(123)$ to a permutation $\sym_n(132)$. This bijection is essentially the same as the Simion-Schmidt bijection. The difference is that it wraps the complement of the permutation around the Simion-Schmidt bijection. Fulmek bijection is defined as:\\
+\centerline{Fulmek = complement $\circ$ Simion-Schmidt $\circ$ complement}\\
+as stated in \cite{Clae01}.\\
+An example of the Fulmek bijection is the 123-avoiding permutation $875964321$ maps to the 132-avoiding permutation $876954321$.
+
+\subsection{Richards Bijection}
+Richards bijection is a bijection which maps a Dyck path to a permutation, $\tau$ in $\sym_n(123)$.\cite{Clae01}
+Consider the following algorithm: \\
+\begin{tabular}{ll}
+Input:  & A Dyck path $\DyckP$: $d_1d_2\dots,d_{2n}$.\\
+Output: & A permutation $\tau$: $a_1a_2\dots,a_n$ in $\sym_n(132)$. \\
+1 &\mbox{} $r:=n+1;$ $s:=n+1$ $j:=1$\\
+2 &\mbox{} {\tt for} $i=1, \dots, n$: \\
+3 &\mbox{} \quad\; {\tt if} $d_j$ is an up-step: \\
+4 &\mbox{} \quad\;\quad\; {\tt repeat} $s:=s-1;$ $j:=j+1$ {\tt until} $d_j$ is a down-step \\
+5 &\mbox{} \quad\;\quad\; $a_s:=i$ \\
+6 &\mbox{} \quad\; {\tt else} \\
+7 &\mbox{} \quad\;\quad\; {\tt repeat} $r:=r-1;$ {\tt until} $a_r$ is unset \\
+8 &\mbox{} \quad\;\quad\; $a_r:=i$ \\
+9 &\mbox{} \quad\; $j:=j+1$
+\end{tabular}\bigskip
+
+\subsection{Knuth-Richards Bijection}
+\label{sec:KRBijection}
+The Knuth-Richards bijection is a bijection from a permutation $\sym_n(132)$ to a permutation $\sym_n(123)$. The Knuth-Richards bijection is defined as being the composition of Richards bijection and the standard bijection.\\
+\centerline{Knuth-Richards = Richards $\circ$ $\phi$ }\\
+as stated in \cite{Clae01}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	Combinatorial Statistics
@@ -779,7 +1019,7 @@ In this chapter we will be discussing various combinatorial statistics which wil
 The structures which we will be analysing bijections for are the structures which have been discussed in previous chapters.
 
 \subsection{Permutation statistics}
-In this section we will be focusing on the set of permutations on $\mathfrak{S}_n$. Our base set of statistics for permutations are:\\ \centerline{asc, des, exc, ldr, rdr, lir, rir, zeil, comp, lmax,}\\
+In this section we will be focusing on the set of permutations on $\sym_n$. Our base set of statistics for permutations are:\\ \centerline{asc, des, exc, ldr, rdr, lir, rir, zeil, comp, lmax,}\\
 \centerline{lmin, rmax, rmin, head, last, peak, valley, lds, lis, rank, cyc, fix}\\
 The detailed explanation of each statistic in our base set is as follows:\\
 asc: number of ascents: a letter $a_i$ such that $a_i < a_{i+1}$;\\
@@ -806,20 +1046,24 @@ valley: number of valleys: positions $i$ in $\pi$ such that $a_{i-1} > a_i < a_{
 zeil: length of the longest sub-word $n(n-1)...i$.\\
 
 \subsection{Dyck Path statistics}
-In this section we will be focusing on the set of Dyck Paths, $\mathfrak_{D}$. Our base set of statistics for Dyck Paths are:\\ \centerline{ups, downs, returns, peaks, heights}\\
+In this section we will be focusing on the set of Dyck Paths, $\DyckP$. Our base set of statistics for Dyck Paths are:\\ \centerline{ups, downs, returns, peaks, heights}\\
 The detailed explanation of each statistic is as follows:\\
 downs: number of down-steps;\\
-heights: the highest point of $\mathfrak_{D}$;\\
-maj: major index: the sum of the positions of the valleys of $\mathfrak_{D}$.
-noDoubleRises: number of double rises: how many consecutive up steps in $\mathfrak_{D}$.\\
-noInitRises: number of initial rises: how many consecutive up steps in $\mathfrak_{D}$ from $(0,0)$.\\
-peaks: number of peaks in $\mathfrak_{D}$;\\
-returns: number of times the path returns to the x-axis: how many times $\mathfrak_{D}$ touches $x=0$;\\
+heights: the highest point of $\DyckP$;\\
+maj: major index: the sum of the positions of the valleys of $\DyckP$.
+noDoubleRises: number of double rises: how many consecutive up steps in $\DyckP$.\\
+noInitRises: number of initial rises: how many consecutive up steps in $\DyckP$ from $(0,0)$.\\
+peaks: number of peaks in $\DyckP$;\\
+returns: number of times the path returns to the x-axis: how many times $\DyckP$ touches $x=0$;\\
 ups: number of up-steps.\\
 
 \subsection{Young Tableaux statistics}
-
-\subsection{$n+2$-gon statistics}
+In this section we will be focussing on the set of Young Tableaux, $\YoungTab$. Our base set of statistics for Young Tableaux are:\\
+\centerline{des, dimension, hook, lambda}\\
+The detailed explanation of each statistic is as follows:\\
+des: The number of descents in the Young Tableaux. This is an element $y_i$ such that $y_i > y_{i+1}$.\\
+dimension: This is defined as $\frac{n!}{hook \YoungTab}$ where n is the size of the Young Tableaux and $\YoungTab$ is the Young Tableaux. \\
+hook: This is the hook formula $hook(x)$. $hook(x)$ of a box ,$x$, in a Young Tableaux, $\YoungTab$ of shape $\lambda$ is the number of boxes that are in the same row to the right of it plus the boxes in the same column below it plus one for the box itself.\\
 
 \subsection{Mapping of statistics}
 For each statistic, we will define a mapping, $f$, such that every statistic for each structure will correspond to a statistic for each other structure:\\
@@ -834,16 +1078,34 @@ The correspondence between permutation statistics and Dyck Path statistics will 
 %	Analysis of Bijections
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analysis of Bijections}
-In this chapter we will be looking at the analysis for each bijection over a given test data then prove the equivalence of each statistic by using the equidistribution theorem. Each statistic value will have an error value of $\pm 1$.
+In this chapter we will be looking at the analysis for each bijection over a given test data then prove the equivalence of each statistic by using the equidistribution theorem. Each statistic value will have an error value of $\pm 1$. The equidistribution score for each statistic is the value which determines the statistic group the each statistic will join to determine which statistics are equidistributed. To get this score for each bijection, the middle value of each set of values was taken.
 
 \subsection{Equidistribution theorem}
 For two sets of Catalan structures $\mathcal_{A}$ and $\mathcal_{B}$, with their respective statistic sets $s_1, s_2,..., s_k$ and $t_1, t_2,...,t_l$. Then $s$ and $t$ are said to be equidistributed if $F = G$ where $F = {\sum_{a \in {\mathcal_{A}}n}} x^{s(a)}$ and $G = {\sum_{b \in {\mathcal_{A}}_n}} x^{t(b)}$. The coefficient of each set is given by $[x^k]F = \#\{a \in {\mathcal_{A}} : S(a) = k\}$.
 
 \subsection{Standard Bijection}
-For the standard bijection we will look at an analysis of equidistrbution over many permutations which are in table~\ref{table:StandardPerms}. 
+For the standard bijection we will look at an analysis of equidistribution over many permutations which are in table~\ref{table:StandardPerms}. 
 
 \subsubsection{Analysis of equidistribution of Standard bijection over many permutations}
-From the findings in ~\ref{table:StandardPerms1} we can see that all of our base set of statistics are respected. Categorising the statistics for each set of results, the equidistribution value was recorded in table~\ref{table:StandardPerms1} and the equidistribution of statistics is shown in table~\ref{table:EDStandardPerms} and table~\ref{table:EDStandardDP}.
+From the findings in ~\ref{table:StandardPerms1} we can see that all of our base set of statistics are respected. Categorising the statistics for each set of results, the equidistribution value was recorded in table~\ref{table:StandardPerms1} and the equidistribution of statistics is shown in table~\ref{table:EDStandardPerms} and table~\ref{table:EDStandardDP}. We find from table~\ref{table:EDStandardPerms} and table~\ref{table:EDStandardDP} that the statistics: comp, cyc, and peak are equidistributed over the value $0$; asc, des, fix, lir, lis, rank, rdr, noDoubleRises, and returns are equidistributed over the value $1$; exc, head, last, ldr, lds, lmax, lmin, rmax, rir, rmin, zeil, heights, and peaks are equidistributed over the value $2$; and finally, downs, noInitRises, and ups are equidistributed over the value $3$. To show which statistics correspond to each other fully we can look at the table below. For the purposes of table~\ref{table:FinalEDStandard}, \#ED will correspond to the equidistribution group, SSP Stats will correspond to the statistics for stack sortable permutations and Dyck Path Stats will correspond to the statistics for Dyck Paths.
+\begin{table}[H]
+\caption{Standard bijection equidistribution.}
+\begin{tabular}{c | c | c}
+\hline\hline
+\#ED & SSP Stats & Dyck Path Stats\\ [0.5ex]
+\hline
+0 & comp, cyc, peak & - \\
+\hline
+1 & asc, des, fix, lir, lis, rank, rdr & noDoubleRises, returns \\
+\hline
+2 & exc, head, last, ldr, lds, lmax, lmin, rmax, rir, rmin, zeil & heights, peaks \\
+\hline
+3 & - & downs, noInitRises, ups\\
+\hline
+\end{tabular}
+\label{table:FinalEDStandard}
+\end{table}
+Currently no equidistribution can be determined for the statistics valley, and maj as they have returned inconclusive results in table~\ref{table:StandardPerms1}.
 
 \subsection{Simion Schmidt Bijection}
 For the Simion-Schmidt bijection, we will start with the following permutation: $\pi_1 = 6743152$.\\
@@ -853,10 +1115,129 @@ From the findings in ~\ref{table:simionschmidt1} we can see that all of our base
 Analysing the permutation further we shall investigate why this is the case. As the Simion-Schmidt bijection has changed the last two letters of $\pi_1$ to convert $\pi_1$ from a $123$-avoiding permutation to a $132$-avoiding permutation it follows in this case that the last two letters will change since $152$ avoids $123$ whereas $152$ does not avoid 132 and $125$ avoids $132$ but does not avoid $123$.\\
 Now let's look at the rightmost increasing runs: for $\pi_1$ they are: $7431$, $431$, $74$, $31$ and $52$. For $Simion-Schmidt(\pi_1)$ they are:  $7431$, $431$, $74$, $31$, $125$, and $12$. Comparing these values the differing values for $\pi_1$ are $52$ and the differing values for $Simion-Schmidt(\pi_1)$ are $125$ and $12$. Hence from the bijection these two statistics should not be respected for this particular permutation. 
 \subsubsection{Analysis of equidistribution of Simion Schmidt bijection over many permutations}
-To find an approximate equidistribution for the Simion-Schmidt bijection, we will be looking at the permutations in table~\ref{table:SSPerms} on page~\pageref{table:SSPerms}. Categorising the statistics for the 3 sets of results, we find from our results in table~\ref{table:SSPerm1} on page~\pageref{table:SSPerms1}, and our final equidistribution in table~\ref{table:EDSSPerms} on page~\pageref{table:EDSSPerms} that the statistics: comp cyc, fix, and peak are equidistributed over the value $0$; asc, des, exc, lir, lis, lmax, rank, rdr, valley, and zeil are equidistributed over the value $1$; last, ldr, lds, lmin, rmax, rir, and rmin are equidistributed over the value $2$; and finally that the statistic head does not have a statistic which is is equidistributed with.
+To find an approximate equidistribution for the Simion-Schmidt bijection, we will be looking at the permutations in table~\ref{table:SSPerms} on page~\pageref{table:SSPerms}. Categorising the statistics for the 3 sets of results, we find from our results in table~\ref{table:SSPerms1} on page~\pageref{table:SSPerms1}, and our final equidistribution in table~\ref{table:EDSSPerms} on page~\pageref{table:EDSSPerms} that the statistics: comp cyc, fix, and peak are equidistributed over the value $0$; asc, des, exc, lir, lis, lmax, rank, rdr, valley, and zeil are equidistributed over the value $1$; last, ldr, lds, lmin, rmax, rir, and rmin are equidistributed over the value $2$; and finally that the statistic head does not have a statistic which is is equidistributed with. To show it visually here is the final equidistribution:
+\begin{table}[H]
+\caption{Simion-Schmidt equidistributon.}
+\begin{tabular}{c | c}
+\hline\hline
+\#ED & Permutation Statistics\\ [0.5ex]
+\hline
+0 & comp, cyc, fix, peak \\
+\hline
+1 & asc, des, exc, lir, lis, lmax, rank, rdr, valley, zeil  \\
+\hline
+2 & last, ldr, lds, lmin, rmax, rir, rmin \\
+\hline
+3 & head \\
+\hline
+\end{tabular}
+\label{table:FinalEDSS}
+\end{table}
 
 \subsubsection{Analysis of equidistribution of Fulmek bijection over many permutations}
-To find an approximate equidistribution for the Simion-Schmidt bijection, we will be looking at the permutations in table~\ref{table:FulmekPerms} on page~\pageref{table:FulmekPerms}. Categorising the statistics for the four sets of results, we find from our results in table~\ref{table:FulmekPerms1} on page~\pageref{table:FulmekPerms1}, and our final equidistribution in table~\ref{table:EDFulmekPerms} that the statistics: comp and cyc are equidistributed over the value $0$; asc, last, ldr, lis, peak, rir, rmin, and valley are equidistributed over the value $1$; des, exc, lds, lmax, rank and rdr are equidistributed over the value $2$; head and zeil are equidistributed over the value $3$. It was found that the statistics lmin and rmax are equidistributed over the value $2$ or the value $3$ with the data we have. It was found also that the statistics fix and lir are not equidistributed with any other value. 
+To find an approximate equidistribution for the Fulmek bijection, we will be looking at the permutations in table~\ref{table:FulmekPerms} on page~\pageref{table:FulmekPerms}. Categorising the statistics for the four sets of results, we find from our results in table~\ref{table:FulmekPerms1} on page~\pageref{table:FulmekPerms1}, and our final equidistribution in table~\ref{table:EDFulmekPerms} that the statistics: comp and cyc are equidistributed over the value $0$; asc, last, ldr, lis, peak, rir, rmin, and valley are equidistributed over the value $1$; des, exc, lds, lmax, rank and rdr are equidistributed over the value $2$; head and zeil are equidistributed over the value $3$. It was found that the statistics lmin and rmax are equidistributed over the value $2$ or the value $3$ with the data we have hence their result is inconclusive. It was found also that the statistics fix and lir are not equidistributed with any other value.\\
+To show it visually here is the final equidistribution:
+\begin{table}[H]
+\caption{Fulmek equidistributon.}
+\begin{tabular}{c | c}
+\hline\hline
+\#ED & Permutation Statistics\\ [0.5ex]
+\hline
+0 & comp, cyc \\
+\hline
+1 & asc, last, ldr, lis, peak, rir, rmin, valley  \\
+\hline
+2 & des, exc, lds, lmax, rank, rdr \\
+\hline
+3 & head, zeil \\
+\hline
+Inconclusive & lmin, rmax \\
+\hline
+\end{tabular}
+\label{table:FinalEDFulmek}
+\end{table}
+
+\subsubsection{Analysis of equidistribution of Richards bijection over many Dyck Paths}
+To find an approximate equidistribution for Richards bijection, we will be looking at the Dyck Paths in table~\ref{table:Richards} on page~\pageref{table:Richards}. Categorising the statistics over the four sets of results, we find from our results in table~\ref{table:Richards1} on page~\pageref{table:Richards1} that the statistics: head, ldr, rank, rdr heights and noDoubleRises are equidistributed over the value 1; comp, fix, lir, lmin, rmax, rir, rmin, zeil, noInitRises, peaks and returns are equidistributed over the value 2. For the value 3, there is only one possible pairing of equidistributed statistics which is lmax and maj. For the statistics exc, peak, valley, des, asc, lds, cyc, lis which have equidistribution values 4, 5, 6, 7, 8, 11, 13, and 14 respectively there is no possible pairing. Finally the values last, downs and ups have inconclusive results which could be looked at in a further study.\\
+To show it visually here is the final equidistribution:
+\begin{table}[H]
+\caption{Richards equidistributon.}
+\begin{tabular}{c | c | c}
+\hline\hline
+\#ED & Permutation Statistics & Dyck Path Stats\\ [0.5ex]
+\hline
+1 & head, ldr, rank, rdr & heights, noDoubleRises  \\
+\hline
+2 & comp, fix, lir, lmin, rmax, rir, rmin, zeil & noInitRises, peaks, returns\\
+\hline
+3 & lmax & maj\\
+\hline
+4 & exc & - \\
+\hline
+5 & peak & - \\
+\hline
+6 & valley & - \\
+\hline
+7 & des & - \\
+\hline
+8 & asc & - \\
+\hline
+11 & lds & - \\
+\hline
+13 & cyc & - \\
+\hline
+14 & lis & - \\
+\hline
+Inconclusive & last & downs, ups \\
+\hline
+\end{tabular}
+\label{table:FinalEDRichards}
+\end{table}
+
+\subsubsection{Analysis of equidistribution of Knuth Richards bijection over many permutations}
+To find an approximate equidistribution for Richards bijection, we will be looking at the Dyck Paths in table~\ref{table:KnuthRichards} on page~\pageref{table:KnuthRichards}. Categorising the statistics over the four sets of results, we find from our results in table~\ref{table:KnuthRichardsPerms} on page~\pageref{table:KnuthRichardsPerms} that the statistics: comp, fix, head, last, ldr, peak and rir are equidistributed over the value 1; lir, lmin, rdr, rmin, and zeil and equidistributed over the value 2; exc, lmax and rmax are equidistributed over the value 3. The values valley and asc, which have the equidistribution values 4 and 8 respectively do not have a pairing. Finally the values cyc, des, lds, lis and rank have inconclusive results which could be looked at in a further study.\\
+To show it visually here is the final equidistribution:
+\begin{table}[H]
+\caption{Richards equidistributon.}
+\begin{tabular}{c | c }
+\hline\hline
+\#ED & Permutation Statistics\\ [0.5ex]
+\hline
+1 & comp, fix, head, last, ldr, peak, rir\\
+\hline
+2 & lir, lmin, rdr, rmin, zeil\\
+\hline
+3 & exc, lmax, rmax\\
+\hline
+4 & valley\\
+\hline
+8 & asc\\
+\hline
+Inconclusive & cyc, des, lds, lis, rank\\
+\hline
+\end{tabular}
+\label{table:FinalEDKnuthRichards}
+\end{table}
+
+\section{Testing}
+Testing the application and framework created within this project was primarily done using unit testing and the HUnit package. The main test strategy was to use a series of assertions and check wether they are true or false. This is discussed further in the appendix on testing which is Appendix 2.
+
+\section{Conclusion}
+This chapter presents a main overview of the projects success and failures, and provides a number of suggestions for further study in this area.
+
+\subsection{Project Success}
+In general, this project has been successful in achieving its core objectives. As the application and framework are in experimental stages due to the nature of the project, it is feasible to state that it is a good introduction to further development within the field of combinatorial statistics and structures and will provide a good tool to use to assist research and teaching within this field.\\
+The use of Haskell as a tool to program the application and framework prove to be an excellent choice as it made programming each structure straight forward due to the fact that the language is strongly typed and hence, very type safe.\\
+
+\subsection{Project Weaknesses}
+The project had many difficult parts, some of which were difficult to overcome. The first example of this was using Haskell's foreign function interface to call foreign C code within Haskell. This was a core difficulty as it would not compile without a {\it .cabal} file and would not run within GHCi when the user is within the cabal package directory. This problem was overcome by creating a {\it .cabal} file and navigating outwith the package directory.\\
+There were many problems when creating the bijections which were overcome using the method previously defined as it was much simpler to create a C file to execute a for loop than it would have been to implement this within Haskell.\\
+Further more, problems were found in initially learning the mathematics as I had to overcome the steep learning curve which was more difficult than I had assumed.\\
+Finally the last problem I had was in using \cite{Gloss} as the .cabal file would not easily resolve this dependency.
+
+\subsection{Further Development}
+As the application and framework are in experimental stages there is room for improvement and expansion of the structures, bijections and method in which an equidistribution is found. The most obvious way to expand would be to include more structures and bijections to make it sound as a research aide. There is also a lot of potential in the area of Catalan structures as it is a very exciting field of combinatorics and also due to the sheer amount of them and investigating potential bijections between them. There is also much potential for further study in finding combinatorial statistics as new statistics for structures are sought to give a more in depth analysis of each structure.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	References
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -870,7 +1251,7 @@ To find an approximate equidistribution for the Simion-Schmidt bijection, we wil
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Appendix 1: Tables of data}
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Simion-Schmidt results over base set statistics.}
 \centering
 \begin{tabular}{c | c c c}
@@ -899,13 +1280,13 @@ rir & 1 & 3 & -2 \\
 rmin & 2 & 3 & -1 \\
 valley & 1 & 1 & 0 \\
 zeil & 2 & 2 & 0 \\
-\hline
+\hlinemichael cooper
 \end{tabular}
 \label{table:simionschmidt1}
 \end{table}
 \newpage
 
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Permutations for Standard bijection analysis}
 \centering
 \begin{tabular}{c | c c}
@@ -924,7 +1305,7 @@ n & $\pi_n$ & $\phi(\pi_n)$ \\ [0.5ex]
 \end{table}
 %\newpage
 
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Permutations for Simion-Schmidt bijection analysis}
 \centering
 \begin{tabular}{c | c c}
@@ -940,7 +1321,7 @@ n & $\pi_n$ & $ss(\pi_n)$ \\ [0.5ex]
 \end{table}
 %\newpage
 
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Permutations for Fulmek bijection analysis}
 \centering
 \begin{tabular}{c | c c}
@@ -954,6 +1335,38 @@ n & $\pi_n$ & $fulmek(\pi_n)$ \\ [0.5ex]
 \hline
 \end{tabular}
 \label{table:FulmekPerms}
+\end{table}
+
+\begin{table}[H]
+\caption{Permutations for Richards bijection analysis}
+\centering
+\begin{tabular}{c | c c}
+\hline\hline
+n & $\pi_n$ & $richards(\pi_n)$ \\ [0.5ex]
+\hline
+1 & [U,D] & 140340909569536\\
+2 & [U,D,U,D] & 1403409095065601\\
+3 & [U,U,U,D,D,D] & 14174408273819290\\
+4 & [U,D,U,U,D,D,U,D] & 140338056432634259\\
+\hline
+\end{tabular}
+\label{table:Richards}
+\end{table}
+
+\begin{table}[H]
+\caption{Permutations for the Knuth-Richards bijection analysis}
+\centering
+\begin{tabular}{c | c c}
+\hline\hline
+n & $\pi_n$ & $richards(\pi_n)$ \\ [0.5ex]
+\hline
+1 & 231 & 14015125887385621 \\
+2 & 4321 & 140149077835776321 \\
+3 & 52341 & 1397781281065284103\\
+4 & 431256 & 140151378975940133 \\
+\hline
+\end{tabular}
+\label{table:KnuthRichards}
 \end{table}
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -971,13 +1384,13 @@ n & $\pi_n$ & $fulmek(\pi_n)$ \\ [0.5ex]
 %
 % [[(3,"dCnt"),(2,"heightStat"),(6,"majorIndex"),(1,"noDoubleRises"),(1,"noInitialRises"),(2,"peaks"),(1,"returnsXAxis"),(3,"uCnt")]])
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% $pi_3$ & standard(pi_3)
+% $pi_3$ & standard(pi_3)[1,3,9,7,7,8,1,2,8,1,0,6,5,2,8,4,1,0,3]
 %([[(0,"asc"),(0,"comp"),(0,"cyc"),(2,"des"),(2,"exc"),(1,"fix"),(3,"head"),(1,"last"),(3,"ldr"),(2,"lds"),(1,"lir"),(0,"lis"),(1,"lmax"),(3,"lmin"),(0,"peak"),(3,"rmax"),(2,"rank"),(3,"rdr"),(1,"rir"),(1,"rmin"),(0,"valley"),(3,"zeil")]],
 %
 %[[(3,"dCnt"),(1,"heightStat"),(9,"majorIndex"),(0,"noDoubleRises"),(3,"noInitialRises"),(3,"peaks"),(3,"returnsXAxis"),(3,"uCnt")]])
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % $pi_4$ & standard(pi_4)
-%([[(1,"asc"),(0,"comp"),(0,"cyc"),(1,"des"),(1,"exc"),(0,"fix"),(3,"head"),(2,"last"),(2,"ldr"),(2,"lds"),(1,"lir"),(1,"lis"),(1,"lmax"),(2,"lmin"),(0,"peak"),(2,"rmax"),(1,"rank"),(1,"rdr"),(2,"rir"),(2,"rmin"),(1,"valley"),(1,"zeil")]],
+%([[(1,"asc"),(0,"comp"),(0,"cyc"),(1,"des"),(1,"exc"),(0,"fix"),(3,"heamichael cooperd"),(2,"last"),(2,"ldr"),(2,"lds"),(1,"lir"),(1,"lis"),(1,"lmax"),(2,"lmin"),(0,"peak"),(2,"rmax"),(1,"rank"),(1,"rdr"),(2,"rir"),(2,"rmin"),(1,"valley"),(1,"zeil")]],
 %[[(3,"dCnt"),(2,"heightStat"),(5,"majorIndex"),(1,"noDoubleRises"),(2,"noInitialRises"),(2,"peaks"),(2,"returnsXAxis"),(3,"uCnt")]])
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % $pi_5$ & standard(pi_5)
@@ -988,7 +1401,7 @@ n & $\pi_n$ & $fulmek(\pi_n)$ \\ [0.5ex]
 %([[(0,"asc"),(0,"comp"),(0,"cyc"),(3,"des"),(2,"exc"),(0,"fix"),(4,"head"),(1,"last"),(4,"ldr"),(3,"lds"),(1,"lir"),(0,"lis"),(1,"lmax"),(4,"lmin"),(0,"peak"),(4,"rmax"),(2,"rank"),(4,"rdr"),(1,"rir"),(1,"rmin"),(0,"valley"),(4,"zeil")]],
 %[[(4,"dCnt"),(1,"heightStat"),(16,"majorIndex"),(0,"noDoubleRises"),(4,"noInitialRises"),(4,"peaks"),(4,"returnsXAxis"),(4,"uCnt")]])
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Statistics based upon table ~\ref{table:StandardPerms}}
 \centering
 \tabcolsep=0.11cm
@@ -1035,14 +1448,14 @@ ups & - & 3 & - & 3 & - & 3 & - & 3 & - & 4 & - & 4 & 3\\
 % $\pi_1$
 %[[(1,"asc"),(0,"comp"),(0,"cyc"),(1,"des"),(1,"exc"),(0,"fix"),(3,"head"),(2,"last"),(2,"ldr"),(2,"lds"),(1,"lir"),(1,"lis"),(1,"lmax"),(2,"lmin"),(0,"peak"),(2,"rmax"),(1,"rank"),(1,"rdr"),(2,"rir"),(2,"rmin"),(1,"valley"),(1,"zeil")],
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% $ss(\pi_1)
+% $ss(\pi_1)[1,3,9,7,7,8,1,2,8,1,0,6,5,2,8,4,1,0,3]
 %[(1,"asc"),(0,"comp"),(0,"cyc"),(1,"des"),(1,"exc"),(0,"fix"),(4,"head"),(2,"last"),(2,"ldr"),(2,"lds"),(1,"lir"),(1,"lis"),(1,"lmax"),(2,"lmin"),(0,"peak"),(2,"rmax"),(1,"rank"),(1,"rdr"),(2,"rir"),(2,"rmin"),(1,"valley"),(1,"zeil")],[]]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % $\pi_2$
 %[[(1,"asc"),(0,"comp"),(0,"cyc"),(1,"des"),(2,"exc"),(1,"fix"),(1,"head"),(2,"last"),(1,"ldr"),(1,"lds"),(2,"lir"),(2,"lis"),(2,"lmax"),(1,"lmin"),(1,"peak"),(2,"rmax"),(1,"rank"),(2,"rdr"),(1,"rir"),(2,"rmin"),(0,"valley"),(1,"zeil")],
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % $ss(\pi_2)$
-%[(2,"asc"),(0,"comp"),(0,"cyc"),(0,"des"),(3,"exc"),(3,"fix"),(1,"head"),(3,"last"),(1,"ldr"),(0,"lds"),(3,"lir"),(2,"lis"),(3,"lmax"),(1,"lmin"),(0,"peak"),(1,"rmax"),(1,"rank"),(1,"rdr"),(3,"rir"),(3,"rmin"),(0,"valley"),(1,"zeil")],[]]
+%[(2,"asc"),(0,"comp"),(0,"cyc"),(0,"des"),(3,"exc"),(3,"fix"),michael cooper(1,"head"),(3,"last"),(1,"ldr"),(0,"lds"),(3,"lir"),(2,"lis"),(3,"lmax"),(1,"lmin"),(0,"peak"),(1,"rmax"),(1,"rank"),(1,"rdr"),(3,"rir"),(3,"rmin"),(0,"valley"),(1,"zeil")],[]]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % $\pi_3$
 %[[(1,"asc"),(0,"comp"),(0,"cyc"),(1,"des"),(1,"exc"),(0,"fix"),(3,"head"),(2,"last"),(2,"ldr"),(2,"lds"),(1,"lir"),(1,"lis"),(1,"lmax"),(2,"lmin"),(0,"peak"),(2,"rmax"),(1,"rank"),(1,"rdr"),(2,"rir"),(2,"rmin"),(1,"valley"),(1,"zeil")],
@@ -1050,7 +1463,7 @@ ups & - & 3 & - & 3 & - & 3 & - & 3 & - & 4 & - & 4 & 3\\
 % $ss(\pi_3)$
 %[(1,"asc"),(0,"comp"),(0,"cyc"),(1,"des"),(1,"exc"),(0,"fix"),(4,"head"),(2,"last"),(2,"ldr"),(2,"lds"),(1,"lir"),(1,"lis"),(1,"lmax"),(2,"lmin"),(0,"peak"),(2,"rmax"),(1,"rank"),(1,"rdr"),(2,"rir"),(2,"rmin"),(1,"valley"),(1,"zeil")],[]]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Statistics based upon table ~\ref{table:SSPerms}}
 \centering
 \begin{tabular}{c | c c c c c c c | c}
@@ -1099,17 +1512,17 @@ zeil & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % $\pi_3$
 %([[(2,"asc"),(0,"comp"),(0,"cyc"),(1,"des"),(2,"exc"),(0,"fix"),(3,"head"),(2,"last"),(1,"ldr"),(2,"lds"),(2,"lir"),(3,"lis"),(2,"lmax"),(2,"lmin"),(1,"peak"),(2,"rmax"),(2,"rank"),(1,"rdr"),(2,"rir"),(2,"rmin"),(1,"valley"),(2,"zeil")]],
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%[1,3,9,7,7,8,1,2,8,1,0,6,5,2,8,4,1,0,3]%
 % $fk(\pi_3)$
 %[[(1,"asc"),(0,"comp"),(0,"cyc"),(2,"des"),(2,"exc"),(0,"fix"),(3,"head"),(1,"last"),(1,"ldr"),(2,"lds"),(2,"lir"),(2,"lis"),(2,"lmax"),(3,"lmin"),(1,"peak"),(3,"rmax"),(2,"rank"),(3,"rdr"),(1,"rir"),(1,"rmin"),(0,"valley"),(4,"zeil")]])
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % $\pi_4$
-%([[(1,"asc"),(0,"comp"),(0,"cyc"),(2,"des"),(2,"exc"),(0,"fix"),(3,"head"),(2,"last"),(2,"ldr"),(3,"lds"),(1,"lir"),(2,"lis"),(2,"lmax"),(2,"lmin"),(1,"peak"),(2,"rmax"),(1,"rank"),(2,"rdr"),(1,"rir"),(2,"rmin"),(1,"valley"),(2,"zeil")]],
+%([[(1,"asc"),(0,"comp"),(0,"cyc"),(2,"des"),(2,[1,4,0,1,4,9,0,7,7,8,3,5,7,7,6,3,2,1]"exc"),(0,"fix"),(3,"head"),(2,"last"),(2,"ldr"),(3,"lds"),(1,"lir"),(2,"lis"),(2,"lmax"),(2,"lmin"),(1,"peak"),(2,"rmax"),(1,"rank"),(2,"rdr"),(1,"rir"),(2,"rmin"),(1,"valley"),(2,"zeil")]],
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % $fk(\pi_4)$
 %[[(1,"asc"),(0,"comp"),(0,"cyc"),(2,"des"),(3,"exc"),(1,"fix"),(3,"head"),(1,"last"),(2,"ldr"),(3,"lds"),(1,"lir"),(2,"lis"),(2,"lmax"),(3,"lmin"),(1,"peak"),(2,"rmax"),(2,"rank"),(2,"rdr"),(1,"rir"),(1,"rmin"),(1,"valley"),(4,"zeil")]])
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Statistics based upon table ~\ref{table:FulmekPerms}}
 \centering
 \begin{tabular}{c | c c c c c c c c | c}
@@ -1144,10 +1557,140 @@ zeil & 3 & 3 & 1 & 1 & 2 & 4 & 2 & 4 & 3\\
 \end{table}
 \newpage
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \pi_1
+%[[(1,"dCnt"),(1,"heightStat"),(1,"majorIndex"),(0,"noDoubleRises"),(1,"noInitialRises"),(1,"peaks"),(1,"returnsXAxis"),(1,"uCnt")]],
+%
+% $rich(\pi_1)$ = [[1,4,0,3,4,0,9,0,9,5,6,9,5,3,6]],
+%[[(8,"asc"),(2,"comp"),(12,"cyc"),(6,"des"),(4,"exc"),(2,"fix"),(1,"head"),(6,"last"),(1,"ldr"),(10,"lds"),(2,"lir"),(11,"lis"),(3,"lmax"),(2,"lmin"),(5,"peak"),(2,"rmax"),(1,"rank"),(1,"rdr"),(2,"rir"),(3,"rmin"),(5,"valley"),(3,"zeil")]])
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% $\pi_2$ = ([[U,D,U,D]],
+%[[(2,"dCnt"),(1,"heightStat"),(4,"majorIndex"),(0,"noDoubleRises"),(2,"noInitialRises"),(2,"peaks"),(2,"returnsXAxis"),(2,"uCnt")]],
+%
+% $rich(\pi_2)$ = [[1,4,0,3,4,0,9,0,9,5,0,6,5,6,0,1]],
+%[[(8,"asc"),(2,"comp"),(13,"cyc"),(7,"des"),(4,"exc"),(2,"fix"),(1,"head"),(1,"last"),(1,"ldr"),(12,"lds"),(2,"lir"),(13,"lis"),(3,"lmax"),(2,"lmin"),(6,"peak"),(3,"rmax"),(1,"rank"),(1,"rdr"),(2,"rir"),(2,"rmin"),(6,"valley"),(1,"zeil")]])
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% $\pi_3$ = ([[U,U,U,D,D,D]],
+%[[(3,"dCnt"),(3,"heightStat"),(3,"majorIndex"),(2,"noDoubleRises"),(2,"noInitialRises"),(1,"peaks"),(1,"returnsXAxis"),(3,"uCnt")]],
+%
+% $rich(\pi_3)$ = [[1,4,1,7,4,4,0,8,2,7,3,8,1,9,2,9,0]],
+%[[(7,"asc"),(1,"comp"),(13,"cyc"),(8,"des"),(4,"exc"),(2,"fix"),(1,"head"),(0,"last"),(1,"ldr"),(15,"lds"),(2,"lir"),(14,"lis"),(5,"lmax"),(2,"lmin"),(7,"peak"),(2,"rmax"),(1,"rank"),(2,"rdr"),(1,"rir"),(1,"rmin"),(6,"valley"),(2,"zeil")]])
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% $\pi_4$ = ([[U,D,U,U,D,D,U,D]],
+%[[(4,"dCnt"),(2,"heightStat"),(12,"majorIndex"),(1,"noDoubleRises"),(3,"noInitialRises"),(3,"peaks"),(3,"returnsXAxis"),(4,"uCnt")]],
+%
+% $rich(\pi_4)$ = [[1,4,0,3,3,8,0,5,6,4,3,2,6,3,4,2,5,9]],
+%[[(9,"asc"),(2,"comp"),(13,"cyc"),(7,"des"),(3,"exc"),(1,"fix"),(1,"head"),(9,"last"),(1,"ldr"),(12,"lds"),(2,"lir"),(14,"lis"),(4,"lmax"),(2,"lmin"),(5,"peak"),(1,"rmax"),(1,"rank"),(1,"rdr"),(3,"rir"),(4,"rmin"),(5,"valley"),(1,"zeil")]])
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[H]
+\caption{Statistics based upon table ~\ref{table:Richards}}
+\centering
+\tabcolsep=0.11cm
+\begin{tabular}{c | c c c c c c c c | c}
+\hline\hline
+Statistic & $\pi_1$ & $rich(\pi_1)$ & $\pi_2$ & $rich(\pi_2)$ & $\pi_3$ & $rich(\pi_3)$ & $\pi_4$ & $rich(\pi_4)$ & Eds value\\ [0.5ex]
+\hline
+asc & - & 8 & - & 8 & - & 7 & - & 9 & 8\\
+comp & - & 2 & - & 2 & - & 1 & - & 2 & 2\\
+cyc & - & 12 & - & 13 & - & 13 & - & 13 & 13\\
+des & - &  6 & - & 7 & - & 8 & - & 7 & 7\\
+exc & - &  4 & - & 4 & - & 4 & - & 3 & 4\\
+fix & - &  2 & - & 2 & - & 2 & - & 1 & 2\\
+head & - &  1 & - & 1 & - & 1 & - & 1 & 1\\
+last & - & 6 & - & 1 & - & 0 & - & 9 & inconclusive\\
+ldr & - &  1 & - & 1 & - & 1 & - & 1 & 1\\
+lds & - &  10 & - & 12 & - & 15 & - & 12 & 11\\ 
+lir & - &  2 & - & 2 & - & 2 & - & 2 & 2\\
+lis & - &  11 & - & 13 & - & 14 & - & 14 & 14\\ 
+lmax & - &  3 & - & 3 & - & 5 & - & 4 & 3\\
+lmin & - &  2 & - & 2 & - & 2 & - & 2 & 2\\
+peak & - &  5 & - & 6 & - & 7 & - & 5 & 5\\
+rmax & - &  2 & - & 3 & - & 2 & - & 1 & 2\\
+rank & - &  1 & - & 1 & - & 1 & - & 1 & 1\\
+rdr & - & 1 & - & 1 & - & 2 & - & 1 & 1\\
+rir & - & 2 & - & 2 & - & 1 & - & 3 & 2\\
+rmin & - & 3 & - & 2 & - & 1 & - & 4 & 2\\
+valley & - & 5 & - & 6 & - & 6 & - & 5 & 6\\  
+zeil & - & 3 & - & 1 & - & 2 & - & 1 & 2\\
+\hline
+downs & 1 & - & 2 & - & 3 & - & 4 & - & inconclusive\\
+heights & 1 & - & 1 & - & 3 & - & 2 & - & 1\\  
+maj & 1 & - & 4 & - & 3 & - & 12 & - & 3\\ 
+noDoubleRises & 0 & - & 0 & - & 2 & - & 1 & - & 1\\
+noInitRises & 1 & - & 2 & - & 2 & - & 3 & - & 2\\
+peaks & 1 & - & 2 & - & 1 & - & 3 & - & 2\\
+returns & 1 & - & 2 & - & 1 & - & 3 & - & 2\\ 
+ups & 1 & - & 2 & - & 3 & - & 4 & - & inconclusive\\
+\hline
+\end{tabular}
+\label{table:Richards1}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \pi_1 = ([[2,3,1]],
+%[[(1,"asc"),(0,"comp"),(0,"cyc"),(1,"des"),(2,"exc"),(0,"fix"),(2,"head"),(1,"last"),(1,"ldr"),(1,"lds"),(2,"lir"),(2,"lis"),(2,"lmax"),(2,"lmin"),(1,"peak"),(2,"rmax"),(2,"rank"),(2,"rdr"),(1,"rir"),(1,"rmin"),(0,"valley"),(3,"zeil")]],
+%
+%kr(\pi_1) = [[1,4,0,1,5,1,2,5,8,8,7,3,8,5,6,2,1]],
+%[[(8,"asc"),(2,"comp"),(14,"cyc"),(7,"des"),(3,"exc"),(2,"fix"),(1,"head"),(1,"last"),(1,"ldr"),(10,"lds"),(2,"lir"),(12,"lis"),(4,"lmax"),(2,"lmin"),(4,"peak"),(4,"rmax"),(1,"rank"),(3,"rdr"),(1,"rir"),(2,"rmin"),(4,"valley"),(2,"zeil")]])
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \pi_2 = ([[4,3,2,1]],
+%[[(0,"asc"),(0,"comp"),(0,"cyc"),(3,"des"),(2,"exc"),(0,"fix"),(4,"head"),(1,"last"),(4,"ldr"),(3,"lds"),(1,"lir"),(0,"lis"),(1,"lmax"),(4,"lmin"),(0,"peak"),(4,"rmax"),(2,"rank"),(4,"rdr"),(1,"rir"),(1,"rmin"),(0,"valley"),(4,"zeil")]],
+%
+% kr(\pi_2) = [[1,4,0,1,4,9,0,7,7,8,3,5,7,7,6,3,2,1]],
+%[[(8,"asc"),(2,"comp"),(12,"cyc"),(7,"des"),(3,"exc"),(1,"fix"),(1,"head"),(1,"last"),(1,"ldr"),(10,"lds"),(2,"lir"),(12,"lis"),(3,"lmax"),(2,"lmin"),(3,"peak"),(7,"rmax"),(1,"rank"),(5,"rdr"),(1,"rir"),(2,"rmin"),(3,"valley"),(2,"zeil")]])
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \pi_3 = ([[5,2,3,4,1]],
+%[[(2,"asc"),(0,"comp"),(0,"cyc"),(2,"des"),(4,"exc"),(3,"fix"),(5,"head"),(1,"last"),(2,"ldr"),(3,"lds"),(1,"lir"),(2,"lis"),(1,"lmax"),(3,"lmin"),(1,"peak"),(3,"rmax"),(2,"rank"),(2,"rdr"),(1,"rir"),(1,"rmin"),(1,"valley"),(1,"zeil")]],
+%
+% kr(\pi_3) = [[1,3,9,7,7,8,1,2,8,1,0,6,5,2,8,4,1,0,3]],
+%[[(8,"asc"),(1,"comp"),(13,"cyc"),(9,"des"),(6,"exc"),(1,"fix"),(1,"head"),(3,"last"),(1,"ldr"),(12,"lds"),(3,"lir"),(11,"lis"),(3,"lmax"),(2,"lmin"),(5,"peak"),(4,"rmax"),(1,"rank"),(1,"rdr"),(2,"rir"),(2,"rmin"),(4,"valley"),(2,"zeil")]])
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \pi_4 = ([[4,3,1,2,5,6]],
+%[[(3,"asc"),(0,"comp"),(1,"cyc"),(2,"des"),(4,"exc"),(2,"fix"),(4,"head"),(6,"last"),(3,"ldr"),(2,"lds"),(1,"lir"),(3,"lis"),(3,"lmax"),(3,"lmin"),(0,"peak"),(1,"rmax"),(2,"rank"),(1,"rdr"),(4,"rir"),(4,"rmin"),(1,"valley"),(1,"zeil")]],
+%
+% kr(\pi_4) = [[1,4,0,1,5,1,3,7,8,9,7,5,9,4,0,1,3,3]],
+%[[(10,"asc"),(4,"comp"),(15,"cyc"),(6,"des"),(3,"exc"),(2,"fix"),(1,"head"),(3,"last"),(1,"ldr"),(8,"lds"),(2,"lir"),(12,"lis"),(6,"lmax"),(2,"lmin"),(4,"peak"),(3,"rmax"),(1,"rank"),(1,"rdr"),(1,"rir"),(3,"rmin"),(4,"valley"),(2,"zeil")]])
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[H]
+\caption{Statistics based upon table ~\ref{table:KnuthRichards}}
+\centering
+\begin{tabular}{c | c c c c c c c c | c}
+\hline\hline
+Statistic & $\pi_1$ & $kr(\pi_1)$ & $\pi_2$ & $kr(\pi_2)$ & $\pi_3$ & $kr(\pi_3)$ & $\pi_4$ & $kr(\pi_4)$ & Equidistribution\\ [0.5ex]
+\hline
+asc & 1 & 8 & 0 & 8 & 2 & 8 & 3 & 10 & 8\\ 
+comp & 0 & 2 & 0 & 2 & 0 & 1 & 0 & 4 & 1\\
+cyc & 0 & 14 & 0 & 12 & 0 & 13 & 1 & 15 & inconclusive\\
+des & 1 & 7 & 3 & 7 & 2 & 9 & 2 & 6 & inconclusive\\
+exc & 2 & 3 & 2 & 3 & 4 & 6 & 4 & 3 & 3\\
+fix & 0 & 2 & 0 & 1 & 3 & 1 & 2 & 2 & 1\\
+head & 2 & 1 & 4 & 1 & 5 & 1 & 4 & 1 & 1\\
+last & 1 & 1 & 1 & 1 & 1 & 3 & 6 & 3 & 1\\ 
+ldr & 1 & 1 & 4 & 1 & 2 & 1 & 3 & 1 & 1\\
+lds & 1 & 10 & 3 & 10 & 3 & 12 & 2 & 8 & inconclusive\\
+lir & 2 & 2 & 1 & 2 & 1 & 3 & 1 & 2 & 2\\
+lis & 2 & 12 & 0 & 12 & 2 & 11 & 3 & 12 & inconclusive\\
+lmax & 2 & 4 & 1 & 3 & 1 & 3 & 3 & 6 & 3\\
+lmin & 2 & 2 & 4 & 2 & 3 & 2 & 3 & 2 & 2\\
+peak & 1 & 4 & 0 & 3 & 1 & 5 & 0 & 4 & 1\\
+rmax & 2 & 4 & 4 & 7 & 3 & 4 & 1 & 3 & 3\\
+rank & 2 & 1 & 2 & 1 & 2 & 1 & 2 & 1 & inconclusive (1 or 2)\\
+rdr & 2 & 3 & 4 & 5 & 2 & 1 & 1 & 1 & 2\\
+rir & 1 & 1 & 1 & 1 & 1 & 2 & 4 & 1 & 1\\
+rmin & 1 & 2 & 1 & 2 & 1 & 2 & 4 & 3 & 2\\
+valley & 0 & 4 & 0 & 3 & 1 & 4 & 1 & 4 & 4\\
+zeil & 3 & 2 & 4 & 2 & 1 & 2 & 1 & 2 & 2\\
+\hline
+\end{tabular}
+\label{table:KnuthRichardsPerms}
+\end{table}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Equidistrbution table Standard
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Equidistribution for Standard bijection (permutations)}
 \centering
 \begin{tabular}{c | c}
@@ -1163,7 +1706,7 @@ Statistic Group & List of Statistics \\ [0.5ex]
 \label{table:EDStandardPerms}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Equidistribution for Standard bijection (Dyck Paths)}
 \centering
 \begin{tabular}{c | c}
@@ -1183,7 +1726,7 @@ Statistic Group & List of Statistics \\ [0.5ex]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Equidistrbution table Simion-Schmidt
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Equidistribution for Siimion-Schmidt bijection.}
 \centering
 \begin{tabular}{c | c}
@@ -1203,7 +1746,7 @@ Statistic Group & List of Statistics \\ [0.5ex]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Equidistrbution table Fulmek
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Equidistribution for Fulmek bijection.}
 \centering
 \begin{tabular}{c | c}
@@ -1219,5 +1762,58 @@ Statistic Group & List of Statistics \\ [0.5ex]
 \label{table:EDFulmekPerms}
 \end{table}
 \newpage
+
+\section{Appendix 2 - Test Strategy}
+The test strategy I adopted was using unit testing with the hUnit package from Hackage. The test files are located on the submitted CD in the /CatalanStructures/tests directory.
+
+\section{Appendix 3 - User Guide}
+To install the application, you must have an up to date version of Haskell and an up to date version of {\it The Haskell Cabal}. The system was created and tested on GHCi version 7.4.1.\\
+To install the framework:
+\begin{itemize}
+\item Open a terminal.
+\item Navigate to the directory CatalanStructures that is within the CD. 
+\item Run the command 'cabal install'
+\item The application should be installed to use within GHCi.
+\end{itemize}
+To install the standalone application:
+\begin{itemize}
+\item Navigate to the directory CatalanStructures that is within the CD. 
+\item Run the file CatalanStructures.
+\end{itemize}
+All these details are located in the file INSTALL in the /CatalanStructures directory on the CD.\\
+When running the application, in the main window it is very intuitive and you should select the structure from the drop down menu and press apply. Next you will be prompted to enter in what the structure should be in the given format. Finally the program will visualise the structure.
+
+\section{Appendix 4 - Code Listing}
+All the code used to develop the program is accompied on the CD in the folders:
+\begin{itemize}
+	\item Math
+	\begin{itemize}
+		\item CatalanStructures.hs
+		\item Internal.hs
+		\item DyckPath.hs
+		\item StackSortPerm.hs
+		\item YoungTableaux.hs
+		\item Triangulations.hs
+		\item Av123.hs
+		\item Av321.hs
+	\end{itemize}
+	\item GUI
+	\begin{itemize}
+		\item mainGUI.glade
+		\item GUI.hs
+	\end{itemize}
+	\item includes
+	\begin{itemize}
+		\item bijections.h
+		\item dyckPathStat.h
+	\end{itemize}
+	\item cfiles
+	\begin{itemize}
+		\item bijections.c
+		\item dyckPathStat.c
+	\end{itemize}
+\end{itemize}
+
+
 
 \end{document}

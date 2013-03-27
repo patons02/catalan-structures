@@ -1,0 +1,59 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+\title{Project Progress Report}
+\author{Stuart Paton}
+
+\maketitle
+\thispagestyle{empty}
+
+\pagenumbering{arabic}
+
+\section{Progress to Date}
+Over the course of the last 6 weeks I have researched and developed a working prototype that takes: permutations of $\mathfrak{S}_3$; Dyck Paths of length 2n; Triangulations of an (n-2)-gon; Young Tableaux, then visualises them and can convert between them using various bijections including Knuth's bijection (standard bijection), the Simion-Schmidt bijection and the Knuth-Richards bijection \cite{Clae01}. I have also written ongoing documentation documenting every step of my progress while writing the applications code which along with the program is hosted on Github \cite{patons02git}.\\
+The program is currently written in Haskell, and is using the GTK framework for its graphical user interface. I have written a prototype in which you select the type of Catalan structure you wish to model. When complete the user will then be able to enter the structure and view its visualisation. This will be fully implemented by March 9th as is stated below.\\
+I have fully visualised permutations as a permutation matrix by using the GTK framework along with the sym\cite{ClaeSym} and sym-plot\cite{ClaeSymPlot} packages by Anders Claesson. For Dyck paths, I have a small visualisation using Haskell's Graphics.Gloss package which is not yet fully complete. For the remaining structures, the visualisations will be complete by Math 9th as stated below.\\
+For the evaluation of this project I am comparing bijections using combinatorial statistics for each structure and I have currently got statistics for Dyck paths, and permutations of $\mathfrak{S}_3$. The remaining statistics and the analysis of bijections will be completed by March 5th as is stated below.
+
+\section{Revised Project Plan}
+
+The final revised time scale for the objectives sought are given by the set of dates as follows:
+\begin{itemize}
+\renewcommand{\labelitemi}{$\bullet$}
+
+\item Friday 11th January 2013 - Initial litriture review completed.
+
+\item Friday 18th January 2013 - Analysis of the first 4 Catalan structures completed.
+
+\item Monday 28th January 2013 - Draught program coded for the first 4 structures.
+
+\item Monday 4th February 2013 - Project Poster completed.
+
+\item Wednesday 13th February 2013 - Analysis of remaining Catalan structures.
+
+\item Wednesday 20th February 2013 - Remaining structures added to program.
+
+\item Tuesday 5th March 2013 - Bijections added to program.
+
+\item Thursday 7th March 2013 - Evaluation complete. 
+
+\item Sunday 9th March 2013 - Visualisations completed, and linked to GUI.
+
+\item Monday 11th March 2013 - Write up started.
+
+\item Wednesday 20th March 2013 - Draft submitted to supervisor.
+
+\item Tuesday 26th March 2013 - Project submitted for binding.
+
+\item Thursday 28th March 2013 - Final project submitted
+\end{itemize}
+
+Student Signature: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\ \\
+Supervisor Signature: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\bibliographystyle{amsplain}
+\bibliography{progressReportBib}
+
+\end{document}

@@ -1,7 +1,20 @@
 module GUI.GUI where
 
+import GUI.DyckPath as DP
+import GUI.Permutation as P
+import GUI.Tableaux as Tableaux
+
+import Math.DyckPath
+import Math.Triangulations
+import Math.StackSortablePermutations
+import Math.CatalanStructures
+import Math.Internal
+import Math.Av123
+import Math.Av321
+
 import Graphics.UI.Gtk
 import Graphics.UI.Gtk.Builder
+
 
 main :: IO ()
 main = do
@@ -33,7 +46,10 @@ main = do
 		Structure Windows
 	-----------------------------------------}
 
-
+--	dyckPathWindow <- builderGetObject builder castToWindow "dyckPath"
+--	permutationWindow <- builderGetObject builder castToWindow "permutation"	
+--	youngTableauxWindow <- builderGetObject builder castToWindow "YoungTableaux"
+	
 	{----------------------------------------
 		Run GUI
 	-----------------------------------------}
@@ -77,18 +93,22 @@ chooseComboItem :: Builder -> IO Int -> IO ()
 chooseComboItem builder n = do
 	choice <- n
 	case choice of
-		0 -> loadDyckPathScreen builder
+		0 -> loadDyckPathScreen
 		1 -> undefined
-		2 -> undefined
-		3 -> loadStackSortPermScreen builder
-		4 -> undefined
-		5 -> undefined
+		2 -> loadTableauxScreen builder
+		3 -> loadPermScreen builder
+		4 -> loadPermScreen builder
+		5 -> loadPermScreen builder
 		_ -> print choice
 	print choice
 
 loadDyckPathScreen :: Builder -> IO ()
-loadDyckPathScreen builder = undefined
+loadDyckPathScreen builder = DP.main
 
-loadStackSortPermScreen :: Builder -> IO ()
-loadStackSortPermScreen = undefined
+loadPermScreen :: Builder -> IO ()
+loadPermScreen = Perm.main
+
+loadTableauxScreen :: Builder -> IO ()
+loadTableauxScreen = Tableaux.main
+
 

@@ -1,0 +1,212 @@
+{-# LANGUAGE ForeignFunctionInterface #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE TypeSynonymInstances #-}
+{-# CFILES cfiles/dyckPathStat.c #-}
+
+-- Module      : Math.CatalanStructures.DyckPath
+-- Copyright   : (c) Stuart Paton 2013
+-- License     : BSD3
+-- Maintainer  : Stuart Paton <stuart.john.paton@gmail.com>
+-- 
+
+module Math.DyckPath where
+
+import Math.Internal
+
+import Control.Monad.Trans(liftIO)
+import Data.List
+import Data.List.Split
+import qualified Data.Vector.Storable as SV
+
+import Diagrams.Prelude
+import Diagrams.Backend.Cairo.Internal
+import Diagrams.Backend.Cairo.Gtk
+import Graphics.UI.Gtk
+import Graphics.Rendering.Diagrams.Core
+
+--import Graphics.Gloss
+
+import Foreign (Ptr, castPtr)
+import System.IO.Unsafe (unsafePerformIO)
+import Foreign.C.Types (CLong(..), CInt(..), CUInt(..))
+import Foreign.Marshal.Utils (toBool)
+
+--import Graphics.Gloss
+
+data Step = U | D deriving (Eq, Show)
+
+type DyckPath = [Step]
+
+type Point = (Integer, Integer)
+
+type Vect = SV.Vector Int
+
+type DC_ = Diagram Cairo Any
+
+instance Catalan DyckPath where
+	empty = []
+	cons alpha beta = mkIndec alpha ++ beta 
+	decons = decompose
+
+{------------------------------------------------------------------
+	Make indecomposable and decomposable Dyck Paths
+-------------------------------------------------------------------}
+
+mkIndec :: DyckPath -> DyckPath
+mkIndec alpha = [U] ++ alpha ++ [D]
+
+heights :: DyckPath -> [Int]
+heights = scanl (+) 0 . map dy
+	where 
+	dy U = 1
+	dy D = -1
+
+
+-- O(n^2) version!
+--heights :: DyckPath -> [Int]type DC = Diagram Cairo R2
+--heights = map sum . inits .map dy
+--         where
+--           dy U = 1
+--           dy D = -1
+
+decompose :: DyckPath -> Maybe (DyckPath, DyckPath)
+decompose [] = Nothing
+decompose xs@(U:xt) = Just (map fst (init ys), map fst zs) 
+               where
+                 0:ht = heights xs 
+                 (ys, zs) = span(\(_, h) -> h > 0) $ zip xt ht
+
+--dyckPath2Points :: DyckPath -> [Point]
+--dyckPath2Points (x:xs) = undefined
+
+{------------------------------------------------------------------
+	Statistics
+-------------------------------------------------------------------}
+dpnmes :: [String]
+dpnmes = ["dCnt", "heightStat", "majorIndex", "noDoubleRises", "noInitialRises", "peaks", "returnsXAxis", "uCnt"]
+
+--dpstats :: [DyckPath -> Int]
+--dpstats = [dCnt, heightStat, majorIndex, noDoubleRises, noInitialRises, peaks, returnsXAxis, uCnt]
+
+--Number of up stepstype DC = Diagram Cairo R2
+--added 06/02/2013
+uCnt :: DyckPath -> Int
+uCnt = count U 
+
+--Number of down steps
+--added 06/02/2013
+dCnt :: DyckPath -> Int
+dCnt = count D 
+
+--Number of returns to the x axis
+--added 06/02/2013
+returnsXAxis :: DyckPath -> Int
+returnsXAxis dp = (count 0 $ heights dp) - 1
+
+--Number of peaks
+{- algorithm:
+1) split into lists at each 0
+2) find number of highest element of each list
+3) sum of counts from step 2
+-} 
+--added 06/02/2013
+peaks :: DyckPath -> Int
+peaks dp = sum $ largestElemCnt $ split
+	where
+	split = splitWhen (== 0) $ heights dp
+
+--added 07/02/2013
+heightStat :: DyckPath -> Int 
+heightStat dp = maximum $ heights dp
+
+--added 07/02/2013      background = square (fromIntegral n) # fc whitesmoke # lc white
+{-
+The number of consecutive up steps
+uses FFI
+-}
+{-
+foreign import ccall unsafe "dyckPathStat.h initR" 
+	c_initR :: Ptr CLong -> CLong -> CLong
+
+foreign import ccall unsafe "dyckPathStat.h doubR" 
+	c_doubR :: Ptr CLong -> CLong -> CLong
+
+foreign import ccall unsafe "dyckPathStat.h maj" 
+	c_maj :: Ptr CLong -> CLong -> CLong
+
+noInitialRises :: DyckPath -> Int
+noInitialRises dp = impD c_initR $ prep dp
+
+noDoubleRises :: DyckPath -> Int
+noDoubleRises dp = impD c_doubR $ prep dp
+
+majorIndex :: DyckPath -> Int
+majorIndex dp = impD c_maj $ prep dp
+-}
+
+{------------------------------------------------------------------
+	Helper functions
+-------------------------------------------------------------------}
+impD :: (Ptr CLong -> CLong -> CLong) -> Vect -> Int
+impD f w = unsafePerformIO $
+	SV.unsafeWith w $ \ptr ->
+	return . fromIntegral $ f (castPtr ptr) (fromIntegral (length))
+	where
+	length = SV.length w
+
+prep :: DyckPath -> Vect
+prep dp = toVect $ binMap dp
+	where
+	binMap = map dy
+		where
+		dy D = 0
+		dy U = 1
+
+count :: Eq a => a -> [a] -> Int
+count x ys = length (filter (== x) ys)
+
+largestElemCnt :: Ord a => [[a]] -> [Int]
+largestElemCnt [[]] = [0]
+largestElemCnt (xs:xss) = count (maximum xs) xs : largestElemCnt xss 
+
+toVect :: [Int] -> Vect
+toVect = SV.fromList
+
+toString :: DyckPath -> String
+toString = map dy
+	where
+	dy U = 'u'
+	dy D = 'd'
+
+fromString :: String -> DyckPath
+fromString = map dy
+	where
+	dy 'u' = U
+	dy 'd' = D
+
+int2floatlst :: [Int] -> [Float]
+int2floatlst = map (fromIntegral)
+
+int2float :: Int -> Float
+int2float = fromIntegral
+
+{------------------------------------------------------------------
+	Graphics
+-------------------------------------------------------------------}
+example = [U,D,U,U,D,D,U,D,U,D]
+ex2 = [U,D,U,D]
+
+extract2nd :: [(a,b)] -> [b]
+extract2nd  = map (\(x,y) -> y) 
+
+buildCoords :: DyckPath -> [(Float, Float)]
+buildCoords xs = zip (take len [0.0..]) h'
+	where
+	h = heights xs
+	len = length h
+	h' = int2floatlst h
+
+--using gloss
+drawDyckPathG :: DyckPath -> IO ()
+drawDyckPathG dp = display (InWindow "Dyck Path" (300,300) (300,300)) Graphics.Gloss.white (Graphics.Gloss.scale 40 20 $ Line $ buildCoords dp)
+

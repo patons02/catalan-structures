@@ -1,0 +1,13 @@
+
+\begin{abstract}
+There are more than 100 combinatorial structures whose cardinalities are given by the Catalan numbers. Examples are balanced parenthesis, binary tress and triangulations of an n-gon, and permutations sortable by one pass through a stack.
+
+On the surface, these structures are very different, but being 
+equinumerous there must be one-to-one correspondences that allows us 
+to translate between them. In this project we study commonalities 
+shared by Catalan structures by programming one-to-one 
+correspondences. We do this in a systematic way by recursively 
+decomposing the structures. The actual one-to-one correspondences are 
+then automatically derived, given the decompositions. 
+
+\end{abstract}

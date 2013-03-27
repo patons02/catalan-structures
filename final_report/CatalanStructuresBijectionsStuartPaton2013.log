@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.17)  25 MAR 2013 20:25
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.17)  26 MAR 2013 14:07
 entering extended mode
  %&-line parsing enabled.
 **CatalanStructuresBijectionsStuartPaton2013.tex
@@ -97,14 +97,26 @@ Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
+(/usr/share/texmf-texlive/tex/latex/amscls/amsthm.sty
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks19
+\thm@bodyfont=\toks20
+\thm@headfont=\toks21
+\thm@notefont=\toks22
+\thm@headpunct=\toks23
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks24
+)
 (/usr/share/texmf-texlive/tex/latex/listings/listings.sty
 (/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks19
+\KV@toks@=\toks25
 )
 \lst@mode=\count99
 \lst@gtempboxa=\box28
-\lst@token=\toks20
+\lst@token=\toks26
 \lst@length=\count100
 \lst@currlwidth=\dimen112
 \lst@column=\count101
@@ -154,9 +166,9 @@ Package: `setspace' 6.7 <2000/12/01>
 ) (/usr/share/texmf-texlive/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count108
-\float@exts=\toks21
+\float@exts=\toks27
 \float@box=\box30
-\@float@everytoks=\toks22
+\@float@everytoks=\toks28
 \@floatcapt=\box31
 )
 (/usr/share/texmf-texlive/tex/latex/program/program.sty
@@ -229,65 +241,97 @@ LaTeX Font Info:    Try loading font information for U+eur on input line 839.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/ueur.fd
 File: ueur.fd 2009/06/22 v3.00 Euler Roman
 ))
-\@float@every@table=\toks23
+(/usr/share/texmf-texlive/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2009/02/07 v0.4g Insert pages of external PDF documents (AM)
+
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-texlive/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count111
+\calc@Bcount=\count112
+\calc@Adimen=\dimen168
+\calc@Bdimen=\dimen169
+\calc@Askip=\skip49
+\calc@Bskip=\skip50
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count113
+\calc@Cskip=\skip51
+)
+(/usr/share/texmf-texlive/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2006/07/14 v1.1d eso-pic (RN)
+
+(/usr/share/texmf-texlive/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/share/texmf-texlive/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2009/02/07 v0.4g Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box33
+\AM@toc@title=\toks29
+\c@AM@survey=\count114
+\AM@templatesizebox=\box34
+)
+\@float@every@table=\toks30
+\c@definition=\count115
+\c@theorem=\count116
 
 (./CatalanStructuresBijectionsStuartPaton2013.aux)
 \openout1 = `CatalanStructuresBijectionsStuartPaton2013.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-\c@lstlisting=\count111
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+\c@lstlisting=\count117
 
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count112
-\scratchdimen=\dimen168
-\scratchbox=\box33
-\nofMPsegments=\count113
-\nofMParguments=\count114
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count115
-\MPscratchDim=\dimen169
-\MPnumerator=\count116
-\everyMPtoPDFconversion=\toks25
+\scratchcounter=\count118
+\scratchdimen=\dimen170
+\scratchbox=\box35
+\nofMPsegments=\count119
+\nofMParguments=\count120
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count121
+\MPscratchDim=\dimen171
+\MPnumerator=\count122
+\everyMPtoPDFconversion=\toks32
+) ABD: EveryShipout initializing macros
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/etc/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-
-! LaTeX Error: Environment Abstract undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.28 \begin{Abstract}
-                     
-? 
-LaTeX Font Info:    Try loading font information for U+euf on input line 29.
-(/usr/share/texmf-texlive/tex/latex/amsfonts/ueuf.fd
-File: ueuf.fd 2009/06/22 v3.00 Euler Fraktur
+Package color Info: Driver file: pdftex.def on input line 130.
 )
+<titlePage.pdf, id=5, page=1, 597.23125pt x 845.1575pt>
+File: titlePage.pdf Graphic file (type pdf)
 
-! LaTeX Error: \begin{document} ended by \end{Abstract}.
+<use titlePage.pdf, page 1>
+File: titlePage.pdf Graphic file (type pdf)
+ <use titlePage.pdf, page 1>
+File: titlePage.pdf Graphic file (type pdf)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \end{Abstract}
-                   
-? 
-[1
+<use titlePage.pdf, page 1>
+File: titlePage.pdf Graphic file (type pdf)
+ <use titlePage.pdf, page 1>
+File: titlePage.pdf Graphic file (type pdf)
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<use titlePage.pdf, page 1> [1
+
+ <./titlePage.pdf>]
 
 ! LaTeX Error: There's no line here to end.
 
@@ -295,54 +339,57 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.42 {\\ \centering
+l.32 {\\ \centering
+                   {\bf{Abstract} \\}}
+? 
+LaTeX Font Info:    Try loading font information for U+euf on input line 33.
+(/usr/share/texmf-texlive/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2009/06/22 v3.00 Euler Fraktur
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 {\\ \centering
                    {\bf{Acknowledgements} \\}}
 ? 
 [2
 
 ] (./CatalanStructuresBijectionsStuartPaton2013.toc [3
 
-] [4])
+] [4] [5])
 \tf@toc=\write3
 \openout3 = `CatalanStructuresBijectionsStuartPaton2013.toc'.
 
- [5]
-Underfull \hbox (badness 10000) in paragraph at lines 69--70
+ [6]
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
-[6]
-
-LaTeX Warning: Reference `sec:backwordsStandard' on page 7 undefined on input l
-ine 78.
-
-
-LaTeX Warning: Reference `sec:SSbijection' on page 7 undefined on input line 78
-.
-
-
-LaTeX Warning: Reference `sec:KRbijection' on page 7 undefined on input line 78
-.
-
-[7] [8] [9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
-
- []
-
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 109--113
+[7] [8] [9]
+\c@mydef=\count123
+ [10] [11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--113
+Underfull \hbox (badness 10000) in paragraph at lines 122--126
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--126
 
  []
 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 
@@ -352,7 +399,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 
@@ -362,7 +409,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 
@@ -372,7 +419,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 
@@ -382,19 +429,19 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 
@@ -404,7 +451,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 
@@ -414,7 +461,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 
@@ -424,7 +471,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 
@@ -434,24 +481,24 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.116 \end{split}
+l.129 \end{split}
                  
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--125
+Underfull \hbox (badness 10000) in paragraph at lines 130--138
 
  []
 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.128 \end{split}
+l.141 \end{split}
                  
 ? 
 
@@ -461,31 +508,31 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.128 \end{split}
+l.141 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.128 \end{split}
+l.141 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.128 \end{split}
+l.141 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.128 \end{split}
+l.141 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.128 \end{split}
+l.141 \end{split}
                  
 ? 
 
@@ -495,36 +542,36 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.128 \end{split}
+l.141 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.128 \end{split}
+l.141 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.128 \end{split}
+l.141 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.128 \end{split}
+l.141 \end{split}
                  
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--135
+Underfull \hbox (badness 10000) in paragraph at lines 146--148
 
  []
 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 
@@ -534,67 +581,67 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 
@@ -604,1139 +651,1186 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.140 \end{split}
+l.153 \end{split}
                  
 ? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
 
  []
 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.147 \end{split}
+l.160 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.147 \end{split}
+l.160 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.147 \end{split}
+l.160 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.147 \end{split}
+l.160 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.147 \end{split}
+l.160 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.147 \end{split}
+l.160 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.147 \end{split}
+l.160 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.147 \end{split}
+l.160 \end{split}
                  
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--151
+Underfull \hbox (badness 10000) in paragraph at lines 161--164
 
  []
 
-[12]
 ! Missing } inserted.
 <inserted text> 
                 }
-l.154 \end{split}
+l.167 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.154 \end{split}
+l.167 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.154 \end{split}
+l.167 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.154 \end{split}
+l.167 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.154 \end{split}
+l.167 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.154 \end{split}
+l.167 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.154 \end{split}
+l.167 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.154 \end{split}
+l.167 \end{split}
                  
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--157
+Underfull \hbox (badness 10000) in paragraph at lines 168--170
 
  []
 
 
-! LaTeX Error: \begin{split} on input line 158 ended by \end{equation}.
+! LaTeX Error: \begin{split} on input line 171 ended by \end{equation}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 \end{equation}
+l.178 \end{equation}
                     
 ? 
 
-! LaTeX Error: \begin{equation} on input line 157 ended by \end{split}.
+! LaTeX Error: \begin{equation} on input line 170 ended by \end{split}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.166 \end{split}
+l.179 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.166 \end{split}
+l.179 \end{split}
                  
 ? 
 ! Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.166 \end{split}
+l.179 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.166 \end{split}
+l.179 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.166 \end{split}
+l.179 \end{split}
                  
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--168
-
- []
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.171 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.171 \end{split}
-                 
-? 
-! Missing { inserted.
-<inserted text> 
-                {
-l.171 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.171 \end{split}
-                 
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.171 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.171 \end{split}
-                 
-? 
-! Missing { inserted.
-<inserted text> 
-                {
-l.171 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.171 \end{split}
-                 
-? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 172--175
+Underfull \hbox (badness 10000) in paragraph at lines 179--181
 
  []
 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.181 \end{split}
+l.184 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.181 \end{split}
+l.184 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.181 \end{split}
+l.184 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.181 \end{split}
+l.184 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.181 \end{split}
+l.184 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.181 \end{split}
+l.184 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.181 \end{split}
+l.184 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.181 \end{split}
-                 
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.181 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.181 \end{split}
-                 
-? 
-! Missing { inserted.
-<inserted text> 
-                {
-l.181 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.181 \end{split}
-                 
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.181 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.181 \end{split}
-                 
-? 
-! Missing { inserted.
-<inserted text> 
-                {
-l.181 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.181 \end{split}
-                 
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.181 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.181 \end{split}
-                 
-? 
-! Missing { inserted.
-<inserted text> 
-                {
-l.181 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.181 \end{split}
-                 
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.181 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.181 \end{split}
-                 
-? 
-! Missing { inserted.
-<inserted text> 
-                {
-l.181 \end{split}
-                 
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.181 \end{split}
+l.184 \end{split}
                  
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--195
+Underfull \hbox (badness 10000) in paragraph at lines 185--188
 
  []
 
-[13]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.211 ...ack. Hence our theorem is proven. \square
-                                                  
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.212 
-      
-? 
 [14]
+! Missing } inserted.
+<inserted text> 
+                }
+l.194 \end{split}
+                 
+? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.222 ...rn so $\sigma$ is stack sortable. \square
+l.194 \end{split}
+                 
+? 
+! Missing { inserted.
+<inserted text> 
+                {
+l.194 \end{split}
+                 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 \end{split}
+                 
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.194 \end{split}
+                 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 \end{split}
+                 
+? 
+! Missing { inserted.
+<inserted text> 
+                {
+l.194 \end{split}
+                 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 \end{split}
+                 
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.194 \end{split}
+                 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 \end{split}
+                 
+? 
+! Missing { inserted.
+<inserted text> 
+                {
+l.194 \end{split}
+                 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 \end{split}
+                 
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.194 \end{split}
+                 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 \end{split}
+                 
+? 
+! Missing { inserted.
+<inserted text> 
+                {
+l.194 \end{split}
+                 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 \end{split}
+                 
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.194 \end{split}
+                 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 \end{split}
+                 
+? 
+! Missing { inserted.
+<inserted text> 
+                {
+l.194 \end{split}
+                 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 \end{split}
+                 
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.194 \end{split}
+                 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 \end{split}
+                 
+? 
+! Missing { inserted.
+<inserted text> 
+                {
+l.194 \end{split}
+                 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 \end{split}
+                 
+? 
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--208
+
+ []
+
+
+! LaTeX Error: \begin{definition} on input line 213 ended by \end{defintion}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.215 \end{defintion}
+                     
+? 
+[15]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.227 ...ack. Hence our theorem is proven. \square
                                                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.223 
+l.228 
       
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.229 ...ight of $n$. Formally this is: $|s(\sigma
+l.239 ...rn so $\sigma$ is stack sortable. \square
+                                                  
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.240 
+      
+? 
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
+
+ []
+
+[16]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.247 ...ight of $n$. Formally this is: $|s(\sigma
                                                   )| = |s(\alpha)| * |s(\bet...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.229 ...ht of $n$. Formally this is: $|s(\sigma)|
+l.247 ...ht of $n$. Formally this is: $|s(\sigma)|
                                                    = |s(\alpha)| * |s(\beta)...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.229 ...ormally this is: $|s(\sigma)| = |s(\alpha
+l.247 ...ormally this is: $|s(\sigma)| = |s(\alpha
                                                   )| * |s(\beta)|$.\\
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.229 ...mally this is: $|s(\sigma)| = |s(\alpha)|
+l.247 ...mally this is: $|s(\sigma)| = |s(\alpha)|
                                                    * |s(\beta)|$.\\
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.229 ...is: $|s(\sigma)| = |s(\alpha)| * |s(\beta
+l.247 ...is: $|s(\sigma)| = |s(\alpha)| * |s(\beta
                                                   )|$.\\
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.229 ...: $|s(\sigma)| = |s(\alpha)| * |s(\beta)|
+l.247 ...: $|s(\sigma)| = |s(\alpha)| * |s(\beta)|
                                                   $.\\
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 \square
+l.252 \square
              
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.235 
+l.253 
       
 ? 
-[15] [16]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 255.
+[17]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 273.
 
  (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 255.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 273.
 
-Overfull \hbox (0.77928pt too wide) in paragraph at lines 256--257
+Overfull \hbox (0.77928pt too wide) in paragraph at lines 274--275
 []\OT1/cmr/m/n/12 Every line seg-ment be-tween two ver-tices re-mains in-side o
 r on the bound-
  []
 
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 291--293
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 311--313
 
  []
 
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 319--320
 
  []
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.311 \begin{matrix}
+l.331 \begin{matrix}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.312 $t_
+l.332 $t_
          {11}$ & $\dots$ & $t_{1n}$\\
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.312 $t_{11}$ &
+l.332 $t_{11}$ &
                  $\dots$ & $t_{1n}$\\
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.312 $t_{11}$ & $\dots$ & $t_
+l.332 $t_{11}$ & $\dots$ & $t_
                               {1n}$\\
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.312 $t_{11}$ & $\dots$ & $t_{1n}$\\
+l.332 $t_{11}$ & $\dots$ & $t_{1n}$\\
                                      
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.313 $t_
+l.333 $t_
          {21}$ & $\dots$ & $t_{2n}$
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.313 $t_{21}$ &
+l.333 $t_{21}$ &
                  $\dots$ & $t_{2n}$
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.313 $t_{21}$ & $\dots$ & $t_
+l.333 $t_{21}$ & $\dots$ & $t_
                               {2n}$
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.314 \end{matrix}
+l.334 \end{matrix}
                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.314 \end{matrix}
+l.334 \end{matrix}
                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.317 \begin{matrix}
+l.337 \begin{matrix}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.318 $t_
+l.338 $t_
          {a1}$ & $\dots$ & $t_{an}$\\
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.318 $t_{a1}$ &
+l.338 $t_{a1}$ &
                  $\dots$ & $t_{an}$\\
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.318 $t_{a1}$ & $\dots$ & $t_
+l.338 $t_{a1}$ & $\dots$ & $t_
                               {an}$\\
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.318 $t_{a1}$ & $\dots$ & $t_{an}$\\
+l.338 $t_{a1}$ & $\dots$ & $t_{an}$\\
                                      
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.319 $t_
+l.339 $t_
          {b1}$ & $\dots$ & $t_{bn}$
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.319 $t_{b1}$ &
+l.339 $t_{b1}$ &
                  $\dots$ & $t_{bn}$
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.319 $t_{b1}$ & $\dots$ & $t_
+l.339 $t_{b1}$ & $\dots$ & $t_
                               {bn}$
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.320 \end{matrix}
+l.340 \end{matrix}
                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.320 \end{matrix}
+l.340 \end{matrix}
                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.322 ...\mid\BalParen_n\mid$ for all $n$. \square
+l.342 ...\mid\BalParen_n\mid$ for all $n$. \square
                                                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.326 
+l.346 
       
 ? 
-[19]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 335.
+[20] [21]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 355.
 
  (/usr/share/texmf-texlive/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 335.
- [20]
-Overfull \hbox (47.09924pt too wide) in paragraph at lines 349--350
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 355.
+
+Overfull \hbox (47.09924pt too wide) in paragraph at lines 369--370
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (89.39917pt too wide) in paragraph at lines 358--359
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+[22]
+Overfull \hbox (25.94928pt too wide) in paragraph at lines 377--378
+[][][][][][][][][][][] 
  []
 
-[21]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.362 ...d as "the permutation of $1, 2, ..., |\pi
+l.390 ...d as "the permutation of $1, 2, ..., |\pi
                                                   _L|$ obtained from $|\pi_L...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.362 ...s "the permutation of $1, 2, ..., |\pi_L|
+l.390 ...s "the permutation of $1, 2, ..., |\pi_L|
                                                   $ obtained from $|\pi_L|$ ...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.362 ... $1, 2, ..., |\pi_L|$ obtained from $|\pi
+l.390 ... $1, 2, ..., |\pi_L|$ obtained from $|\pi
                                                   _L|$ by subtracting $|\pi_...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.362 ..., 2, ..., |\pi_L|$ obtained from $|\pi_L|
+l.390 ..., 2, ..., |\pi_L|$ obtained from $|\pi_L|
                                                   $ by subtracting $|\pi_R|$...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.362 ...ained from $|\pi_L|$ by subtracting $|\pi
+l.390 ...ained from $|\pi_L|$ by subtracting $|\pi
                                                   _R|$ from each of its lett...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.362 ...ed from $|\pi_L|$ by subtracting $|\pi_R|
+l.390 ...ed from $|\pi_L|$ by subtracting $|\pi_R|
                                                   $ from each of its letters...
 
 ? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.400 ...s this via the method for obtaining $|\pi
+                                                  _L|$ above. Finally the fu...
 
-Overfull \hbox (25.94928pt too wide) in paragraph at lines 365--366
-[][][][][][][][][][][][] 
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.400 ...his via the method for obtaining $|\pi_L|
+                                                  $ above. Finally the funct...
+
+? 
+[23]
+Overfull \hbox (40.04926pt too wide) in paragraph at lines 408--409
+[][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.372 ...s this via the method for obtaining $|\pi
-                                                  _L|$ above.
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.372 ...his via the method for obtaining $|\pi_L|
-                                                  $ above.
-? 
-
-Package Listings Warning: Text dropped after begin of listing on input line 381
-.
-
-[22]
-Overfull \hbox (18.89929pt too wide) in paragraph at lines 392--393
+[24] [25]
+Overfull \hbox (40.04926pt too wide) in paragraph at lines 473--474
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (47.09924pt too wide) in paragraph at lines 395--396
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 414--415
-
- []
-
-[24]
-Overfull \hbox (54.14923pt too wide) in paragraph at lines 438--439
-[][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (47.09924pt too wide) in paragraph at lines 455--456
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[25]
-Underfull \hbox (badness 10000) in paragraph at lines 461--462
-
+Overfull \hbox (32.99927pt too wide) in paragraph at lines 474--475
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [26]
-Overfull \hbox (18.89929pt too wide) in paragraph at lines 499--500
-[][][][][][][][][][][][][][][] 
- []
+
+Package Listings Warning: Text dropped after begin of listing on input line 490
+.
 
 [27]
-Overfull \hbox (54.14923pt too wide) in paragraph at lines 513--515
+Overfull \hbox (18.89929pt too wide) in paragraph at lines 501--502
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (47.09924pt too wide) in paragraph at lines 504--505
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 523--524
+
+ []
+
+[28]
+Overfull \hbox (54.14923pt too wide) in paragraph at lines 547--548
+[][][][][][][][][][][] 
+ []
+
+[29]
+Overfull \hbox (47.09924pt too wide) in paragraph at lines 564--565
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 570--571
+
+ []
+
+[30] [31]
+Overfull \hbox (54.14923pt too wide) in paragraph at lines 607--609
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (96.44916pt too wide) in paragraph at lines 532--533
+Overfull \hbox (96.44916pt too wide) in paragraph at lines 626--627
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[28]
-Overfull \hbox (54.14923pt too wide) in paragraph at lines 553--554
+[32]
+Overfull \hbox (54.14923pt too wide) in paragraph at lines 646--647
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[29]
-Overfull \hbox (96.44916pt too wide) in paragraph at lines 567--568
+[33]
+Overfull \hbox (96.44916pt too wide) in paragraph at lines 660--661
 [][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (47.09924pt too wide) in paragraph at lines 573--574
+Overfull \hbox (47.09924pt too wide) in paragraph at lines 666--667
 [][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (68.2492pt too wide) in paragraph at lines 574--576
+Overfull \hbox (68.2492pt too wide) in paragraph at lines 667--669
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[30]
-Overfull \hbox (47.09924pt too wide) in paragraph at lines 597--598
+[34]
+Overfull \hbox (47.09924pt too wide) in paragraph at lines 691--692
 [][][][][][][][][][][][][][][][] 
  []
 
-[31]
-Overfull \hbox (47.09924pt too wide) in paragraph at lines 608--609
+[35]
+Overfull \hbox (47.09924pt too wide) in paragraph at lines 702--703
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (32.99927pt too wide) in paragraph at lines 609--610
+Overfull \hbox (32.99927pt too wide) in paragraph at lines 703--704
 [][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (47.09924pt too wide) in paragraph at lines 612--613
+Overfull \hbox (47.09924pt too wide) in paragraph at lines 706--707
 [][][][][][][][][][][][][][][][][][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 622--623
-
- []
-
-[32] [33]
-Underfull \hbox (badness 10000) in paragraph at lines 665--668
-
- []
-
-[34] [35]
-Underfull \hbox (badness 10000) in paragraph at lines 711--712
-
- []
-
 [36]
-Overfull \hbox (25.94928pt too wide) in paragraph at lines 738--740
+Overfull \hbox (96.44916pt too wide) in paragraph at lines 718--719
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (89.39917pt too wide) in paragraph at lines 720--721
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (89.39917pt too wide) in paragraph at lines 728--729
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[37]
+Overfull \hbox (89.39917pt too wide) in paragraph at lines 748--749
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (96.44916pt too wide) in paragraph at lines 750--751
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 755--756
+
+ []
+
+[38] [39]
+Underfull \hbox (badness 10000) in paragraph at lines 798--801
+
+ []
+
+[40] [41]
+Underfull \hbox (badness 10000) in paragraph at lines 844--845
+
+ []
+
+
+Overfull \hbox (25.94928pt too wide) in paragraph at lines 853--855
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[37] [38]
-Underfull \hbox (badness 10000) in paragraph at lines 795--796
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 877--878
 
  []
 
-<mainGUIScreenshot.jpeg, id=140, 644.4075pt x 511.9125pt>
+<mainGUIScreenshot.jpeg, id=172, 644.4075pt x 511.9125pt>
 File: mainGUIScreenshot.jpeg Graphic file (type jpg)
 
 <use mainGUIScreenshot.jpeg>
@@ -1747,671 +1841,682 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.799 \caption
+l.881 \caption
               {Modelled using Glade \cite{Glade}}}\\
 ? 
 ! Undefined control sequence.
 \caption ... \endcsname \fi \fi \@dblarg {\@tempf 
                                                   \@captype }
-l.799 \caption
+l.881 \caption
               {Modelled using Glade \cite{Glade}}}\\
 ? 
 ! Undefined control sequence.
 \caption ...e \fi \fi \@dblarg {\@tempf \@captype 
                                                   }
-l.799 \caption
+l.881 \caption
               {Modelled using Glade \cite{Glade}}}\\
 ? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 799--802
+[43]
+Underfull \hbox (badness 10000) in paragraph at lines 881--884
 
  []
 
-[39 <./mainGUIScreenshot.jpeg>]
-Overfull \hbox (17.15916pt too wide) in paragraph at lines 822--824
+[44 <./mainGUIScreenshot.jpeg>]
+Overfull \hbox (17.15916pt too wide) in paragraph at lines 904--906
 \OT1/cmr/m/n/12 In the \OT1/cmr/m/it/12 init-Builder \OT1/cmr/m/n/12 func-tion,
  we cre-ate a new builder us-ing the func-tion \OT1/cmr/m/it/12 builderNew
  []
 
-[40]
-Underfull \hbox (badness 10000) in paragraph at lines 830--831
+
+Underfull \hbox (badness 10000) in paragraph at lines 912--913
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 833--838
+Underfull \hbox (badness 10000) in paragraph at lines 915--920
 
  []
 
+[45]
 ! Missing } inserted.
 <inserted text> 
                 }
-l.841 \end{split}
+l.923 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.841 \end{split}
+l.923 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.841 \end{split}
+l.923 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.841 \end{split}
+l.923 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.841 \end{split}
+l.923 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.841 \end{split}
+l.923 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.841 \end{split}
+l.923 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.841 \end{split}
+l.923 \end{split}
                  
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 842--844
+Underfull \hbox (badness 10000) in paragraph at lines 924--926
 
  []
 
-[41]
 ! Undefined control sequence.
-l.847 \subsubsubsection
+l.929 \subsubsubsection
                        {Example 1}
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 847--850
+Underfull \hbox (badness 10000) in paragraph at lines 929--932
 
  []
 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.856 \end{split}
+l.938 \end{split}
                  
 ? 
 ! Undefined control sequence.
-l.860 \subsubsubsection
+l.942 \subsubsubsection
                        {Example 2}
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 860--863
+Underfull \hbox (badness 10000) in paragraph at lines 942--945
 
  []
 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.871 \end{split}
+l.953 \end{split}
                  
 ? 
-[42] [43]
-Overfull \hbox (5.80145pt too wide) in paragraph at lines 901--905
+[46] [47]
+Overfull \hbox (5.80145pt too wide) in paragraph at lines 983--987
 \OT1/cmr/m/n/12 An ex-am-ple of the Ful-mek bi-jec-tion is the 123-avoiding per
 -mu-ta-tion $875964321$
  []
 
-[44] [45]
-Underfull \hbox (badness 10000) in paragraph at lines 940--965
+[48] [49]
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1047
 
  []
 
-[46]
-Underfull \hbox (badness 10000) in paragraph at lines 967--977
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 1049--1059
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 1061--1067
+
+ []
+
+[51]
 ! Missing { inserted.
 <to be read again> 
                    \egroup 
-l.984 ...\rightarrow stat_2(\phi(\mathfrak_{C}))$}
+l.1070 ...rightarrow stat_2(\phi(\mathfrak_{C}))$}
                                                   \\
 ? 
 ! Missing { inserted.
 <to be read again> 
                    \egroup 
-l.984 ...\rightarrow stat_2(\phi(\mathfrak_{C}))$}
+l.1070 ...rightarrow stat_2(\phi(\mathfrak_{C}))$}
                                                   \\
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.984 ...\rightarrow stat_2(\phi(\mathfrak_{C}))$}
+l.1070 ...rightarrow stat_2(\phi(\mathfrak_{C}))$}
                                                   \\
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.984 ...\rightarrow stat_2(\phi(\mathfrak_{C}))$}
+l.1070 ...rightarrow stat_2(\phi(\mathfrak_{C}))$}
                                                   \\
 ? 
-[47]
+[52]
 ! Missing { inserted.
 <to be read again> 
                    \egroup 
-l.998 ...two sets of Catalan structures $\mathcal_
+l.1084 ...wo sets of Catalan structures $\mathcal_
                                                   {A}$ and $\mathcal_{B}$, w...
 
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.998 ...sets of Catalan structures $\mathcal_{A}$
+l.1084 ...ets of Catalan structures $\mathcal_{A}$
                                                    and $\mathcal_{B}$, with ...
 
 ? 
 ! Missing { inserted.
 <to be read again> 
                    \egroup 
-l.998 ... structures $\mathcal_{A}$ and $\mathcal_
+l.1084 ...structures $\mathcal_{A}$ and $\mathcal_
                                                   {B}$, with their respectiv...
 
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.998 ...uctures $\mathcal_{A}$ and $\mathcal_{B}$
+l.1084 ...ctures $\mathcal_{A}$ and $\mathcal_{B}$
                                                   , with their respective st...
 
 ? 
 ! Missing { inserted.
 <to be read again> 
                    \egroup 
-l.998 ...F = G$ where $F = {\sum_{a \in {\mathcal_
+l.1084 ... = G$ where $F = {\sum_{a \in {\mathcal_
                                                   {A}}n}} x^{s(a)}$ and $G =...
 
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.998 ... {\sum_{a \in {\mathcal_{A}}n}} x^{s(a)}$
+l.1084 ...{\sum_{a \in {\mathcal_{A}}n}} x^{s(a)}$
                                                    and $G = {\sum_{b \in {\m...
 
 ? 
 ! Missing { inserted.
 <to be read again> 
                    \egroup 
-l.998 ...^{s(a)}$ and $G = {\sum_{b \in {\mathcal_
+l.1084 ...{s(a)}$ and $G = {\sum_{b \in {\mathcal_
                                                   {A}}_n}} x^{t(b)}$. The co...
 
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.998 ...{\sum_{b \in {\mathcal_{A}}_n}} x^{t(b)}$
+l.1084 ...\sum_{b \in {\mathcal_{A}}_n}} x^{t(b)}$
                                                   . The coefficient of each ...
 
 ? 
 ! Missing { inserted.
 <to be read again> 
                    \egroup 
-l.998 ...s given by $[x^k]F = \#\{a \in {\mathcal_
+l.1084 ... given by $[x^k]F = \#\{a \in {\mathcal_
                                                   {A}} : S(a) = k\}$.
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.998 ... = \#\{a \in {\mathcal_{A}} : S(a) = k\}$
+l.1084 ...= \#\{a \in {\mathcal_{A}} : S(a) = k\}$
                                                   .
 ? 
 
-Overfull \hbox (81.61633pt too wide) in paragraph at lines 1007--1021
+Overfull \hbox (81.61633pt too wide) in paragraph at lines 1093--1107
 [][]
  []
 
-[48]
-Underfull \hbox (badness 10000) in paragraph at lines 1025--1027
+[53]
+Underfull \hbox (badness 10000) in paragraph at lines 1111--1113
 
  []
 
-[49] [50] [51]
-Overfull \hbox (49.89165pt too wide) in paragraph at lines 1079--1109
+[54] [55]
+Overfull \hbox (49.89165pt too wide) in paragraph at lines 1165--1195
 [][]
  []
 
-[52] [53] [54] (./CatalanStructuresBijectionsStuartPaton2013.bbl
+[56] [57]
+Underfull \hbox (badness 10000) in paragraph at lines 1229--1231
+
+ []
+
+[58] [59] [60] (./CatalanStructuresBijectionsStuartPaton2013.bbl
 ! Undefined control sequence.
 l.16   \url
            {https://www.github.com/akc/sym}, 2013.
@@ -2446,45 +2551,26 @@ Overfull \hbox (53.55682pt too wide) in paragraph at lines 27--29
 l.52 The~Glade Project, \emph{Glade}, \url
                                           {http://glade.gnome.org/}.
 ? 
-[55]) [56]
+[61]
+! Undefined control sequence.
+l.73 ...Gloss~Development Team, \emph{Gloss}, \url
+                                                  {http://gloss.ouroborus.ne...
+
+? 
+) [62]
 ! Undefined control sequence.
 <recently read> \hlinemichael 
                               
-l.1177 \hlinemichael
+l.1283 \hlinemichael
                      cooper
 ? 
-[57]
-! Misplaced \noalign.
-\hline ->\noalign 
-                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.1212 \hline
-             
-? 
-! You can't use `\hrule' here except with leaders.
-\hline ->\noalign {\ifnum 0=`}\fi \hrule 
-                                         \@height \arrayrulewidth \futurelet...
-l.1212 \hline
-             
-? 
-! Missing number, treated as zero.
-<to be read again> 
-                   \futurelet 
-l.1212 \hline
-             
-? 
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \futurelet 
-l.1212 \hline
-             
-? 
-[58] [59]
-Overfull \hbox (187.57947pt too wide) in paragraph at lines 1302--1340
+[63] [64] [65]
+Overfull \hbox (110.87888pt too wide) in paragraph at lines 1408--1446
  [][] 
  []
 
 
-Overfull \hbox (32.46426pt too wide) in paragraph at lines 1363--1392
+Overfull \hbox (32.46426pt too wide) in paragraph at lines 1469--1498
  [][] 
  []
 
@@ -2492,117 +2578,110 @@ Overfull \hbox (32.46426pt too wide) in paragraph at lines 1363--1392
 Overfull \vbox (37.17775pt too high) has occurred while \output is active []
 
 
-[60]
-Overfull \hbox (59.22827pt too wide) in paragraph at lines 1422--1451
- [][] 
- []
-
-[61] [62]
-Overfull \hbox (23.2313pt too wide) in paragraph at lines 1484--1522
- [][] 
- []
-
-
-Overfull \vbox (37.17775pt too high) has occurred while \output is active []
-
-
-[63]
-Overfull \hbox (53.42273pt too wide) in paragraph at lines 1553--1582
- [][] 
- []
-
-
-Overfull \hbox (0.80731pt too wide) in paragraph at lines 1590--1601
- [][] 
- []
-
-[64] [65]
-! Misplaced \noalign.
-\hline ->\noalign 
-                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.1634 \hline
-             
-? 
-! You can't use `\hrule' here except with leaders.
-\hline ->\noalign {\ifnum 0=`}\fi \hrule 
-                                         \@height \arrayrulewidth \futurelet...
-l.1634 \hline
-             
-? 
-! Missing number, treated as zero.
-<to be read again> 
-                   \futurelet 
-l.1634 \hline
-             
-? 
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \futurelet 
-l.1634 \hline
-             
-? 
 [66]
+Overfull \hbox (59.22827pt too wide) in paragraph at lines 1528--1557
+ [][] 
+ []
+
+[67] [68]
+Overfull \hbox (23.2313pt too wide) in paragraph at lines 1590--1628
+ [][] 
+ []
+
+
+Overfull \vbox (37.17775pt too high) has occurred while \output is active []
+
+
+[69]
+Overfull \hbox (53.42273pt too wide) in paragraph at lines 1659--1688
+ [][] 
+ []
+
+
+Overfull \hbox (0.80731pt too wide) in paragraph at lines 1696--1707
+ [][] 
+ []
+
+[70] [71]
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.1654 \hline
+l.1740 \hline
              
 ? 
 ! You can't use `\hrule' here except with leaders.
 \hline ->\noalign {\ifnum 0=`}\fi \hrule 
                                          \@height \arrayrulewidth \futurelet...
-l.1654 \hline
+l.1740 \hline
              
 ? 
 ! Missing number, treated as zero.
 <to be read again> 
                    \futurelet 
-l.1654 \hline
+l.1740 \hline
              
 ? 
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \futurelet 
-l.1654 \hline
+l.1740 \hline
              
 ? 
-[67] [68] [69] (./CatalanStructuresBijectionsStuartPaton2013.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[72]
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.1760 \hline
+             
+? 
+! You can't use `\hrule' here except with leaders.
+\hline ->\noalign {\ifnum 0=`}\fi \hrule 
+                                         \@height \arrayrulewidth \futurelet...
+l.1760 \hline
+             
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   \futurelet 
+l.1760 \hline
+             
+? 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \futurelet 
+l.1760 \hline
+             
+? 
+[73] [74] [75] (./CatalanStructuresBijectionsStuartPaton2013.aux) ) 
 Here is how much of TeX's memory you used:
- 3544 strings out of 493848
- 45175 string characters out of 1152823
- 125255 words of memory out of 3000000
- 6783 multiletter control sequences out of 15000+50000
- 18222 words of font info for 70 fonts, out of 3000000 for 9000
+ 4356 strings out of 493848
+ 57537 string characters out of 1152823
+ 142835 words of memory out of 3000000
+ 7562 multiletter control sequences out of 15000+50000
+ 17923 words of font info for 69 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 32i,16n,32p,1805b,1396s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/
-fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share/texmf-texlive/fonts/type1
-/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-sy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/tex
-mf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive/
-fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/symbols/msbm10.pfb>
-Output written on CatalanStructuresBijectionsStuartPaton2013.pdf (69 pages, 362
-651 bytes).
+ 32i,16n,36p,1836b,1401s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/
+texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share/texmf-texlive/fonts/type1/p
+ublic/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy
+6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf
+-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/symbols/msbm10.pfb>
+Output written on CatalanStructuresBijectionsStuartPaton2013.pdf (76 pages, 415
+294 bytes).
 PDF statistics:
- 301 PDF objects out of 1000 (max. 8388607)
+ 337 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

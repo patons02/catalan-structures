@@ -1,0 +1,100 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+
+\begin{document}
+\title{Catalan Structures and Bijections}
+\author{Stuart Paton}
+
+\maketitle
+\thispagestyle{empty}
+
+\pagenumbering{arabic}
+
+\section{Introduction}
+Catalan structures are combinatorical structures which satisfy the recurrence relation of the $nth$ Catalan number, $c_{n}$:
+
+\begin{equation}
+c_{n} = c_{0}c_{n-1} + c_{1}c_{n-2} + ... + c_{n-1}c_{0}
+\end{equation} 
+
+where $c_{0} = 1$ and $c_{1} = 1$. For $n \ge 1$ we have $c_{n} = (^{2n}_{n})/(n+1)$. \cite{McShine_onThe} 
+\\All Catalan structures are equinumerous and hence equivilant since they satisfy the recurrence relation for the Catalan numbers.
+
+Throughout this project I will look at a small amount of Catalan structures and from this evaluate their generating functions and programatically represent each chosen structure in Haskell, and then convert between each and through the use of Haskell's graphics packages represent them.
+
+\section{Project Specification}
+In this project, as stated above, I will look at roughly 5 - 10 Catalan structures and evaluate their generating functions by going through a series of steps:
+\begin{itemize}
+\renewcommand{\labelitemi}{$\bullet$}
+\item Look at the structure of the Catalan structure.
+\item Create an encoding formulae for each set of elements whose permutations will correspond to the appropriate Catalan number.
+\item Create a recursive formula from this which corresponds to the formal power series of the Catalan sequence.
+\end{itemize}
+
+Following this, in Haskell I will then create a program which coverts between each structure. Once the appropriate structures are made I will, in the program, covert between each by defining a type class which will have the operators cons, to construct the structure, decons to deconstruct the structure and empty to state the empty structure in order to represent the bijections of the Catalan structures. Examples of which could be: Dyck paths, Binary Trees and convex polygons with $n+2$ sides.When the program fully converts between all my chosen Catalan structures I will then create a graphical user interface to represent each structure visually for the user using Haskell packages such as Graphics.Gloss and the vector graphics package Diagrams.
+
+For the evaluation of the above research and the final program produced I will evaluate it by checking that all the Catalan structures are equivilant and hence reflecting that by evaluating the output in Haskell and showing that it is the same for all the structures given the appropriate test data. For the visualisations, the same approach will be taken by looking at each structure, and evaluating the relations that correspond to the Catalan Numbers on each structure and hence show that they are equivilant.\\
+
+Work has been done on the Catalan numbers by numerous different authors researching discrete mathematics and theoretical computer science. A summary of them is as follows:
+%\begin{itemize}
+%\renewcommand{\labelitemi}{$\bullet$}
+In Catalan Numbers by Tom Davis \cite{DavisCNum}, various different problems were looked at and it was shown that they are equivilant since the solution to each problem is the Catalan Numbers. Firstly each problem being examined was stated with a description, and secondly a recursive definition was given and the bijection between each problem was shown. 
+
+In section two of On the Mixing Time of the Triangulation Walk and Other Catalan Structures \cite{McShine_onThe}, the notion of a Catalan structure is introduced with various examples given. The aim of the paper is to show $\mathcal{O}(n_{5}log(n/\epsilon))$ steps are sufficient to get close to a stationary distribution over the set of triangulations. The catalan structure of an $(n+2)$-gon is used due to it being the polygon which the set of triangulations are generated from.
+
+In a survey of stack-sorting disciplines by Mikl\'{o}s B\'{o}na \cite{BonaStackSort}, a review of the ways that stacked, their variations and combinations have been used as sorting devices. In particular, by Proposition 1.3 of the article, it was defined that the number of stack sortable permutations of length $n$ is $C_{n} = (^{2n}_{n})/(n+1)$. The proof of this definition is given in The Art of Computer Programming, Volume 1 by Donald E. Knuth \cite{KnuthVol1}.
+
+In Enumerative Combinatorics Volume Two by Richard P. Stanley \cite{StanleyEnum2}, 66 Catalan structures are given in exercise 6.19. The problem, which is to show that the Catalan Numbers count the number of element in the 66 sets, is a good question to use as a basis for some of the Catalan structures used in this project.\\
+%\end{itemize}
+
+For a choice of marking scheme for this project, the experimental-based project marking scheme suits the project best due to the fact that the project is mainly using combinatorial mathematics. Although the end result will be a program visually showing the relationship between each Catalan structure, the most involved task throughout the project will be proving the relationship between each structure to show that they are all equivilant. The amount of mathematics involved and the fact that Haskell as a programming language is very concise versus a procedural or object oriented programming language is the reason against an experimental-based project with significant software development. 
+
+\section{Project Plan}
+%This initial plan for the project will be projected against the deadlines in the CS408 Project Information document. 
+%The deadlines for the project are as follows:
+%\begin{itemize}
+%\renewcommand{\labelitemi}{$\bullet$}
+%\item Wednesday 30th January 2013 - Project Poster due.
+%\item Friday 1st February 2013 - Poster Presentation day.
+%\item Wednesday 6th February 2013 - Poster feedback available.
+%\item Friday 1st March 2013 - Progress Report due.
+%\item Friday 29 March 2013 - Project Report due.
+%\end{itemize}
+
+%\subsection{Provisional Time Scale}
+The provisional time scale for objectives sought are given by the set of dates as follows:
+\begin{itemize}
+\renewcommand{\labelitemi}{$\bullet$}
+
+\item Friday 11th January 2013 - Initial litriture review completed.
+
+\item Friday 18th January 2013 - Analysis of the first 4 Catalan structures completed.
+
+\item Monday 28th January 2013 - Draught program coded for the first 4 structures.
+
+\item Monday 4th February 2013 - Project Poster completed.
+
+\item Wednesday 13th February 2013 - Analysis of remaining Catalan structures.
+
+\item Wednesday 20th February 2013 - Remaining structures added to program.
+
+\item Thursday 27th February 2013 - Visualisations of first 4 structures added to program.
+
+\item Friday 8th March 2013 - Visualisations of the remaining structures added to program.
+
+\item Monday 4th March 2013 - Write up started.
+
+\item Monday 11th March 2013 - Write up completed.
+
+\item Monday 11th March 2013 - Initial draft submitted to supervisor.
+
+\item Thursday 28th March 2013 - Final project submitted.
+\end{itemize}
+
+Student Signature: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\ \\
+Supervisor Signature: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\bibliographystyle{amsplain}
+\bibliography{specBibliography}
+
+\end{document}

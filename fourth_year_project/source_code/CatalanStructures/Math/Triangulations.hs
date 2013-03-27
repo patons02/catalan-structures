@@ -1,0 +1,106 @@
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE TypeSynonymInstances #-}
+
+-- Module      : Math.Triangulations
+-- Copyright   : (c) Stuart Paton 2013
+-- License     : BSD3
+-- Maintainer  : Stuart Paton <stuart.john.paton@gmail.com>
+-- 
+
+module Math.Triangulations where
+
+import Data.List.Split
+--import Control.Monad
+
+import Math.Internal
+
+--triangle = (startPt, midPt, endPt)
+type Triangle = (Int, Int, Int)
+
+type Triangulations = [Triangle]
+
+instance Catalan Triangulations where
+	empty = []	
+	cons alpha beta = alpha ++ mkIndec (maximum' $ mapMax alpha) beta
+	decons = decompose
+
+example :: Triangulations
+example = [(1,4,2), (2,4,3), (5,1,4), (5,1,6), (1,6,8), (8,6,7)]
+
+mkIndec :: Int -> Triangulations -> Triangulations
+mkIndec n xs = map (\(x,y,z) -> (x+n, y+n, z+n)) xs
+
+decompose :: Triangulations -> Maybe (Triangulations, Triangulations)
+decompose [] = Nothing
+decompose xs = Just $ pairDropB1 (splitter xs)
+
+splitter :: Triangulations -> (Triangulations, Triangulations)
+splitter xs = splitAt (length xs - lenSnd(splitMappedList xs)) xs
+
+splitMappedList :: Triangulations -> ([Bool], [Bool])
+splitMappedList xs = break (True==) (mapList xs)
+	where
+	ys = xs
+	n = length ys 
+
+mapList :: [Triangle] -> [Bool]
+mapList [] = []
+mapList (x:xs) = ((fstTrip x == 1 || fstTrip x == n) && (trdTrip x == 1 || trdTrip x == n)) : mapList xs
+	where
+	n = maximum' $ mapMax xs
+	
+mapMax :: [Triangle] -> [Int]
+mapMax = map maxTuple
+
+{-
+To decons we need to remove the triangle (1, i, n) and then return the two triangles given.
+To cons we need to add the removed triangle to join two triangles THEN renumber.
+-}
+
+tupleToList :: [(a,a,a)] -> [a]
+tupleToList (x:y:z:as) = [x] ++ [y] ++ [z] : tupleToList as
+
+listToTuples :: [a] -> [(a,a)]
+listToTuples [] = []
+listToTuples (x:y:zs) = (x,y) : listToTuples zs
+
+listToFloat :: [a] -> [Float]
+listToFloat (x:xs) = fromIntegral x : listToFloat xs
+
+buildCoords :: Triangulations -> [(Float, Float)]
+buildCoords = listToTuples . listToFloat . tupleToList 
+
+{------------------------------------------------------------------
+	Helper Functions
+-------------------------------------------------------------------}
+fstTrip, sndTrip, trdTrip :: (a,a,a) -> a
+fstTrip (a,b,c) = a
+sndTrip (a,b,c) = b
+trdTrip (a,b,c) = c
+
+pairDropB1 :: ([a], [a]) -> ([a], [a])
+pairDropB1 (a, b) = (a, drop 1 b)
+
+lstToTrip :: [a] -> (a,a,a)
+lstToTrip [a,b,c] = (a,b,c) 
+
+maxTuple :: Ord a => (a, a, a) -> a
+maxTuple (a,b,c) = maxPair (maxPair (a,b), c)
+
+maxPair :: Ord a => (a, a) -> a
+maxPair (a,b) = if a >= b then a else b
+
+maximum' :: (Ord a, Num a) => [a] -> a
+maximum' [] = 0
+maximum' xs = foldl1 max xs
+
+lenSnd :: ([Bool], [Bool]) -> Int
+lenSnd (a,b) = length b
+
+{---------------------------------------------------------
+	Graphics
+----------------------------------------------------------}
+
+drawTriPoly :: Triangulations -> IO ()
+drawTriPoly tri = display (InWindow "Dyck Path" (300,300) (300,300)) Graphics.Gloss.white (Graphics.Gloss.scale 40 20 $ Line $ buildCoords tri)
+

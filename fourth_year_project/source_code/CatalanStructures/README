@@ -1,0 +1,1 @@
+When loading CatalanStructures.hs in order for the C functions to work we must run cabal install then go OUT OF THE PROJECT DIRECTORY then load into ghci using ":m +<file>"

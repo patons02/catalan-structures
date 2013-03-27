@@ -1,0 +1,8 @@
+The structure for the fourth_year_project directory is as follows:
+
+	project_report: A directory containing the project report pdf, LaTeX and BibTeX documents
+	source_code: A directory containing all the necessary source code for the project. It has its own readme which is the file named INSTALL.
+	project_notes: A directory containing miscellaneous notes made during the course of the project.
+	poster_presentation: A directory containing the poster presentation slides (in pdf and odt formats), and the graphics included.
+	other_project_submissions: A directory containing the other submissions made during the course of the project.
+

@@ -1,0 +1,150 @@
+{-# LANGUAGE TypeSynonymInstances #-}
+{-# LANGUAGE FlexibleInstances #-}
+
+ -- Module      : Math.CatalanStructures.YoungTableaux
+-- Copyright   : (c) Stuart Paton 2013
+-- License     : BSD3
+-- Maintainer  : Stuart Paton <stuart.john.paton@gmail.com>
+-- 
+
+module Math.YoungTableaux where
+
+import Data.List
+import qualified Data.Vector.Storable.Mutable as MV
+import qualified Data.Vector.Storable as SV
+
+--import Graphics.Gloss
+
+import Math.Internal
+
+import Foreign (Ptr, castPtr)
+import System.IO.Unsafe (unsafePerformIO)
+import Foreign.C.Types (CLong(..), CInt(..), CUInt(..))
+import Foreign.Marshal.Utils (toBool)
+
+type Row = [Int]
+
+type Tableau = [Row]
+
+newtype Tableaux = Tableaux {tableaux :: Tableau} deriving (Eq, Ord, Show)
+
+instance Catalan Tableaux where
+  empty = Tableaux []
+  cons = compose
+  decons = decompose
+
+example :: Tableaux
+example = Tableaux [[1,3,4,6,7], [2,5,8,10], [9]]
+
+example2 :: Tableaux
+example2 = Tableaux [[1,2,3],[4,5,6]]
+
+empty_ :: Tableaux
+empty_ = Tableaux []
+
+compose :: Tableaux -> Tableaux -> Tableaux
+compose a b = undefined
+
+decompose :: Tableaux -> Maybe (Tableaux, Tableaux)
+decompose (Tableaux []) = Nothing
+decompose yt = Just . splitT $ getColumnsL yt
+
+splitT :: Tableau -> (Tableaux, Tableaux)
+splitT yt = (Tableaux a, Tableaux b)
+	where
+	(a,b) = if ((length $ Data.List.last yt) == 1)
+		then (init' (init' yt), [last' (init' yt) ,last' yt])
+		else (init' yt, [last' yt])	
+	init' = Data.List.init
+	last' = Data.List.last
+
+shape :: Tableaux -> [Int]
+shape (Tableaux yt) = map length yt
+
+getRowsL :: Tableaux -> Tableau
+getRowsL = tx2t 
+
+getRowsT :: Tableaux -> Tableaux
+getRowsT yt = yt
+
+getColumnsL :: Tableaux -> Tableau
+getColumnsL = transpose . tx2t
+
+getColumnsT :: Tableaux -> Tableaux
+getColumnsT = t2tx . getColumnsL
+
+t2tx :: Tableau -> Tableaux
+t2tx yt = Tableaux yt
+
+tx2t :: Tableaux -> Tableau
+tx2t (Tableaux yt) = yt
+
+{------------------------------------------------------------------
+	Helper functions
+-------------------------------------------------------------------}
+factorial :: Int -> Int
+factorial = foldr (*) 1 . enumFromTo 1
+
+multLL :: [[Int]] -> Int
+multLL xss = product l
+	where
+	l = map product . transpose $ xss
+
+impLongYT :: (Ptr CLong -> CLong -> CLong) -> PermVec -> Int
+impLongYT f w = unsafePerformIO $
+	SV.unsafeWith w $ \ptr ->
+	return . fromIntegral $ f (castPtr ptr) (fromIntegral (length))
+	where
+	length = SV.length w
+{------------------------------------------------------------------
+	Statistics
+-------------------------------------------------------------------}
+
+ytNames :: [String]
+ytNames = ["des", "dimension", "hook","lambda"]
+
+ytStat :: [Tableaux -> Int]
+ytStat = [desYT, dimension, hook, lambda]
+
+lambda :: Tableaux -> Int
+lambda = sum . shape
+
+foreign import ccall unsafe "ytStat.h des" 
+	c_desYT :: Ptr CLong -> CLong -> CLong
+
+desYT :: Tableaux -> Int
+desYT yt = addDes rs
+	where
+	rs = getRowsL yt
+
+addDes :: [Permutation] -> Int
+addDes [] = 0
+addDes (r:rs) = impLongYT c_desYT (permtopermvec r) + addDes rs
+
+hook :: Tableaux -> Int
+hook (Tableaux yt) = multLL yt
+
+dimension :: Tableaux -> Int
+dimension yt = factorial n `div` hook yt
+	where 
+	n = size yt
+
+
+{----------------------------------------------------
+	Graphics 
+----------------------------------------------------}
+
+drawYTG :: YoungTableaux -> IO ()
+drawYTG yt = display (InWindow "Young Tableaux" (300,300) (300,300)) Graphics.Gloss.White picture 
+	where
+	toText = toText $ t2tx yt
+	picture = Translate (-170) (-20) $ Scale 0.5 0.5 $ Text toText	
+
+toText :: Tableau -> String
+toText [] = ""
+toText (y:ys) = show y ++ '\n' : toText ys 
+	where
+	rows = getRowsL
+	
+	
+

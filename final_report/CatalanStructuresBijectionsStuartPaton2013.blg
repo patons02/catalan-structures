@@ -2,44 +2,44 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: CatalanStructuresBijectionsStuartPaton2013.aux
 The style file: amsplain.bst
 Database file #1: CatalanStructuresBib.bib
-You've used 15 entries,
+You've used 16 entries,
             2213 wiz_defined-function locations,
-            589 strings with 5808 characters,
-and the built_in function-call counts, 3558 in all, are:
-= -- 288
-> -- 125
+            593 strings with 5877 characters,
+and the built_in function-call counts, 3764 in all, are:
+= -- 304
+> -- 132
 < -- 3
-+ -- 55
-- -- 36
-* -- 232
-:= -- 571
-add.period$ -- 15
-call.type$ -- 15
-change.case$ -- 63
++ -- 58
+- -- 38
+* -- 241
+:= -- 603
+add.period$ -- 16
+call.type$ -- 16
+change.case$ -- 67
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 176
-empty$ -- 374
-format.name$ -- 36
-if$ -- 756
+cite$ -- 16
+duplicate$ -- 187
+empty$ -- 398
+format.name$ -- 38
+if$ -- 801
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 27
-newline$ -- 55
-num.names$ -- 30
-pop$ -- 124
+int.to.str$ -- 16
+missing$ -- 28
+newline$ -- 58
+num.names$ -- 32
+pop$ -- 134
 preamble$ -- 1
-purify$ -- 48
+purify$ -- 51
 quote$ -- 0
-skip$ -- 98
+skip$ -- 106
 stack$ -- 0
-substring$ -- 141
-swap$ -- 19
+substring$ -- 146
+swap$ -- 20
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 52
+type$ -- 56
 warning$ -- 0
-while$ -- 34
-width$ -- 17
-write$ -- 134
+while$ -- 36
+width$ -- 18
+write$ -- 141

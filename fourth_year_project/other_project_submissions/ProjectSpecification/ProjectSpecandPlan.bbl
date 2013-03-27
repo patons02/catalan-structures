@@ -1,0 +1,33 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{1}
+
+\bibitem{BonaStackSort}
+Mikl{\'o}s B{\'o}na, \emph{A survey of stack-sorting disciplines}, The
+  Electronic Journal of Combinatorics \textbf{9} (2003), no.~2, 1--16.
+
+\bibitem{DavisCNum}
+Tom Davis, \emph{Catalan numbers}, A paper on the equivilance of structures
+  involving the Catalan Numbers, November 2006.
+
+\bibitem{KnuthVol1}
+Donald~E. Knuth, \emph{The art of computer programming}, vol.~1,
+  Addison-Wesley, Reading, Massachusetts, 1973.
+
+\bibitem{McShine_onThe}
+Lisa McShine and Prasad Tetali, \emph{On the mixing time of the triangulation
+  walk and other catalan structures}, Randomization Methods in Algorithm Design
+  (Panos Pardalos and Sanguthevar Rajasekaran, eds.), DIMACS Series in Discrete
+  Mathematics and Theoretical Computer Science, vol.~43, American Mathematics
+  Society, 1999.
+
+\bibitem{StanleyEnum2}
+Richard~P. Stanley, \emph{Enumerative combinatorics}, Cambridge Studies in
+  Advanced Mathematics, vol.~2, Cambridge University Press, 1999.
+
+\end{thebibliography}

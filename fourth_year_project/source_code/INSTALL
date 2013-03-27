@@ -1,0 +1,15 @@
+Installation Readme:
+
+To install the file using the Haskell Cabal:
+	1) Open a terminal in the root CatalanStructures/ directory
+	2) Enter in the command "cabal install"
+	3) Navigate out of the CatalanStructures/ directory
+	4) Run with GHC or GHCi
+
+GHCi instructions:
+	1) Open a terminal in any directory that is not the CatalanStructures/ or any of its subdirectories.
+	2) Type in the command ghci
+	3) Type in the following:
+		:m +Math.CatalanStructures Math.Internal Math.StackSortablePermutations Math.Triangulations Math.YoungTableaux Math.Av123 Math.Av321
+	
+	This will load all the necessary files to use the framework.

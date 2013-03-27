@@ -13,6 +13,8 @@ import Data.List
 import qualified Data.Vector.Storable.Mutable as MV
 import qualified Data.Vector.Storable as SV
 
+--import Graphics.Gloss
+
 import Math.Internal
 
 import Foreign (Ptr, castPtr)
@@ -99,13 +101,10 @@ impLongYT f w = unsafePerformIO $
 -------------------------------------------------------------------}
 
 ytNames :: [String]
-ytNames = ["des", "dimension", "hook", "lambda"]
+ytNames = ["des", "dimension", "hook","lambda"]
 
 ytStat :: [Tableaux -> Int]
 ytStat = [desYT, dimension, hook, lambda]
-
-size :: Tableaux -> Int
-size yt = sum $ shape yt
 
 lambda :: Tableaux -> Int
 lambda = sum . shape
@@ -129,4 +128,23 @@ dimension :: Tableaux -> Int
 dimension yt = factorial n `div` hook yt
 	where 
 	n = size yt
+
+
+{----------------------------------------------------
+	Graphics 
+----------------------------------------------------}
+
+drawYTG :: Tableaux -> IO ()
+drawYTG yt = display (InWindow "Young Tableaux" (300,300) (300,300)) Graphics.Gloss.White picture 
+	where
+	toText = toText $ t2tx yt
+	picture = Translate (-170) (-20) $ Scale 0.5 0.5 $ Text toText	
+
+toText :: Tableau -> String
+toText [] = ""
+toText (y:ys) = show y ++ '\n' : toText ys 
+	where
+	rows = getRowsL
+	
+	
 

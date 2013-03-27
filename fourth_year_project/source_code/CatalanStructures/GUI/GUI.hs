@@ -1,0 +1,104 @@
+module GUI.GUI where
+
+import GUI.DyckPath as DP
+import GUI.Permutation as P
+import GUI.Tableaux as Tableaux
+
+import Math.DyckPath
+import Math.Triangulations
+import Math.StackSortablePermutations
+import Math.CatalanStructures
+import Math.Internal
+import Math.Av123
+import Math.Av321
+
+import Graphics.UI.Gtk
+import Graphics.UI.Gtk.Builder
+
+
+main :: IO ()
+main = do
+	initGUI --initialise GUI toolkit
+	
+	builder <- initBuilder
+
+	{----------------------------------------
+		Main Window
+	-----------------------------------------}
+	main_window <- builderGetObject builder castToWindow "main_window"
+
+	mainComboBox <- builderGetObject builder castToComboBox "structureComboBox"
+
+	mQuit <- builderGetObject builder castToMenuItem "quitItem"
+	on mQuit menuItemActivate $ runCloseProcedure main_window
+
+	mAbout <- builderGetObject builder castToMenuItem "aboutItem"
+	on mAbout menuItemActivate $ showAboutDialog builder
+
+	btnApply <- builderGetObject builder castToButton "applyButton"
+
+	onClicked btnApply $ chooseComboItem builder (getComboIndex mainComboBox)
+
+	btnQuit <- builderGetObject builder castToButton "quitButton"
+	onClicked btnQuit $ runCloseProcedure main_window
+	
+	{----------------------------------------
+		Run GUI
+	-----------------------------------------}
+	widgetShowAll main_window
+	mainGUI --run main event loop
+
+initBuilder :: IO Builder
+initBuilder = do
+	builder <- builderNew -- initialise new builder
+	builderAddFromFile builder "mainGui.glade" -- add .glade file to the builder
+	return builder
+
+showAboutDialog :: Builder -> IO ()
+showAboutDialog builder = do
+	about <- builderGetObject builder castToDialog "aboutWindow"
+	set about [widgetVisible := True]
+	dialogRun about
+	set about [widgetVisible := False]
+
+runCloseProcedure :: WidgetClass self => self -> IO ()
+runCloseProcedure window = do
+	widgetDestroy window
+	mainQuit
+
+getComboIndex :: ComboBoxClass self => self -> IO Int
+getComboIndex cb = do
+	selected <- comboBoxGetActive cb
+	return selected
+
+{----------------------------------------------
+For combo boxes, each entry is mapped to an integer,
+and the mappings are as follows:
+0 - Dyck Path
+1 - Young Tableaux
+2 - 231-avoiding permutations
+3 - 123-avoiding permutations
+4 - 213-avoiding permutations
+----------------------------------------------}
+chooseComboItem :: Builder -> IO Int -> IO ()
+chooseComboItem builder n = do
+	choice <- n
+	case choice of
+		0 -> loadDyckPathScreen
+		1 -> loadTableauxScreen builder
+		2 -> loadPermScreen builder
+		3 -> loadPermScreen builder
+		4 -> loadPermScreen builder
+		_ -> print choice
+	print choice
+
+loadDyckPathScreen :: Builder -> IO ()
+loadDyckPathScreen builder = DP.main
+
+loadPermScreen :: Builder -> IO ()
+loadPermScreen = Perm.main
+
+loadTableauxScreen :: Builder -> IO ()
+loadTableauxScreen = Tableaux.main
+
+

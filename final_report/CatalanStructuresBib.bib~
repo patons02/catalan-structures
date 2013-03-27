@@ -120,6 +120,12 @@
 	howpublished = {\url{http://glade.gnome.org/}}
 }
 
+@MISC{ Gloss,
+	author = "",
+	title = "Gloss",
+	howpublished = {\url{http://gloss.ouroborus.net/}}
+}
+
 @MISC{oeisA000085,
 	AUTHOR={N. J. A. Sloane and J. H. Conway},
 	TITLE={The {O}n-{L}ine {E}ncyclopedia of {I}nteger {S}equences},

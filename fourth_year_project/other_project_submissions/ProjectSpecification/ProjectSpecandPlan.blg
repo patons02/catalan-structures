@@ -1,0 +1,45 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: ProjectSpecandPlan.aux
+The style file: amsplain.bst
+Database file #1: specBibliography.bib
+You've used 5 entries,
+            2213 wiz_defined-function locations,
+            536 strings with 4744 characters,
+and the built_in function-call counts, 1254 in all, are:
+= -- 100
+> -- 49
+< -- 3
++ -- 21
+- -- 14
+* -- 97
+:= -- 218
+add.period$ -- 5
+call.type$ -- 5
+change.case$ -- 21
+chr.to.int$ -- 0
+cite$ -- 5
+duplicate$ -- 62
+empty$ -- 116
+format.name$ -- 14
+if$ -- 252
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 11
+newline$ -- 25
+num.names$ -- 12
+pop$ -- 27
+preamble$ -- 1
+purify$ -- 16
+quote$ -- 0
+skip$ -- 29
+stack$ -- 0
+substring$ -- 43
+swap$ -- 10
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 0
+while$ -- 13
+width$ -- 6
+write$ -- 55

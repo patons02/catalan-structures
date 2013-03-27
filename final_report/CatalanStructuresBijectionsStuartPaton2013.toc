@@ -1,64 +1,78 @@
-\contentsline {section}{\numberline {1}Introduction}{6}
-\contentsline {subsection}{\numberline {1.1}Report Structure}{6}
-\contentsline {section}{\numberline {2}Survey of Related Work}{7}
-\contentsline {subsection}{\numberline {2.1}Summary of "On the Mixing Time of the Triangulation and Other Catalan Structures}{7}
-\contentsline {subsection}{\numberline {2.2}Summary of "Classification of bijections between 321- and 132- avoiding permutations"}{8}
-\contentsline {subsection}{\numberline {2.3}Summary of "Catalan Numbers"}{9}
-\contentsline {subsection}{\numberline {2.4}Summary of "Stack Sortable Permutations"}{11}
-\contentsline {section}{\numberline {3}Combinatorial Structures}{11}
-\contentsline {subsection}{\numberline {3.1}Dyck Paths}{12}
-\contentsline {subsubsection}{\numberline {3.1.1}Proof of composition and generalisation}{12}
-\contentsline {subsection}{\numberline {3.2}Stack Sortable Permutations}{14}
-\contentsline {subsubsection}{\numberline {3.2.1}Stack Sortable Permutations - Definitions}{14}
-\contentsline {subsubsection}{\numberline {3.2.2}Single Pass Stack Sortable Permutations}{15}
-\contentsline {subsection}{\numberline {3.3}Triangulations of an $n+2$-gon}{16}
-\contentsline {subsubsection}{\numberline {3.3.1}Convex Polygon}{17}
-\contentsline {subsubsection}{\numberline {3.3.2}Proof that the amount of triangulations is $C_n$}{17}
-\contentsline {subsection}{\numberline {3.4}Young Tableau}{18}
-\contentsline {subsubsection}{\numberline {3.4.1}Young Diagram}{18}
-\contentsline {subsubsection}{\numberline {3.4.2}Young Tableaux}{18}
-\contentsline {subsubsection}{\numberline {3.4.3}Proof that Young Tableaux are Catalan Structures}{19}
-\contentsline {paragraph}{Proof}{19}
-\contentsline {section}{\numberline {4}Program Design}{20}
-\contentsline {subsection}{\numberline {4.1}Internals}{20}
-\contentsline {subsection}{\numberline {4.2}Catalan Structures}{21}
-\contentsline {subsection}{\numberline {4.3}Dyck Paths}{22}
-\contentsline {subsection}{\numberline {4.4}Stack Sortable Permutations}{24}
-\contentsline {subsection}{\numberline {4.5}Permutations avoiding 123}{26}
-\contentsline {subsection}{\numberline {4.6}Young Tableaux}{27}
-\contentsline {subsection}{\numberline {4.7}Triangulations of an $n+2$-gon}{29}
-\contentsline {subsection}{\numberline {4.8}Graphics}{31}
-\contentsline {subsection}{\numberline {4.9}Statistics}{32}
-\contentsline {subsubsection}{\numberline {4.9.1}Dyck Path Statistics}{32}
-\contentsline {subsubsection}{\numberline {4.9.2}Permutation Statistics}{36}
-\contentsline {subsection}{\numberline {4.10}Graphical User Interface}{39}
-\contentsline {section}{\numberline {5}Bijections}{41}
-\contentsline {subsection}{\numberline {5.1}Standard Bijection}{41}
-\contentsline {subsubsection}{\numberline {5.1.1}Examples of Standard Bijection}{42}
-\contentsline {subsection}{\numberline {5.2}Dyck path to 132-avoiding permutation}{43}
-\contentsline {subsection}{\numberline {5.3}Simion-Schmidt Bijection}{44}
-\contentsline {subsection}{\numberline {5.4}Fulemk Bijection}{44}
-\contentsline {subsection}{\numberline {5.5}Richards Bijection}{44}
-\contentsline {subsection}{\numberline {5.6}Knuth-Richards Bijection}{45}
-\contentsline {section}{\numberline {6}Combinatorial Statistics}{45}
-\contentsline {subsection}{\numberline {6.1}Introduction}{45}
-\contentsline {subsection}{\numberline {6.2}Permutation statistics}{46}
-\contentsline {subsection}{\numberline {6.3}Dyck Path statistics}{47}
-\contentsline {subsection}{\numberline {6.4}Young Tableaux statistics}{47}
-\contentsline {subsection}{\numberline {6.5}$n+2$-gon statistics}{47}
-\contentsline {subsection}{\numberline {6.6}Mapping of statistics}{47}
-\contentsline {subsubsection}{\numberline {6.6.1}Permutations $\rightarrow $ Dyck Paths}{48}
-\contentsline {section}{\numberline {7}Analysis of Bijections}{48}
-\contentsline {subsection}{\numberline {7.1}Equidistribution theorem}{48}
-\contentsline {subsection}{\numberline {7.2}Standard Bijection}{48}
-\contentsline {subsubsection}{\numberline {7.2.1}Analysis of equidistribution of Standard bijection over many permutations}{49}
-\contentsline {subsection}{\numberline {7.3}Simion Schmidt Bijection}{49}
-\contentsline {subsubsection}{\numberline {7.3.1}Analysis of Simion-Schmidt bijection where $\pi = 6743152$}{50}
-\contentsline {subsubsection}{\numberline {7.3.2}Analysis of equidistribution of Simion Schmidt bijection over many permutations}{50}
-\contentsline {subsubsection}{\numberline {7.3.3}Analysis of equidistribution of Fulmek bijection over many permutations}{51}
-\contentsline {subsubsection}{\numberline {7.3.4}Analysis of equidistribution of Richards bijection over many Dyck Paths}{52}
-\contentsline {subsubsection}{\numberline {7.3.5}Analysis of equidistribution of Knuth Richards bijection over many permutations}{53}
-\contentsline {section}{\numberline {8}Appendix 1: Tables of data}{57}
-\contentsline {section}{\numberline {9}Appendix 2 - Test Strategy}{68}
-\contentsline {section}{\numberline {10}Appendix 3 - User Guide}{68}
-\contentsline {section}{\numberline {11}Appendix 4 - Code Listing}{68}
+\contentsline {section}{\numberline {1}Introduction}{7}
+\contentsline {subsection}{\numberline {1.1}Report Structure}{7}
+\contentsline {section}{\numberline {2}Survey of Related Work}{8}
+\contentsline {subsection}{\numberline {2.1}Summary of "On the Mixing Time of the Triangulation and Other Catalan Structures}{8}
+\contentsline {subsection}{\numberline {2.2}Summary of "Classification of bijections between 321- and 132- avoiding permutations"}{9}
+\contentsline {subsection}{\numberline {2.3}Summary of "Catalan Numbers"}{10}
+\contentsline {subsection}{\numberline {2.4}Summary of "Stack Sortable Permutations"}{12}
+\contentsline {section}{\numberline {3}Combinatorial Structures}{12}
+\contentsline {subsection}{\numberline {3.1}Definitions}{13}
+\contentsline {subsection}{\numberline {3.2}Dyck Paths}{13}
+\contentsline {subsubsection}{\numberline {3.2.1}Proof of composition and generalisation}{13}
+\contentsline {subsection}{\numberline {3.3}Stack Sortable Permutations}{15}
+\contentsline {subsubsection}{\numberline {3.3.1}Stack Sortable Permutations - Definitions}{15}
+\contentsline {subsubsection}{\numberline {3.3.2}Single Pass Stack Sortable Permutations}{16}
+\contentsline {subsection}{\numberline {3.4}Triangulations of an $n+2$-gon}{17}
+\contentsline {subsubsection}{\numberline {3.4.1}Convex Polygon}{18}
+\contentsline {subsubsection}{\numberline {3.4.2}Proof that the amount of triangulations is $C_n$}{18}
+\contentsline {subsection}{\numberline {3.5}Young Tableau}{19}
+\contentsline {subsubsection}{\numberline {3.5.1}Young Diagram}{19}
+\contentsline {subsubsection}{\numberline {3.5.2}Young Tableaux}{20}
+\contentsline {subsubsection}{\numberline {3.5.3}Proof that Young Tableaux are Catalan Structures}{20}
+\contentsline {paragraph}{Proof}{20}
+\contentsline {section}{\numberline {4}Program Design}{21}
+\contentsline {subsection}{\numberline {4.1}Internals}{22}
+\contentsline {subsection}{\numberline {4.2}Catalan Structures}{22}
+\contentsline {subsubsection}{\numberline {4.2.1}Standard bijection}{23}
+\contentsline {subsubsection}{\numberline {4.2.2}Richards bijection}{24}
+\contentsline {subsection}{\numberline {4.3}Knuth-Richards bijection}{26}
+\contentsline {subsection}{\numberline {4.4}Simion-Schmidt bijection}{26}
+\contentsline {subsection}{\numberline {4.5}Fulmek bijection}{27}
+\contentsline {subsection}{\numberline {4.6}Dyck Paths}{27}
+\contentsline {subsection}{\numberline {4.7}Stack Sortable Permutations}{29}
+\contentsline {subsection}{\numberline {4.8}Permutations avoiding 123}{31}
+\contentsline {subsection}{\numberline {4.9}Young Tableaux}{31}
+\contentsline {subsection}{\numberline {4.10}Triangulations of an $n+2$-gon}{33}
+\contentsline {subsection}{\numberline {4.11}Graphics}{35}
+\contentsline {subsubsection}{\numberline {4.11.1}Permutation Graphics}{35}
+\contentsline {subsubsection}{\numberline {4.11.2}Dyck Path Graphics}{37}
+\contentsline {subsubsection}{\numberline {4.11.3}Young Tableaux Graphics}{37}
+\contentsline {subsubsection}{\numberline {4.11.4}Triangulation of an n+2-gon Graphics}{38}
+\contentsline {subsection}{\numberline {4.12}Statistics}{38}
+\contentsline {subsubsection}{\numberline {4.12.1}Dyck Path Statistics}{38}
+\contentsline {subsubsection}{\numberline {4.12.2}Permutation Statistics}{42}
+\contentsline {subsection}{\numberline {4.13}Graphical User Interface}{43}
+\contentsline {section}{\numberline {5}Bijections}{45}
+\contentsline {subsection}{\numberline {5.1}Standard Bijection}{45}
+\contentsline {subsubsection}{\numberline {5.1.1}Examples of Standard Bijection}{46}
+\contentsline {subsection}{\numberline {5.2}Dyck path to 132-avoiding permutation}{47}
+\contentsline {subsection}{\numberline {5.3}Simion-Schmidt Bijection}{48}
+\contentsline {subsection}{\numberline {5.4}Fulemk Bijection}{48}
+\contentsline {subsection}{\numberline {5.5}Richards Bijection}{49}
+\contentsline {subsection}{\numberline {5.6}Knuth-Richards Bijection}{49}
+\contentsline {section}{\numberline {6}Combinatorial Statistics}{50}
+\contentsline {subsection}{\numberline {6.1}Introduction}{50}
+\contentsline {subsection}{\numberline {6.2}Permutation statistics}{50}
+\contentsline {subsection}{\numberline {6.3}Dyck Path statistics}{51}
+\contentsline {subsection}{\numberline {6.4}Young Tableaux statistics}{52}
+\contentsline {subsection}{\numberline {6.5}Mapping of statistics}{52}
+\contentsline {subsubsection}{\numberline {6.5.1}Permutations $\rightarrow $ Dyck Paths}{52}
+\contentsline {section}{\numberline {7}Analysis of Bijections}{53}
+\contentsline {subsection}{\numberline {7.1}Equidistribution theorem}{53}
+\contentsline {subsection}{\numberline {7.2}Standard Bijection}{53}
+\contentsline {subsubsection}{\numberline {7.2.1}Analysis of equidistribution of Standard bijection over many permutations}{53}
+\contentsline {subsection}{\numberline {7.3}Simion Schmidt Bijection}{54}
+\contentsline {subsubsection}{\numberline {7.3.1}Analysis of Simion-Schmidt bijection where $\pi = 6743152$}{54}
+\contentsline {subsubsection}{\numberline {7.3.2}Analysis of equidistribution of Simion Schmidt bijection over many permutations}{55}
+\contentsline {subsubsection}{\numberline {7.3.3}Analysis of equidistribution of Fulmek bijection over many permutations}{56}
+\contentsline {subsubsection}{\numberline {7.3.4}Analysis of equidistribution of Richards bijection over many Dyck Paths}{56}
+\contentsline {subsubsection}{\numberline {7.3.5}Analysis of equidistribution of Knuth Richards bijection over many permutations}{57}
+\contentsline {section}{\numberline {8}Testing}{58}
+\contentsline {section}{\numberline {9}Conclusion}{58}
+\contentsline {subsection}{\numberline {9.1}Project Success}{59}
+\contentsline {subsection}{\numberline {9.2}Project Weaknesses}{59}
+\contentsline {subsection}{\numberline {9.3}Further Development}{60}
+\contentsline {section}{\numberline {10}Appendix 1: Tables of data}{63}
+\contentsline {section}{\numberline {11}Appendix 2 - Test Strategy}{74}
+\contentsline {section}{\numberline {12}Appendix 3 - User Guide}{74}
+\contentsline {section}{\numberline {13}Appendix 4 - Code Listing}{75}
